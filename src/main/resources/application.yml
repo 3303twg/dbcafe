@@ -18,7 +18,7 @@ spring:
 
     #    mysql? ??? ??? ?? ??? ?? ???.
     username: root
-    password: dkei380226
+    password: 1234
     #mariadb는 포트를 3307로했음
   thymeleaf:
     cache: false
