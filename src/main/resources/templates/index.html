@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+gddg
+<a href="/test/login">로그인</a>
+<a href="/loginn">로오그인</a><br>
+<a href="/test/save">회원가입</a>
+<a href="/register">회에원가입</a><br>
+<a href="/test2">테스트</a><br>
+<a href="/text">글작성</a><br>
+<a href="/list">글목록</a>
+<button onclick="listReq()">글목록</button><br>
+<a href="/board/QnA">QnA</a>
+<button onclick="pagingReq()">페이징목록</button><br>
+<a href="/payment">결제</a>
+
+<script>
+    const listReq = ()=>{
+        location.href = "list";
+    }
+
+    const pagingReq = ()=>{
+        location.href = "/board/paging";
+    }
+</script>
+
+
+</body>
+</html>

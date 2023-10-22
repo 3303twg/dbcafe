@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>게시물 검색</title>
+</head>
+<body>
+<h1>게시물 검색</h1>
+
+<form th:action="@{/board/QnA}" method="get">
+    <ul>
+        <li class="board_search_select">
+            <div class="input_select_wrap input_wrap2">
+                <select name="search_category" id="bbs_search_category">
+                    <option value="title">제목</option>
+                    <option value="content">내용</option>
+                    <option value="name">작성자</option>
+                </select>
+            </div>
+        </li>
+        <li>
+            <div class="input_text_wrap input_wrap2">
+                <label>
+                    <input type="text" name="search" id="bbs_search" class="" value="" placeholder="검색어를 입력하세요" required="required">
+                </label>
+            </div>
+        </li>
+        <li class="board_search_btn">
+            <div class="input_btn_wrap input_wrap2">
+                <input type="submit" value="검색" class="btn btn1" id="">
+            </div>
+        </li>
+    </ul>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Created Time</th>
+        <th>Hits</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${boardList.empty}">
+        <td colspan="5">검색 결과가 없습니다.</td>
+    </tr>
+    <tr th:each="board: ${boardList}">
+        <td th:text="${board.id}"></td>
+        <td>
+            <div class="text_wrap">
+                <div class="text">
+                    <a th:href="@{|/board/${board.id}|(page=${boardList.number + 1})}" th:text="${board.boardTitle}"></a>
+                </div>
+            </div>
+        </td>
+        <td class="board_pc">CAFE DREAM</td>
+        <td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td class="board_pc" th:text="${board.boardHits}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
