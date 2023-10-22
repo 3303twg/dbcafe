@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 작성폼</title>
+</head>
+
+<style>
+    .layout{
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
+
+    }
+
+    /*.layout input {*/
+
+    /*    width: 100%;*/
+    /*    box-sizing: border-box;*/
+    /*}*/
+    /*!*.layout textarea{*!*/
+    /*    width: 100%;*/
+    /*    margin-top: 10px;*/
+    /*    min-height: 380px;*/
+    /*}*/
+
+</style>
+
+<body>
+<div class="layout">
+    <form action="/menu/menuRegister" method="post" enctype="multipart/form-data">
+        <p>메뉴명<input name="menuName" type="text"></p>
+        <p>가격<input name="menuPrice" type="number" ></p>
+
+        <label><input name="menuType" type="radio" value="coffee" checked>커피</label>
+        <label><input name="menuType" type="radio" value="non-coffee">논커피</label>
+        <label><input name="menuType" type="radio" value="desert">디저트</label><br>
+        <input name="file" type="file"><br>
+        <button type="submit">작성</button>
+    </form>
+</div>
+
+</body>
+</html>
