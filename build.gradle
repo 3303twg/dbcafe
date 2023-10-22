@@ -35,7 +35,7 @@ dependencies {
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.4.1'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
-    implementation 'com.github.iamport:iamport-rest-client-java:0.2.21' //portone 결제
+//    implementation 'com.github.iamport:iamport-rest-client-java:0.2.21' //portone 결제
 }
 
 tasks.named('test') {
