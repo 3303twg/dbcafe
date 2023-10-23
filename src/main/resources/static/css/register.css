@@ -12,10 +12,9 @@ body {
     text-decoration : none
 }
 #logo {
-	display: block;s
-    width: 240px;
-    height: 50px;
-    margin :50px auto;
+	display: block;
+    height: 120px;
+    margin :30px auto;
     cursor: pointer;
 }
 

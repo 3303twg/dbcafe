@@ -24,7 +24,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(){
-        return "index";
+        return "main";
     }
 
     @GetMapping("/loginn")
@@ -56,6 +56,26 @@ public class HomeController {
         boardService.save(boardDTO);
 
         return "index";
+    }
+
+    @GetMapping("/brand")
+    public String brand(){
+        return "brand";
+    }
+
+    @GetMapping("/store")
+    public String store(){
+        return "store";
+    }
+
+    @GetMapping("/partnership")
+    public String partnership(){
+        return "partnership";
+    }
+
+    @GetMapping("/partnership/write")
+    public String partnership_write(){
+        return "partnership_write";
     }
 
 
