@@ -44,12 +44,6 @@ public class HomeController {
         return "payment";
     }
 
-    @GetMapping("/text")
-    public String text(){
-        return "text";
-    }
-
-
     @GetMapping("/brand")
     public String brand(){
         return "brand";

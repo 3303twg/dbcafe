@@ -21,6 +21,10 @@ import java.util.List;
 public class BoardController {
     private final BoardService boardService;
 
+    @GetMapping("/text")
+    public String text(){
+        return "Q&A_write";
+    }
 
     @PostMapping("/text")
     public String text(@ModelAttribute BoardDTO boardDTO){
