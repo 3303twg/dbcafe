@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class BoardDTO {
     private Long id;
     private String boardWriter;
-    private String boardPass;
+//    private String boardPass;
     private String boardTitle;
     private String boardContents;
     private int boardHits;
@@ -32,7 +32,7 @@ public class BoardDTO {
         BoardDTO boardDTO = new BoardDTO();
         boardDTO.setId(boardEntitiy.getId());
         boardDTO.setBoardWriter(boardEntitiy.getBoardWriter());
-        boardDTO.setBoardPass(boardEntitiy.getBoardPass());
+//        boardDTO.setBoardPass(boardEntitiy.getBoardPass());
         boardDTO.setBoardTitle(boardEntitiy.getBoardTitle());
         boardDTO.setBoardContents(boardEntitiy.getBoardContents());
         boardDTO.setBoardHits(boardEntitiy.getBoardHits());
