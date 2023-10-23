@@ -36,9 +36,13 @@ public class MenuService {
 
     public void register(MenuDTO menuDTO, MultipartFile file, HttpServletRequest request) throws Exception {
 
-        if(file!=null){//      projectpaht==webapp의 절대경로
-            String projectPath = request.getSession().getServletContext().getRealPath("/") + "/upload_image/";
-//      랜덤한 uid생성하여 file name과 연결
+        if(file!=null){
+            String projectPath=System.getProperty("user.dir")+"/src/main/resources/static/upload_image";
+//            String projectPath=System.getProperty("user.dir")+"\\src\\main\\resources\\static\\upload_image";
+//            String projectPath = request.getSession().getServletContext().getRealPath("/") + "/upload_image/";
+
+
+            //      랜덤한 uid생성하여 file name과 연결
             UUID uuid = UUID.randomUUID();
             String fileName = uuid + "_" + file.getOriginalFilename();
 
