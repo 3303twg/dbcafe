@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+<title>글쓰기</title>
+          <link href="/css/style.css" rel="stylesheet">
+          <link href="/css/all.css" rel="stylesheet">
+</head>
+<body>
+	
+<div class="cont">
+			<div class="cont_box db01">
+				<div class="cont_boxs">
+					<div class="db">
+
+							<div class="cont_text">
+								<a href="/bbs/?bbs_category=4">
+								</a>
+							</div>
+						</div>
+						<form name="submit_form" id="submit_form" method="post">
+							<input type="hidden" name="customer_category" id="customer_category" value="2">
+							<input type="hidden" name="customer_tbl_area1_erp" id="customer_tbl_area1_erp" value="">
+							<input type="hidden" name="customer_tbl_area2_erp" id="customer_tbl_area2_erp" value="">
+							<input type="hidden" name="customer_tbl_price_erp" id="customer_tbl_price_erp" value="">
+							<input type="hidden" name="customer_tbl_category_erp" id="customer_tbl_category_erp" value="">
+							<input type="hidden" name="customer_tbl_store_erp" id="customer_tbl_store_erp" value="">
+							<div class="cont_text_wrap">
+								<div class="table_info table_info1">
+									<div class="cont_text_wrap text_center">
+							<div class="cont_text cont_text_title">
+								<b>CAFE DREAM Q&A</b>
+							</div>
+						</div>
+									<table>
+										<tbody>
+											<tr>
+												<th>
+													성명 <span class="red">*<span>
+												</span></span></th>
+												<td>
+													<div class="input_text_wrap input_wrap2">
+														<label>
+															<input type="text" name="customer_tbl_name" id="customer_tbl_name" onkeyup="onlyKorean(this);" maxlength="5" required="required">
+															<span>성함을 입력하세요</span>
+														</label>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													전화번호 <span class="red">*<span>
+												</span></span></th>
+												<td>
+													<div class="select_wrap">
+														<div class="input_select_wrap input_wrap input_wrap2">
+															<select name="customer_tbl_tel1" id="customer_tbl_tel1">
+																<option value="010">010</option>
+																<option value="011">011</option>
+																<option value="016">016</option>
+																<option value="017">017</option>
+																<option value="018">018</option>
+																<option value="019">019</option>
+															</select>
+														</div>
+														<div class="input_text_wrap input_wrap input_wrap2">
+															<label>
+																<input type="tel" name="customer_tbl_tel2" id="customer_tbl_tel2" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" maxlength="4" placeholder="" required="required">
+																<span>앞자리</span>
+															</label>
+														</div>
+														<div class="input_text_wrap input_wrap input_wrap2">
+															<label>
+																<input type="tel" name="customer_tbl_tel3" id="customer_tbl_tel3" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" maxlength="4" placeholder="" required="required">
+																<span>뒷자리</span>
+															</label>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<th>
+													이메일 <span class="red">*<span>
+												</span></span></th>
+												<td>
+													<div class="select_wrap">
+														<div class="input_text_wrap input_wrap input_wrap2">
+															<label>
+																<input type="text" name="customer_tbl_email1" id="customer_tbl_email1" onkeyup="removeKorean(this);" maxlength="" required="required">
+																<span>이메일</span>
+															</label>
+														</div>
+														<div class="input_text_wrap input_wrap input_wrap2 email_input">
+															<label>
+																<input type="text" name="customer_tbl_email2" id="customer_tbl_email2" onkeyup="removeKorean(this);" maxlength="" required="required">
+																<span></span>
+															</label>
+														</div>
+														<div class="input_select_wrap input_wrap input_wrap2 email_select">
+															<select name="customer_tbl_email3" id="customer_tbl_email3">
+																<option value="">직접입력</option>
+																<option value="naver.com">naver.com</option>
+																<option value="daum.net">daum.net</option>
+																<option value="hotmail.com">hotmail.com</option>
+																<option value="nate.com">nate.com</option>
+																<option value="paran.com">paran.com</option>
+																<option value="empas.com">empas.com</option>
+																<option value="dreamwiz.com">dreamwiz.com</option>
+																<option value="korea.com">korea.com</option>
+																<option value="gmail.com">gmail.com</option>
+															</select>
+														</div>
+													</div>
+												</td>
+											</tr>
+
+											<tr>
+												<th>
+													제목<span class="red">*<span>
+													</span></span></th>
+													<td>
+														<div class="input_text_wrap input_wrap2">
+															<label>
+																<input type="text" name="customer_tbl_title" id="customer_tbl_title" required="required">
+															</label>	
+														</div>
+													</td>
+												</tr>	
+											<tr>
+												<th>
+													문의사항 <span class="red">*<span>
+												</span></span></th>
+												<td>
+													<div class="cont_text">
+														<div class="input_textarea_wrap">
+															<label>
+																<textarea name="customer_tbl_content" id="customer_tbl_content" class="count_input"></textarea>
+															</label>
+														</div>
+														<div class="input_text_info cont_text_info input_limit_byte">
+															<span class="count">0</span>/<span class="maxcount">3900</span>byte(한글 1300자, 영어 4000자)
+														</div>
+													</div>
+												</td>
+											</tr>
+																																											</tbody>
+									</table>
+								</div>
+							</div>
+
+								<div class="cont_text">
+									<div class="input_btn_wrap input_wrap2">
+										<input type="button" value="등록하기" class="btn btn1 btn_ani" id="submit">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
