@@ -24,13 +24,15 @@ public class LoginInterceptor implements HandlerInterceptor{
         String requestUrl = request.getRequestURL().toString();
 
         //하단의 Url 체크를 통해, login 페이지는 예외처리를 해줘야 무한 리디렉션에서 벗어날 수 있다
+        if(requestUrl.contains("/test/save")){
+            return true;
+        }
+
         if(requestUrl.contains("/test/login")){
             return true;
         }
 
-        if(requestUrl.contains("/test/save")){
-            return true;
-        }
+
 
 
         //로그인 안됨

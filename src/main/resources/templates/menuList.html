@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http:/www.thymeleaf.org" >
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
 <head>
-<link rel="stylesheet" href="/css/news.css">
-	<title>Q&A</title>
+<link rel="stylesheet" href="/css/menu.css">
+	<title>메뉴(음료)</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="title" content="메가MGC커피">
@@ -37,7 +37,7 @@
 	<meta property="al:android:package" content="org.applinks">
 	<meta property="al:web:url" content="http://applinks.org/documentation">
 	
-	<link rel="stylesheet" href="/css/header.css">
+	<link rel="stylesheet" href="header.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="/js/header.js"></script>
 	
@@ -179,7 +179,7 @@
 	</script>
 </head>
 <body>
-		<div class="overlay none"></div>
+	<div class="overlay none"></div>
 	<div class="modal">
 		<div class="modal-dialog">
 			<div class="modal-content"></div>
@@ -190,19 +190,19 @@
 			<div class="head">
 				<div class="head_logo">
 					<a href="/">
-						<img src="/image/logo.png" class="head_logo_img_fixed">
+						<img src="image/logo.png" class="head_logo_img_fixed">
 					</a>
 				</div>
 
 				<div class="icon_basket">
 					<a href="#">
-						<img src="/image/basket.png" class="icon_basket_img_fixed">
+						<img src="image/basket.png" class="icon_basket_img_fixed">
 					</a>
 				</div>
 
 				<div class="icon_search">
 					<a href="#">
-						<img src="/image/search.png" class="icon_search_img_fixed">
+						<img src="image/search.png" class="icon_search_img_fixed">
 					</a>
 				</div>
 
@@ -300,9 +300,9 @@
 			<div class="cont_box cont_head">
 				<div class="cont_boxs">
 					<div class="cont_title_wrap">
-					<div class="cont_title_info">CAFE DREAM NEWS</div>
+					<div class="cont_title_info">CAFE DREAM MENU</div>
 						<div class="cont_title robo color">
-							<h2>NEWS</h2>
+							<h2>MENU</h2>
 						</div>
 					</div>
 					<div class="cont_text_wrap">
@@ -312,175 +312,172 @@
 									HOME
 								</li>
 								<li>
-									NEWS
+									MENU
 								</li>
 								<li>
-									Q&A								
+									음료								
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="cont_box brand01">
-				<div class="cont_boxs text_center">
-					<div class="cont_title_wrap">
-								<div class="cont_title">
-									<b>CAFE DREAM Q&A</b>
-								</div>
-					</div>
-
+			<div class="cont_box menu01">
+				<div class="cont_boxs">
 					<div class="cont_text_wrap">
-						<div class="cont_list cont_list_content cont_list_content_search">
+						<div class="cont_list cont_list_content cont_list_content_align">
 							<ul>
 								<li>
-									<div class="board_search_wrap">
-										<div class="board_search">
-											<form>
-<!--												<input type="hidden" name="search" id="bbs_category" th:value="${search}">-->
-<!--												<input type="hidden" name="search_category" id="bbs_detail_category" th:value="${searchCategory}">-->
-												<ul>
-													<li class="board_search_select">
-														<div class="input_select_wrap input_wrap2">
-															<select name="search_category" id="bbs_search_category">
-																<option value="title">제목</option>
-																<option value="content">내용</option>
-																<option value="name">작성자</option>
-															</select>
-														</div>
-													</li>
-													<li>
-														<div class="input_text_wrap input_wrap2">
-															<label>
-																<input type="text" name="search" id="bbs_search" class="" value="" placeholder="검색어를 입력하세요" required="required">
-															</label>
-														</div>
-													</li>
-													<li class="board_search_btn">
-														<div class="input_btn_wrap input_wrap2">
-															<input type="submit" value="검색" class="btn btn1" id="">
-														</div>
-													</li>
-												</ul>
-											</form>
-										</div>
+									<div class="cont_title_wrap">
 									</div>
 								</li>
 							</ul>
 						</div>
 					</div>
-							<div class="cont_text_wrap">
-								<div class="cont_text">
-									 <!-- style366 = text-align: right; -->
+				</div>
+				<div class="cont_boxs menu_box">
+					<div class="cont_title_wrap text_center">
+						<div class="cont_title robo">
+						</div>
+					</div>
+					<div class="cont_text_wrap text_center">
+					</div>
+						<div class="cont_text_wrap list_checkbox_wrap">
+							<div class="cont_text cont_text_title">
+								<b>분류보기</b>
+							</div>
+							<div class="checkbox_wrap">
+								<label class="checkbox">
+									<input type="checkbox" id="" name="list_checkbox_all" value="all" checked>
+									<span class="check_mark"></span>
+									<div class="checkbox_text">
+										전체보기
+									</div>
+								</label>
+							</div>
+								<div class="checkbox_wrap list_checkbox">
+									<label class="checkbox">
+										<input type="checkbox" id="" name="list_checkbox" value="1">
+										<span class="check_mark"></span>
+										<div class="checkbox_text">
+											커피(HOT)										
+										</div>
+									</label>
+								</div>
+								<div class="checkbox_wrap list_checkbox">
+									<label class="checkbox">
+										<input type="checkbox" id="" name="list_checkbox" value="2">
+										<span class="check_mark"></span>
+										<div class="checkbox_text">
+											커피(ICE)										
+										</div>
+									</label>
+								</div>
+								<div class="checkbox_wrap list_checkbox">
+									<label class="checkbox">
+										<input type="checkbox" id="" name="list_checkbox" value="3">
+										<span class="check_mark"></span>
+										<div class="checkbox_text">
+											논커피(HOT)										
+										</div>
+									</label>
+								</div>
+								<div class="checkbox_wrap list_checkbox">
+									<label class="checkbox">
+										<input type="checkbox" id="" name="list_checkbox" value="4">
+										<span class="check_mark"></span>
+										<div class="checkbox_text">
+											논커피(ICE)										
+										</div>
+									</label>
+								</div>
+								<div class="checkbox_wrap list_checkbox">
+									<label class="checkbox">
+										<input type="checkbox" id="" name="list_checkbox" value="5">
+										<span class="check_mark"></span>
+										<div class="checkbox_text">
+											프라페 주스 병음료										
+										</div>
+									</label>
 								</div>
 							</div>
 					<div class="cont_text_wrap">
-						<div class="board_list">
-									<table>
-										<colgroup>
-											<col class="board_w75 board_pc">
-											<col>
-											<col class="board_w150 board_pc">
-											<col class="board_w100">
-											<col class="board_w100 board_pc">
-										</colgroup>
-										<thead>
-											<tr>
-												<th class="board_pc">
-													번호
-												</th>
-												<th>
-													제목
-												</th>
-												<th class="board_pc">
-													글쓴이
-												</th>
-												<th>
-													날짜
-												</th>
-												<th class="board_pc">
-													조회
-												</th>
-
-											</tr>
-										</thead>
-										<tbody>
-																							<tr>
-													<td class="board_pc">공지</td>
-													<td>
-														<div class="text_wrap">
-															<div class="text">
-																<a href="http://localhost:8080/CafeWeb/%EC%9E%85%EC%A0%90%EB%AC%B8%EC%9D%98/%EC%9E%85%EC%A0%90%EC%A0%91%EC%88%98.html#">
-																	<em>
-																		CAFE DREAM 입점접수																	</em>
-																</a>
-															</div>
-														</div>
-													</td>
-													<td class="board_pc"> CAFE DREAM</td>
-													<td>2023-08-30</td>
-													<td class="board_pc">457</td>
-												</tr>
-																							<tr th:each="board: ${boardList}">
-
-																								<td class="board_pc" th:text="${board.id}" ></td>
-																								<td>
-
-																									<div class="text_wrap">
-																										<div class="text">
-																											<a th:href="@{|/board/${board.id}|(page=${boardList.number + 1})}" th:text="${board.boardTitle}"></a></a>
-
-																										</div>
-																									</div>
-																								</td>
-
-																								<td class="board_pc">CAFE DREAM</td>
-																								<td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																								<td class="board_pc" th:text="${board.boardHits}" ></td>
-																							</tr>
-
-										</tbody>
-									</table>
+						<div class="cont_gallery_list cont_gallery_list2 cont_list cont_list4 cont_list_m cont_list_m2" >
+							<ul id="menu_list">
+								<div th:each="menu: ${menuList}" class="container" >
+									<a href="#">
+										<div><img th:src="@{${menu.menuImagePath}}" width="300" height="300" class="image" ></div>
+										<div th:text="${menu.menuName}" class="name">메뉴명</div>
+										<div th:text="${menu.menuPrice}" class="price">가격</div>
+										<label class="button">
+											<input type='button' value='장바구니 담기' >
+										</label>
+									</a>
+								</div>							
+							</ul>
 						</div>
+																	
+						
 						<div class="board_page_wrap">
 							<div class="board_page">
-								<ul>
-									<li class="fo_re">
-										<a th:href="@{/board/QnA(page=1)}">
-											<span>처음</span>
-										</a>
-									</li>
-
-									<li class="board_page_check">
-											<span th:each="page: ${#numbers.sequence(startPage, endPage)}">
-										<!-- 현재페이지는 링크 없이 숫자만 -->
-												<!--												<span><a th:href="@{/board/QnA(page=${page})}" th:text="${page}"></a></span>-->
-												<span><a th:href="@{|/board/QnA?search_category=${searchCategory}&search=${search}&page=${page}|}"th:text="${page}"></a></span>
-											</span>
-									</li>
-
-									<li>
-										<a th:href="@{/board/QnA(page=${boardList.totalPages})}">
-											<span>마지막</span>
-										</a>
-									</li>
-
-
-							<div class="cont_text">
-								<div class="input_width">
-									<div class="input_btn_wrap input_wrap3">
-									<a href="/text">
-										<input type="button" value="글쓰기" class="btn btn1 btn_ani" id=""> <!-- style807 = height: 80%; 추가 -->
-									</a>
-									</div>
-								</div>
-							</div>
+								<ul id="board_page">
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<script>
+		var category_change = "";
+		$(document).on("click","[name='list_checkbox_all']",function(){
+			if ($(this).prop("checked") == true) {
+				$(this).parents(".list_checkbox_wrap").find(".list_checkbox").find(":checkbox").prop("checked",false).change();
+			}
+			menu();
+		});
+		$(document).on("click","[name='list_checkbox']",function(){
+			$(this).parents(".list_checkbox_wrap").find("[name='list_checkbox_all']").prop("checked",false).change();
+			if ( $(this).parents(".list_checkbox_wrap").find("[name='list_checkbox']").length ==  $(this).parents(".list_checkbox").find("[name='list_checkbox']:checked").length ) {
+				$(this).parents(".list_checkbox_wrap").find("[name='list_checkbox_all']").prop("checked",true).change();
+			} else {
+				$(this).parents(".list_checkbox_wrap").find("[name='list_checkbox_all']").prop("checked",false).change();
+			}
+			menu();
+		});
+		$(document).on("click",".board_page_link",function(){
+			var page = $(this).data("page");
+			menu(page);
+			$("html").animate({scrollTop : $(".menu_box").offset().top - 200}, 0);
+		});
+		$(document).ready(function(){
+			menu();
+		});
+		function menu(page){
+			var list_checkbox_all = $("input[name='list_checkbox_all']:checked").val();
+			var checkbox = [];
+			$("input[name='list_checkbox']:checked").each(function(i) {
+				checkbox.push($(this).val());
+			});
+			var checklist_join = checkbox.join(",");
+			$.ajax({
+				url : "menu.php",
+				type : "GET",
+				data : {
+					"page" : page,
+					"menu_category1" : '1',
+					"menu_category2" : '1',
+					"category" : checklist_join,
+					"list_checkbox_all" : list_checkbox_all,
+				},
+				success : function(result) {
+					$("#menu_list").html(result);
+					cont_gallery_list_img();
+				}
+			});
+		};
+	</script>
 				<div class="foot_menu_wrap">
 			<div class="foot_menu">
 				<div class="cont_list">

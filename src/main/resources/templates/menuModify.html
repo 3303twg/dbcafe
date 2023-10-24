@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 작성폼</title>
+</head>
+
+<style>
+    .layout{
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
+
+    }
+
+    /*.layout input {*/
+
+    /*    width: 100%;*/
+    /*    box-sizing: border-box;*/
+    /*}*/
+    /*!*.layout textarea{*!*/
+    /*    width: 100%;*/
+    /*    margin-top: 10px;*/
+    /*    min-height: 380px;*/
+    /*}*/
+
+</style>
+
+<body>
+<h1>수정페이지</h1>
+<div class="layout">
+    <form th:action="@{/menu/modify/{id}(id=${menuObject.id})}" method="post" enctype="multipart/form-data">
+        <p>메뉴명<input name="menuName" type="text" th:value="${menuObject.menuName}"></p>
+        <p>가격<input name="menuPrice" type="number" th:value="${menuObject.menuPrice}"></p>
+        <label><input name="menuType" type="radio" th:value="coffee" th:checked="${menuObject.menuType eq 'coffee'}">커피</label>
+        <label><input name="menuType" type="radio" th:value="non-coffee" th:checked="${menuObject.menuType eq 'non-coffee'}">논커피</label>
+        <label><input name="menuType" type="radio" th:value="desert" th:checked="${menuObject.menuType eq 'desert'}">디저트</label><br>
+        <div><img th:src="@{${menuObject.menuImagePath}}" width="300" height="300" class="image" ></div>
+        <input name="file" type="file"><br>
+        <button type="submit">수정</button>
+    </form>
+</div>
+
+</body>
+</html>

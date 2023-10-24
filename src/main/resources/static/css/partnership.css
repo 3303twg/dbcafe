@@ -457,10 +457,10 @@
 
 
 		.cont_list_map > ul > li{position:relative; display:inline-block; padding:0 15px; font-weight:300;}
-			.cont_list_map > ul > li:first-child{padding-left:0;}
-			.cont_list_map > ul > li:last-child{padding-right:0;}
+			.cont_list_map > ul > li:first-child{padding-left:0; font-weight:300;}
+			.cont_list_map > ul > li:last-child{padding-right:0; font-weight:300;}
 			.cont_list_map > ul > li:before{height:8px; width:8px; position:absolute; top:55%; right:-5px; margin:0; border:solid rgba(255,255,255,0.5); border-width:0 0 1px 1px; content:""; display:inline-block; transition:All 0.2s ease; -webkit-transition:All 0.2s ease; -moz-transition:All 0.2s ease; -o-transition:All 0.2s ease; -webkit-transform:translate(0,-50%) rotate(-135deg); -ms-transform:translate(0,-50%) rotate(-135deg); transform:translate(0,-50%) rotate(-135deg);}
-			.cont_list_map > ul > li:last-child:before{display:none;}
+			.cont_list_map > ul > li:last-child:before{display:none; font-weight:300;}
 
 
 		.cont_tab{margin-bottom:30px;}
@@ -818,7 +818,7 @@
 /* input all */
 	.input_wrap{height:auto !important;}
 	.input_wrap3{height:55px !important;}
-		.input_wrap3 .btn{font-size:18px; padding:0px 30px;}
+		.input_wrap3 .btn{font-size:16px; padding:0px 20px; height: 80%; text-align: right;}
 	.input_wrap2{height:45px !important;}
 		.input_wrap2 .btn{font-size:16px;}
 	.input_wrap1{height:35px !important;}
@@ -1255,7 +1255,7 @@
 
 
 	/* cont */
-		.cont_wrap{padding:0; padding-top:60px;}
+		.cont_wrap{padding:0; padding-top:45px;}
 			.cont_box{padding:50px 20px !important;}
 			.cont_box.cont_banner{padding:30px !important;}
 				.cont_boxs{margin-bottom:30px;}

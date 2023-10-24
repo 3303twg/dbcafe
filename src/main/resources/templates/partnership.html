@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http:/www.thymeleaf.org" >
+<html lang="ko">
 <head>
-<link rel="stylesheet" href="/css/news.css">
-	<title>Q&A</title>
+<link rel="stylesheet" href="/css/partnership.css">
+	<title>입점문의</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="title" content="메가MGC커피">
@@ -190,19 +190,19 @@
 			<div class="head">
 				<div class="head_logo">
 					<a href="/">
-						<img src="/image/logo.png" class="head_logo_img_fixed">
+						<img src="image/logo.png" class="head_logo_img_fixed">
 					</a>
 				</div>
 
 				<div class="icon_basket">
 					<a href="#">
-						<img src="/image/basket.png" class="icon_basket_img_fixed">
+						<img src="image/basket.png" class="icon_basket_img_fixed">
 					</a>
 				</div>
 
 				<div class="icon_search">
 					<a href="#">
-						<img src="/image/search.png" class="icon_search_img_fixed">
+						<img src="image/search.png" class="icon_search_img_fixed">
 					</a>
 				</div>
 
@@ -294,194 +294,42 @@
 					<div class="mobile_menu_icon">
 						<div class="mobile_menu_icon_bar bar_black"></div>
 					</div>
-				</div>>	
-	<div class="cont_wrap menu_wrap">
+				</div>>
+	<div class="cont_wrap find_wrap">
 		<div class="cont">
 			<div class="cont_box cont_head">
 				<div class="cont_boxs">
 					<div class="cont_title_wrap">
-					<div class="cont_title_info">CAFE DREAM NEWS</div>
-						<div class="cont_title robo color">
-							<h2>NEWS</h2>
+						<div class="cont_title_info">
+							PARTNERSHIP
 						</div>
+							<div class="cont_title robo color">
+								<h2>BUSINESS CONTACT</h2>
+							</div>
 					</div>
 					<div class="cont_text_wrap">
 						<div class="cont_text cont_list_map">
 							<ul>
-								<li>
-									HOME
-								</li>
-								<li>
-									NEWS
-								</li>
-								<li>
-									Q&A								
-								</li>
+								<li>홈</li>
+                        		<li>PARTNERSHIP</li>
+                        		<li>입점문의</li>		
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="cont_box brand01">
-				<div class="cont_boxs text_center">
-					<div class="cont_title_wrap">
-								<div class="cont_title">
-									<b>CAFE DREAM Q&A</b>
-								</div>
-					</div>
-
-					<div class="cont_text_wrap">
-						<div class="cont_list cont_list_content cont_list_content_search">
-							<ul>
-								<li>
-									<div class="board_search_wrap">
-										<div class="board_search">
-											<form>
-<!--												<input type="hidden" name="search" id="bbs_category" th:value="${search}">-->
-<!--												<input type="hidden" name="search_category" id="bbs_detail_category" th:value="${searchCategory}">-->
-												<ul>
-													<li class="board_search_select">
-														<div class="input_select_wrap input_wrap2">
-															<select name="search_category" id="bbs_search_category">
-																<option value="title">제목</option>
-																<option value="content">내용</option>
-																<option value="name">작성자</option>
-															</select>
-														</div>
-													</li>
-													<li>
-														<div class="input_text_wrap input_wrap2">
-															<label>
-																<input type="text" name="search" id="bbs_search" class="" value="" placeholder="검색어를 입력하세요" required="required">
-															</label>
-														</div>
-													</li>
-													<li class="board_search_btn">
-														<div class="input_btn_wrap input_wrap2">
-															<input type="submit" value="검색" class="btn btn1" id="">
-														</div>
-													</li>
-												</ul>
-											</form>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-							<div class="cont_text_wrap">
-								<div class="cont_text">
-									 <!-- style366 = text-align: right; -->
-								</div>
-							</div>
-					<div class="cont_text_wrap">
-						<div class="board_list">
-									<table>
-										<colgroup>
-											<col class="board_w75 board_pc">
-											<col>
-											<col class="board_w150 board_pc">
-											<col class="board_w100">
-											<col class="board_w100 board_pc">
-										</colgroup>
-										<thead>
-											<tr>
-												<th class="board_pc">
-													번호
-												</th>
-												<th>
-													제목
-												</th>
-												<th class="board_pc">
-													글쓴이
-												</th>
-												<th>
-													날짜
-												</th>
-												<th class="board_pc">
-													조회
-												</th>
-
-											</tr>
-										</thead>
-										<tbody>
-																							<tr>
-													<td class="board_pc">공지</td>
-													<td>
-														<div class="text_wrap">
-															<div class="text">
-																<a href="http://localhost:8080/CafeWeb/%EC%9E%85%EC%A0%90%EB%AC%B8%EC%9D%98/%EC%9E%85%EC%A0%90%EC%A0%91%EC%88%98.html#">
-																	<em>
-																		CAFE DREAM 입점접수																	</em>
-																</a>
-															</div>
-														</div>
-													</td>
-													<td class="board_pc"> CAFE DREAM</td>
-													<td>2023-08-30</td>
-													<td class="board_pc">457</td>
-												</tr>
-																							<tr th:each="board: ${boardList}">
-
-																								<td class="board_pc" th:text="${board.id}" ></td>
-																								<td>
-
-																									<div class="text_wrap">
-																										<div class="text">
-																											<a th:href="@{|/board/${board.id}|(page=${boardList.number + 1})}" th:text="${board.boardTitle}"></a></a>
-
-																										</div>
-																									</div>
-																								</td>
-
-																								<td class="board_pc">CAFE DREAM</td>
-																								<td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																								<td class="board_pc" th:text="${board.boardHits}" ></td>
-																							</tr>
-
-										</tbody>
-									</table>
-						</div>
-						<div class="board_page_wrap">
-							<div class="board_page">
-								<ul>
-									<li class="fo_re">
-										<a th:href="@{/board/QnA(page=1)}">
-											<span>처음</span>
-										</a>
-									</li>
-
-									<li class="board_page_check">
-											<span th:each="page: ${#numbers.sequence(startPage, endPage)}">
-										<!-- 현재페이지는 링크 없이 숫자만 -->
-												<!--												<span><a th:href="@{/board/QnA(page=${page})}" th:text="${page}"></a></span>-->
-												<span><a th:href="@{|/board/QnA?search_category=${searchCategory}&search=${search}&page=${page}|}"th:text="${page}"></a></span>
-											</span>
-									</li>
-
-									<li>
-										<a th:href="@{/board/QnA(page=${boardList.totalPages})}">
-											<span>마지막</span>
-										</a>
-									</li>
-
-
-							<div class="cont_text">
-								<div class="input_width">
-									<div class="input_btn_wrap input_wrap3">
-									<a href="/text">
-										<input type="button" value="글쓰기" class="btn btn1 btn_ani" id=""> <!-- style807 = height: 80%; 추가 -->
-									</a>
-									</div>
-								</div>
-							</div>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-				<div class="foot_menu_wrap">
+		<div id="cont">
+         <div id="sub_cont">
+            <div class="c4_cont1">
+               <div>
+                  <img src="image/입점안내.png" alt="" style="padding-top:50px; padding-bottom:20px; position:relative; left:380px; width:1150px;">
+               </div>
+           </div>
+               <div class="c4_cont1_1">
+                  <a href="/partnership/write" >
+                  <img src="image/상담접수.png" alt="" style="position:relative;"></a>
+               </div>
+		<div class="foot_menu_wrap">
 			<div class="foot_menu">
 				<div class="cont_list">
 					<ul>
@@ -509,7 +357,7 @@
 									<ul>
 										<li>
 											<div class="foot_logo">
-												<img src="/image/logo.png">
+												<img src="image/logo.png">
 											</div>
 										</li>
 									</ul>

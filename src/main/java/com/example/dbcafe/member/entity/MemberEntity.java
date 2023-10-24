@@ -15,20 +15,33 @@ public class MemberEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
-    private String memberEmail;
+
+    @Column
+    private String memberID;
 
     @Column
     private String MemberPassword;
 
+    @Column(unique = true)
+    private String memberEmail;
+
     @Column
     private String MemberName;
 
+    @Column
+    private String MemberGender;
+
+    @Column
+    private int MemberPhone;
+
     public static MemberEntity toMemberEntity(MemberDTO memberDTO){
         MemberEntity memberEntity = new MemberEntity();
-        memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+        memberEntity.setMemberID(memberDTO.getMemberID());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
+        memberEntity.setMemberEmail(memberDTO.getMemberEmail());
         memberEntity.setMemberName((memberDTO.getMemberName()));
+        memberEntity.setMemberGender(memberDTO.getMemberGender());
+        memberEntity.setMemberPhone(memberDTO.getMemberPhone());
         return memberEntity;
     }
 }

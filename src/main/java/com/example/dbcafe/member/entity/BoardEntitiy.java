@@ -20,8 +20,8 @@ public class BoardEntitiy extends BassEntity {
     //@Column(length = 20, nullable = false)
     //private String boardWriter;
 
-    @Column
-    private String boardPass;
+//    @Column
+//    private String boardPass;
 
     @Column
     private String boardTitle;
@@ -35,7 +35,7 @@ public class BoardEntitiy extends BassEntity {
     public static BoardEntitiy toSaveEntitiy(BoardDTO boardDTO){
         BoardEntitiy boardEntitiy = new BoardEntitiy();
         //boardEntitiy.setBoardWriter(boardDTO.getBoardWriter());
-        boardEntitiy.setBoardPass(boardDTO.getBoardPass());
+//        boardEntitiy.setBoardPass(boardDTO.getBoardPass());
         boardEntitiy.setBoardTitle(boardDTO.getBoardTitle());
         boardEntitiy.setBoardContents(boardDTO.getBoardContents());
         boardEntitiy.setBoardHits(0);
@@ -49,7 +49,7 @@ public class BoardEntitiy extends BassEntity {
         BoardEntitiy boardEntitiy = new BoardEntitiy();
         boardEntitiy.setId(boardDTO.getId());//위랑 다르게 아이디가있어야 업데이트함
         //boardEntitiy.setBoardWriter(boardDTO.getBoardWriter());
-        boardEntitiy.setBoardPass(boardDTO.getBoardPass());
+//        boardEntitiy.setBoardPass(boardDTO.getBoardPass());
         boardEntitiy.setBoardTitle(boardDTO.getBoardTitle());
         boardEntitiy.setBoardContents(boardDTO.getBoardContents());
         boardEntitiy.setBoardHits(boardDTO.getBoardHits());
