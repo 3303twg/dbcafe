@@ -6,7 +6,6 @@ import com.example.dbcafe.member.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -91,5 +90,6 @@ public class MenuService {
 
 
     }
+
 
 }

@@ -64,6 +64,11 @@ public class HomeController {
         return "partnership_write";
     }
 
+    @GetMapping("/cart")
+    public String cart(){
+        return "cart";
+    }
+
 
 
 }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -17,12 +18,20 @@ public class MenuEntity {
 
     @Column
     private String menuName;
+//    @Column
+//    private String menuPrice; //조금만 수정할겡
+
     @Column
-    private String menuPrice;
+    private BigDecimal menuPrice;
+
     @Column
     private String menuImagePath;
     @Column
     private String menuType;
+
+    public BigDecimal getPrice() {
+        return menuPrice;
+    }
 
     public static MenuEntity toMenuEntity(MenuDTO menuDTO){
         MenuEntity menuEntity = new MenuEntity();

@@ -3,6 +3,8 @@ package com.example.dbcafe.member.dto;
 import com.example.dbcafe.member.entity.MenuEntity;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @ToString
@@ -13,7 +15,7 @@ public class MenuDTO {
 
     private String menuName;
 
-    private String menuPrice;
+    private BigDecimal menuPrice; //String >> BigDecimal로 수정했음
 
     private String menuImagePath;
 
