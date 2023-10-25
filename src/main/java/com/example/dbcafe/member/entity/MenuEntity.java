@@ -27,7 +27,7 @@ public class MenuEntity {
     @Column
     private String menuImagePath;
     @Column
-    private String menuType;
+    private Long menuType;
 
     public BigDecimal getPrice() {
         return menuPrice;

@@ -19,7 +19,7 @@ public class MenuDTO {
 
     private String menuImagePath;
 
-    private String menuType;
+    private Long menuType;
 
     public static MenuDTO toDTO(MenuEntity menuEntity){
         MenuDTO menuDTO= new MenuDTO();

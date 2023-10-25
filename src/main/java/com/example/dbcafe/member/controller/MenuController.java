@@ -3,6 +3,7 @@ package com.example.dbcafe.member.controller;
 import com.example.dbcafe.member.Service.MenuService;
 import com.example.dbcafe.member.dto.MenuDTO;
 import lombok.RequiredArgsConstructor;
+import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,9 +40,16 @@ public class MenuController {
 
     }
     @GetMapping("/menu/list")
-    public String menulist(Model model){
-        List<MenuDTO> menuDTOList = menuService.menuFindAll();
-        model.addAttribute("menuList",menuDTOList);
+    public String menulist(Model model,Long typeID){
+        if(typeID == null) {
+            List<MenuDTO> menuDTOList = menuService.menuFindAll();
+            model.addAttribute("menuList", menuDTOList);
+
+        }
+        else{
+            List<MenuDTO> menuDTOList = menuService.menufinds(typeID);
+            model.addAttribute("menuList", menuDTOList);
+        }
         return "menuList";
     }
     @GetMapping("/menu/modify/{id}")

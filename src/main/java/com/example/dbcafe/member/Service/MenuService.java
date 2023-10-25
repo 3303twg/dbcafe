@@ -11,10 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -37,15 +34,20 @@ public class MenuService {
     public void register(MenuDTO menuDTO, MultipartFile file, HttpServletRequest request) throws Exception {
 
         if(file!=null){
-            //이미지를 저장할 경로
-            String projectPath="/home/tomcat/server/resource/upload_image/";
+
             //      랜덤한 uid생성하여 file name과 연결
             UUID uuid = UUID.randomUUID();
             String fileName = uuid + "_" + file.getOriginalFilename();
 
-            //MenuConfig에서 설정한 값으로 url경로를 설정함
-            String filePath = "/resource/upload_image/" + fileName;
-//            String filePath = "/upload_image/" + fileName;
+//            //-------------------배포용 코드-------------------
+//            //이미지를 저장할 경로
+//            String projectPath="/home/tomcat/server/resource/upload_image/";
+//            //MenuConfig에서 설정한 값으로 url경로를 설정함
+//            String filePath = "/resource/upload_image/" + fileName;
+//
+            //-------------------로컬용코드----------
+            String projectPath=System.getProperty("user.dir")+ "\\src\\main\\resources\\static\\upload_image";
+            String filePath = "/upload_image/" + fileName;
 
             //파일저장
             File saveFile = new File(projectPath, fileName);
@@ -85,6 +87,19 @@ public class MenuService {
             menuDTO=MenuDTO.toDTO(menuEntityOptional.get());
         }
         return menuDTO;
+    }
+    public List<MenuDTO> menufinds(Long id) {
+        List<MenuEntity>menuEntityList=menuRepository.findAll();
+        List<MenuDTO>menuDTOList=new ArrayList<>();
+//        각 리스트에 저장되어있는 entity를 dto로 변환하는 과정
+        for(MenuEntity menuEntity:menuEntityList)
+        {
+            if(Objects.equals(menuEntity.getMenuType(), id)) {
+                menuDTOList.add(MenuDTO.toDTO(menuEntity));
+            }
+        }
+
+        return menuDTOList;
     }
 
     public void modify(Long id, MenuDTO menuDTO) {
