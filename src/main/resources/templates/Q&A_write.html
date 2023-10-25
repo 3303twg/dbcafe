@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http:/www.thymeleaf.org" >
 <head>
 <link rel="stylesheet" href="/css/news.css">
-	<title>Q&A</title>
+	<title>글쓰기</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="title" content="메가MGC커피">
@@ -200,12 +200,6 @@
 					</a>
 				</div>
 
-				<div class="icon_search">
-					<a href="#">
-						<img src="/image/search.png" class="icon_search_img_fixed">
-					</a>
-				</div>
-
 				<div class="head_top_nav">
 					<nav class="head-menu-top-nav">
 						<ul>
@@ -318,86 +312,6 @@
 										<tbody>
 											<tr>
 												<th>
-													성명 <span class="red">*<span>
-												</span></span></th>
-												<td>
-													<div class="input_text_wrap input_wrap2">
-														<label>
-															<input type="text" name="customer_tbl_name" id="customer_tbl_name" onkeyup="onlyKorean(this);" maxlength="5" required="required">
-															<span>성함을 입력하세요</span>
-														</label>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<th>
-													전화번호 <span class="red">*<span>
-												</span></span></th>
-												<td>
-													<div class="select_wrap">
-														<div class="input_select_wrap input_wrap input_wrap2">
-															<select name="customer_tbl_tel1" id="customer_tbl_tel1">
-																<option value="010">010</option>
-																<option value="011">011</option>
-																<option value="016">016</option>
-																<option value="017">017</option>
-																<option value="018">018</option>
-																<option value="019">019</option>
-															</select>
-														</div>
-														<div class="input_text_wrap input_wrap input_wrap2">
-															<label>
-																<input type="tel" name="customer_tbl_tel2" id="customer_tbl_tel2" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" maxlength="4" placeholder="" required="required">
-																<span>앞자리</span>
-															</label>
-														</div>
-														<div class="input_text_wrap input_wrap input_wrap2">
-															<label>
-																<input type="tel" name="customer_tbl_tel3" id="customer_tbl_tel3" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" maxlength="4" placeholder="" required="required">
-																<span>뒷자리</span>
-															</label>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<th>
-													이메일 <span class="red">*<span>
-												</span></span></th>
-												<td>
-													<div class="select_wrap">
-														<div class="input_text_wrap input_wrap input_wrap2">
-															<label>
-																<input type="text" name="customer_tbl_email1" id="customer_tbl_email1" onkeyup="removeKorean(this);" maxlength="" required="required">
-																<span>이메일</span>
-															</label>
-														</div>
-														<div class="input_text_wrap input_wrap input_wrap2 email_input">
-															<label>
-																<input type="text" name="customer_tbl_email2" id="customer_tbl_email2" onkeyup="removeKorean(this);" maxlength="" required="required">
-																<span></span>
-															</label>
-														</div>
-														<div class="input_select_wrap input_wrap input_wrap2 email_select">
-															<select name="customer_tbl_email3" id="customer_tbl_email3">
-																<option value="">직접입력</option>
-																<option value="naver.com">naver.com</option>
-																<option value="daum.net">daum.net</option>
-																<option value="hotmail.com">hotmail.com</option>
-																<option value="nate.com">nate.com</option>
-																<option value="paran.com">paran.com</option>
-																<option value="empas.com">empas.com</option>
-																<option value="dreamwiz.com">dreamwiz.com</option>
-																<option value="korea.com">korea.com</option>
-																<option value="gmail.com">gmail.com</option>
-															</select>
-														</div>
-													</div>
-												</td>
-											</tr>
-
-											<tr>
-												<th>
 													제목<span class="red">*<span>
 													</span></span></th>
 													<td>
@@ -442,5 +356,59 @@
 				</div>
 			</div>
 		</div>
+<div class="foot_menu_wrap">
+			<div class="foot_menu">
+				<div class="cont_list">
+					<ul>
+						<li>
+							<a class="modal_open modal_open_policy1">
+								<b>이용약관</b>
+							</a>
+						</li>
+						<li>
+							<a class="modal_open modal_open_policy2">
+								<b>개인정보취급방침</b>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="foot_wrap">
+			<div class="foot">
+				<div class="cont_list cont_list_content">
+					<ul>
+						<li>
+							<div class="cont_text">
+								<div class="cont_list cont_list_m cont_list_m1">
+									<ul>
+										<li>
+											<div class="foot_logo">
+												<img src="image/logo.png">
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="cont_text foot_info">
+								<div class="cont_list cont_list_small cont_list_width_m">
+									<ul>
+										<li><b>(주)주식회사 부천대학교</b></li>
+										<li>대표자 박찬호</li>
+										<li>TEL : 032-610-3260</li>
+										<li>경기도 부천시 심곡동 신흥로56번길 25</li>
+										<li>개인정보보호 관리책임자 김영서</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
