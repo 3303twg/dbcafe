@@ -404,11 +404,22 @@
 										<div th:text="${menu.menuName}" class="name">메뉴명</div>
 										<div th:text="${menu.menuPrice}" class="price">가격</div>
 										<label class="button">
-											<form th:action="@{|/cart/${loginUser.id}/add/${menu.id}|}" method="post">
-													<input type="hidden" name="memberId" th:value="${loginUser.id}" />
+<!--											로그인중일경우-->
+											<div th:if="${loginUser != null}">
+												<form th:action="@{|/cart/${loginUser}/add/${menu.id}|}" method="post">
+													<input type="hidden" name="memberId" th:value="${loginUser}" />
 													<input type="hidden" name="menuId" th:value="${menu.id}" />
 													<button type="submit">장바구니에 추가</button>
-            								</form>
+												</form>
+											</div>
+<!--											로그인중이 아닐경우-->
+											<div th:if="${loginUser == null}">
+												<form action="/test/login" method="get">
+													<input type="hidden" name="memberId" th:value="${loginUser}" />
+													<input type="hidden" name="menuId" th:value="${menu.id}" />
+													<button type="submit">장바구니에 추가</button>
+												</form>
+											</div>
 										</label>
 									</a>
 								</div>							

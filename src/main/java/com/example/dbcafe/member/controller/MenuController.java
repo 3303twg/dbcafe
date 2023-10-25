@@ -47,16 +47,18 @@ public class MenuController {
     @GetMapping("/menu/list")
     public String menulist(Model model, Long typeID, HttpSession session){
 
-        MemberDTO loggedInUser = (MemberDTO) session.getAttribute("loginUser");
+        String loggedInUser = (String) session.getAttribute("loginUser");
 
 //        String loggedInUser = (String) session.getAttribute("loginUser");
 
+        //로그인을 하지않아도 메뉴는 볼수있게 하고싶은데 안되네
         if (loggedInUser != null) {
             // 사용자 정보를 Thymeleaf 모델에 추가
             model.addAttribute("loginUser", loggedInUser);
-        } else {
+        }
+        else {
             // 사용자가 로그인하지 않은 경우 처리
-            return "login";
+            model.addAttribute("loginUser", null);
         }
 
         if(typeID == null) {

@@ -3,6 +3,7 @@ package com.example.dbcafe.member.controller;
 import com.example.dbcafe.member.Service.CartService;
 import com.example.dbcafe.member.Service.MenuService;
 import com.example.dbcafe.member.dto.BoardDTO;
+import com.example.dbcafe.member.dto.MemberDTO;
 import com.example.dbcafe.member.dto.MenuDTO;
 import com.example.dbcafe.member.repository.CartRepositoty;
 import com.example.dbcafe.member.repository.MenuRepository;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+import javax.servlet.http.HttpSession;
+
+@Controller
 @RequestMapping("/cart")
 public class CartController {
 
@@ -25,19 +28,26 @@ public class CartController {
 
 
 
+    //장바구니넣는기능
     @PostMapping("/{cartId}/add/{menuId}")
-    public ResponseEntity<String> addToCart(@PathVariable Long cartId, Long id, Model model, @PathVariable Long menuId) {
+    public String  addToCart(@PathVariable Long cartId, @PathVariable Long menuId, Model model, HttpSession session) {
         cartService.addToCart(cartId, menuId);
 
+        String loggedInUser = (String) session.getAttribute("loginUser");
+        //하 모르겠ㄱ다
+        if (loggedInUser == null) {
+            return "login";
+        }
 
-
-        return ResponseEntity.ok("메뉴가 장바구니에 추가되었습니다.");
+        return "redirect:/menu/list";
     }
 
-    @PostMapping("/{cartId}/remove/{menuId}")
-    public ResponseEntity<String> removeFromCart(@PathVariable Long cartId, @PathVariable Long menuId) {
+
+    //장바구니빼는기능
+    @PostMapping("/cart/{cartId}/remove/{menuId}")
+    public String removeFromCart(@PathVariable Long cartId, @PathVariable Long menuId) {
         cartService.removeFromCart(cartId, menuId);
-        return ResponseEntity.ok("장바구니에서 메뉴가 제거되었습니다.");
+        return "redirect:/menu/list";
     }
 
 
