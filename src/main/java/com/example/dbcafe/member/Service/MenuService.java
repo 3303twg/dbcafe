@@ -5,11 +5,12 @@ import com.example.dbcafe.member.entity.MenuEntity;
 import com.example.dbcafe.member.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,19 +37,17 @@ public class MenuService {
     public void register(MenuDTO menuDTO, MultipartFile file, HttpServletRequest request) throws Exception {
 
         if(file!=null){
-            String projectPath=System.getProperty("user.dir")+"/src/main/resources/static/upload_image";
-//            String projectPath=System.getProperty("user.dir")+"\\src\\main\\resources\\static\\upload_image";
-//            String projectPath = request.getSession().getServletContext().getRealPath("/") + "/upload_image/";
-
-
+            //이미지를 저장할 경로
+            String projectPath="/home/tomcat/server/resource/upload_image/";
             //      랜덤한 uid생성하여 file name과 연결
             UUID uuid = UUID.randomUUID();
             String fileName = uuid + "_" + file.getOriginalFilename();
 
-
-            String filePath = "/upload_image/" + fileName;
+            //MenuConfig에서 설정한 값으로 url경로를 설정함
+            String filePath = "/resource/upload_image/" + fileName;
 //            String filePath = "/upload_image/" + fileName;
 
+            //파일저장
             File saveFile = new File(projectPath, fileName);
 
 //        webapp에 file저장
