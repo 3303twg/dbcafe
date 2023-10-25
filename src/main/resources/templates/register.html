@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lnag="ko">
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org" >
     <head>
         <meta charset="UTF-8">
         <title>회원가입 폼</title>
@@ -20,24 +20,15 @@
             <div id="content">
                 <form action="/test/save" method="post">
                 <!-- ID -->
-<!--                <div>-->
-<!--                    <h3 class="join_title">-->
-<!--                        <label for="id">아이디</label>-->
-<!--                    </h3>-->
-<!--                    <span class="box int_id">-->
-<!--                        <input type="text" id="id" class="int" maxlength="20">-->
-<!--                    </span>-->
-<!--                    <span class="error_next_box"></span>-->
-<!--                </div>-->
-
-                    <!-- EMAIL -->
-                    <div>
-                        <h3 class="join_title"><label for="email">본인확인 이메일<span class="optional">(선택)</span></label></h3>
-                        <span class="box int_email">
-                        <input type="text" id="email" name="memberEmail" class="int" maxlength="100" placeholder="선택입력">
+                <div>
+                    <h3 class="join_title">
+                        <label for="id">아이디</label>
+                    </h3>
+                    <span class="box int_id">
+                        <input type="text" id="id" name="memberID" class="int" maxlength="20">
                     </span>
-                        <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
-                    </div>
+                    <span class="error_next_box"></span>
+                </div>
 
                 <!-- PW1 -->
                 <div>
@@ -51,14 +42,23 @@
                 </div>
 
                 <!-- PW2 -->
-<!--                <div>-->
-<!--                    <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>-->
-<!--                    <span class="box int_pass_check">-->
-<!--                        <input type="text" id="pswd2" class="int" maxlength="20">-->
-<!--                        <img src="/image/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">-->
-<!--                    </span>-->
-<!--                    <span class="error_next_box"></span>-->
-<!--                </div>-->
+                <div>
+                    <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+                    <span class="box int_pass_check">
+                        <input type="text" id="pswd2" class="int" maxlength="20">
+                        <img src="/image/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                    <!-- EMAIL -->
+                    <div>
+                        <h3 class="join_title"><label for="email">본인확인 이메일<span class="optional">(선택)</span></label></h3>
+                        <span class="box int_email">
+                        <input type="text" id="email" name="memberEmail" class="int" maxlength="100" placeholder="선택입력">
+                    </span>
+                        <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
+                    </div>
 
                 <!-- NAME -->
                 <div>
@@ -71,35 +71,44 @@
              
 
                 <!-- GENDER -->
-<!--                <div class="field gender">-->
-<!--            		<h3>성별</h3>-->
-<!--            			<div>-->
-<!--                			<label><input type="radio" name="gender">남자</label>-->
-<!--                			<label><input type="radio" name="gender">여자</label>-->
-<!--                			<label><input type="radio" name="gender">선택안함</label>-->
-<!--            			</div>-->
-<!--                    <span class="error_next_box">필수 정보입니다.</span>-->
-<!--                </div>-->
+<!--                    <div class="field gender">-->
+<!--                        <h3>성별</h3>-->
+<!--                        <div>-->
+<!--                            <label><input type="radio" th:field="*{gender}" th:value="남자">남자</label>-->
+<!--                            <label><input type="radio" th:field="*{gender}" th:value="여자">여자</label>-->
+<!--                            <label><input type="radio" th:field="*{gender}" th:value="선택안함">선택안함</label>-->
+<!--                        </div>-->
+<!--                        <span class="error_next_box">필수 정보입니다.</span>-->
+<!--                    </div>-->
+
+                <div class="field gender">
+            		<h3>성별</h3>
+            			<div>
+                			<label><input type="radio" name="memberGender">남자</label>
+                			<label><input type="radio" name="memberGender">여자</label>
+                			<label><input type="radio" name="memberGender">선택안함</label>
+            			</div>
+                    <span class="error_next_box">필수 정보입니다.</span>
+                </div>
 
 
 
                 <!-- MOBILE -->
-<!--                <div>-->
-<!--                    <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>-->
-<!--                    <span class="box int_mobile">-->
-<!--                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">-->
-<!--                    </span>-->
-<!--                    <span class="error_next_box"></span>    -->
-<!--                </div>-->
+                <div>
+                    <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
+                    <span class="box int_mobile">
+                        <input type="tel" id="mobile" name="memberPhone" class="int" maxlength="16" placeholder="전화번호 입력">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
 
 
                 <!-- JOIN BTN-->
                 <div class="btn_area">
-                    <button type="button" id="btnJoin">
+                    <button type="submit" id="btnJoin">
                         <span>가입하기</span>
                     </button>
                 </div>
-                    <input type="submit" value="회원가입">
                 </form>
            
 				<div class="member-footer">

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니 테스트</title>
+</head>
+<body>
+<h1>장바구니 테스트 페이지</h1>
+
+<h2>장바구니에 메뉴1 추가</h2>
+<form action="/cart/1/add/1" method="POST">
+    <button type="submit">장바구니에 메뉴1 추가</button>
+</form>
+<h2> 2번친구의 장바구니에 메뉴1 추가</h2>
+<form action="/cart/2/add/1" method="POST">
+    <button type="submit">장바구니에 메뉴2 추가</button>
+</form>
+
+<h2> 2번친구의 장바구니에 메뉴2 추가</h2>
+<form action="/cart/2/add/2" method="POST">
+    <button type="submit">장바구니에 메뉴2 추가</button>
+</form>
+
+
+
+
+
+<h2>장바구니에서 메뉴1 제거</h2>
+<form action="/cart/1/remove/1" method="POST">
+    <button type="submit">장바구니에서 메뉴1 제거</button>
+</form>
+
+<h2>장바구니에서 메뉴2 제거</h2>
+<form action="/cart/2/remove/2" method="POST">
+    <button type="submit">장바구니에서 메뉴2 제거</button>
+</form>
+</body>
+</html>
