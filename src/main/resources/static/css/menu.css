@@ -324,6 +324,14 @@
 					right: -55px;
 				}
 
+			.head_wrap .head .icon_search{
+					width:20px;
+					height:20px;
+					position: absolute;
+					top: 15px;
+					right: -90px;
+				}
+
 
 /* cont */
 	.cont_wrap{padding-top:80px;}
