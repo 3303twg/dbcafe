@@ -1,7 +1,10 @@
 package com.example.dbcafe.member.controller;
 
+import com.example.dbcafe.member.Service.MemberService;
 import com.example.dbcafe.member.Service.MenuService;
+import com.example.dbcafe.member.dto.MemberDTO;
 import com.example.dbcafe.member.dto.MenuDTO;
+import com.example.dbcafe.member.entity.MemberEntity;
 import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 import org.springframework.stereotype.Controller;
@@ -11,8 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
+import retrofit2.http.HTTP;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -40,7 +45,20 @@ public class MenuController {
 
     }
     @GetMapping("/menu/list")
-    public String menulist(Model model,Long typeID){
+    public String menulist(Model model, Long typeID, HttpSession session){
+
+        MemberDTO loggedInUser = (MemberDTO) session.getAttribute("loginUser");
+
+//        String loggedInUser = (String) session.getAttribute("loginUser");
+
+        if (loggedInUser != null) {
+            // 사용자 정보를 Thymeleaf 모델에 추가
+            model.addAttribute("loginUser", loggedInUser);
+        } else {
+            // 사용자가 로그인하지 않은 경우 처리
+            return "login";
+        }
+
         if(typeID == null) {
             List<MenuDTO> menuDTOList = menuService.menuFindAll();
             model.addAttribute("menuList", menuDTOList);

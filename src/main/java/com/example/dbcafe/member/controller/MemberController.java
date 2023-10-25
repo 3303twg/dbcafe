@@ -4,6 +4,7 @@ import com.example.dbcafe.member.Service.MemberService;
 import com.example.dbcafe.member.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -41,14 +42,22 @@ public class MemberController {
     }
 
     @PostMapping("/test/login")
-    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model){
+
+
         MemberDTO loginResult = memberService.login(memberDTO);
 
         if(loginResult != null){
 
-            session.setAttribute("loginEmail",loginResult.getMemberEmail());
+//            session.setAttribute("loginEmail",loginResult.getMemberEmail());//세션에 사용자e메일저장
+
+            session.setAttribute("loginUser", loginResult);
+
             sessionList.put(session.getId(), session);
-            session.setMaxInactiveInterval(60 * 5);
+            session.setMaxInactiveInterval(600 * 50);
+
+
+
 
             return "main";
         }

@@ -22,7 +22,8 @@ public class CartEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "user_id")
     private MemberEntity user; // 해당 장바구니를 소유한 사용자
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -41,4 +42,6 @@ public class CartEntity {
     public List<MenuEntity> getMenuItems() {
         return menuItems;
     }
+
+
 }

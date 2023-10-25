@@ -33,6 +33,9 @@ public class MemberEntity {
     @Column
     private int MemberPhone;
 
+    @OneToOne(mappedBy = "user")
+    private CartEntity cart; // 사용자와의 관계
+
     public static MemberEntity toMemberEntity(MemberDTO memberDTO){
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setMemberID(memberDTO.getMemberID());
@@ -43,4 +46,9 @@ public class MemberEntity {
         memberEntity.setMemberPhone(memberDTO.getMemberPhone());
         return memberEntity;
     }
+
+    public CartEntity getCart() {
+        return cart;
+    }
+
 }

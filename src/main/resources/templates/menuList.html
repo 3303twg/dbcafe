@@ -404,7 +404,11 @@
 										<div th:text="${menu.menuName}" class="name">메뉴명</div>
 										<div th:text="${menu.menuPrice}" class="price">가격</div>
 										<label class="button">
-											<input type='button' value='장바구니 담기' >
+											<form th:action="@{|/cart/${loginUser.id}/add/${menu.id}|}" method="post">
+													<input type="hidden" name="memberId" th:value="${loginUser.id}" />
+													<input type="hidden" name="menuId" th:value="${menu.id}" />
+													<button type="submit">장바구니에 추가</button>
+            								</form>
 										</label>
 									</a>
 								</div>							
