@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>장바구니</title>
+</head>
+<body>
+<h1>장바구니</h1>
+<table>
+    <tr>
+        <th>상품 이름</th>
+        <th>가격</th>
+    </tr>
+    <!-- 장바구니 아이템 목록을 동적으로 출력 -->
+    <tr th:each="item : ${cartItems}">
+        <td th:text="${item.menuName}"></td>
+        <td th:text="${item.menuPrice}"></td>
+    </tr>
+</table>
+<p>총 가격: <span th:text="${totalPrice}"></span></p>
+</body>
+</html>

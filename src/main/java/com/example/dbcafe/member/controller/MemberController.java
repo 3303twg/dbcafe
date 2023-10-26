@@ -2,6 +2,7 @@ package com.example.dbcafe.member.controller;
 
 import com.example.dbcafe.member.Service.MemberService;
 import com.example.dbcafe.member.dto.MemberDTO;
+import com.example.dbcafe.member.entity.MemberEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,11 +48,15 @@ public class MemberController {
 
         MemberDTO loginResult = memberService.login(memberDTO);
 
+        MemberEntity user_entity = MemberEntity.toMemberEntity(memberService.login(memberDTO));
+
         if(loginResult != null){
 
 //            session.setAttribute("loginEmail",loginResult.getMemberEmail());//세션에 사용자e메일저장
 
-            session.setAttribute("loginUser", loginResult.getMemberID()); //.getMemberID만빼면 DTO를 다넣게됨
+            session.setAttribute("loginUser", loginResult.getId()); //.getMemberID만빼면 DTO를 다넣게됨
+
+            session.setAttribute("user_entity",user_entity);
 
             sessionList.put(session.getId(), session);
             session.setMaxInactiveInterval(600 * 50);
