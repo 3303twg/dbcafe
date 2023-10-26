@@ -1,4 +1,4 @@
-package com.example.dbcafe.member.Service;
+package com.example.dbcafe.member.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;

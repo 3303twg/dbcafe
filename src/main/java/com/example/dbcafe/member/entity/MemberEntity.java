@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Setter
@@ -39,6 +40,13 @@ public class MemberEntity {
     @OneToOne(mappedBy = "user")
     private CartEntity cart; // 사용자와의 관계
 
+    private LocalDateTime createDate; // 날짜
+
+    @PrePersist // DB에 INSERT 되기 직전에 실행. 즉 DB에 값을 넣으면 자동으로 실행됨
+    public void createDate() {
+        this.createDate = LocalDateTime.now();
+    }
+
     public static MemberEntity toMemberEntity(MemberDTO memberDTO){
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setMemberID(memberDTO.getMemberID());
@@ -48,6 +56,8 @@ public class MemberEntity {
         memberEntity.setMemberGender(memberDTO.getMemberGender());
         memberEntity.setMemberPhone(memberDTO.getMemberPhone());
         memberEntity.setRole(memberDTO.getRole());
+
+
         return memberEntity;
     }
 

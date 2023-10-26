@@ -14,11 +14,11 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     #    ?? PC? ????? Database??? ?? ???.
     #url: jdbc:mariadb://localhost:3307/mariadb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    url: jdbc:mariadb://localhost:3307/mydb
+    url: jdbc:mariadb://localhost:3306/caffe
 
     #    mysql? ??? ??? ?? ??? ?? ???.
     username: root
-    password: 123
+    password: dkei380226
     #mariadb는 포트를 3307로했음
   thymeleaf:
     cache: false
@@ -30,3 +30,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+  security:
+    user:
+      name: root
+      password: 1234
+      roles: ADMIN
