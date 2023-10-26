@@ -16,6 +16,7 @@ public class MemberDTO {
     private String memberEmail;
     private String memberName;
     private String memberGender;
+    private String role;
     private int memberPhone;
 
 
@@ -28,6 +29,7 @@ public class MemberDTO {
         memberDTO.setMemberName(memberEntity.getMemberName());
         memberDTO.setMemberGender(memberEntity.getMemberGender());
         memberDTO.setMemberPhone(memberEntity.getMemberPhone());
+        memberDTO.setRole(memberEntity.getRole());
 
         return memberDTO;
     }

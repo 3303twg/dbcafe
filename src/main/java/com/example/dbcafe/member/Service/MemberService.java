@@ -14,6 +14,7 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepository memberRepository;
     public void save(MemberDTO memberDTO) {
+        memberDTO.setRole("ROLE_USER");
 
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberDTO);
         memberRepository.save(memberEntity);

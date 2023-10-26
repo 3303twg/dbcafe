@@ -52,6 +52,7 @@ public class MemberController {
 //            session.setAttribute("loginEmail",loginResult.getMemberEmail());//세션에 사용자e메일저장
 
             session.setAttribute("loginUser", loginResult.getMemberID()); //.getMemberID만빼면 DTO를 다넣게됨
+            session.setAttribute("user_role", loginResult.getRole());
 
             sessionList.put(session.getId(), session);
             session.setMaxInactiveInterval(600 * 50);

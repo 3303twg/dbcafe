@@ -19,19 +19,22 @@ public class MemberEntity {
     private String memberID;
 
     @Column
-    private String MemberPassword;
+    private String memberPassword;
 
     @Column(unique = true)
     private String memberEmail;
 
     @Column
-    private String MemberName;
+    private String memberName;
 
     @Column
-    private String MemberGender;
+    private String memberGender;
 
     @Column
-    private int MemberPhone;
+    private int memberPhone;
+
+    @Column
+    private String role;//권한
 
     @OneToOne(mappedBy = "user")
     private CartEntity cart; // 사용자와의 관계
@@ -44,6 +47,7 @@ public class MemberEntity {
         memberEntity.setMemberName((memberDTO.getMemberName()));
         memberEntity.setMemberGender(memberDTO.getMemberGender());
         memberEntity.setMemberPhone(memberDTO.getMemberPhone());
+        memberEntity.setRole(memberDTO.getRole());
         return memberEntity;
     }
 

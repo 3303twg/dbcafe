@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <link rel="stylesheet" href="/css/style.css">
 	<title>메인</title>
@@ -202,11 +202,14 @@
 
 				<div class="head_top_nav">
 					<nav class="head-menu-top-nav">
-						<ul>     
+						<ul sec:authorize="!isAuthenticated()">
 							<li class="top-nav01"><a href="/test/login">Sign In</a></li>
 							<li class="top-nav02"><a href="/register">Join Now</a></li>
-							<li class="top-nav03"><a href="#">My Page</a></li>
 						 </ul>
+						<ul sec:authorize="isAuthenticated()">
+							<li class="top-nav01"><a href="/test/logout">로그아웃</a></li>
+							<li class="top-nav02"><a href="#">My Page</a></li>
+						</ul>
 					 </nav>
 				</div>
 				
