@@ -2,6 +2,8 @@ package com.example.dbcafe.member.config.auth;
 
 import com.example.dbcafe.member.entity.MemberEntity;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,20 +14,20 @@ import java.util.Collection;
 @Data
 public class PrincipalDetails implements UserDetails {
 
-    @Serial
-    private static final long serialVersionUID = 1L;
 
-    private MemberEntity user;
+//    private static final long serialVersionUID = 1L;
+
+    private MemberEntity member;
 
     public PrincipalDetails(MemberEntity user) {
-        this.user = user;
+        this.member = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         Collection<GrantedAuthority> collector = new ArrayList<>();
-        collector.add(() -> { return user.getRole();}); // 람다식
+        collector.add(() -> { return member.getRole();}); // 람다식
 
         return collector;
     }
@@ -33,12 +35,12 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getMemberPassword();
+        return member.getMemberPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getMemberID();
+        return member.getMemberID();
     }
 
     @Override

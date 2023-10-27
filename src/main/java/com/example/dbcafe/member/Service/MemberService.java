@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Transactional // Write(Insert, Update, Delete)
     public void save(MemberDTO memberDTO) {
         memberDTO.setRole("ROLE_USER");
         String rawPassword= memberDTO.getMemberPassword();
@@ -27,27 +29,20 @@ public class MemberService {
 
     }
 
-    public MemberDTO login(MemberDTO memberDTO) {
-
-        Optional<MemberEntity> byMemberID = memberRepository.findByMemberID(memberDTO.getMemberID());
-        if (byMemberID.isPresent()) {
-            MemberEntity memberEntity = byMemberID.get();
-            if (memberEntity.getMemberPassword().equals(memberDTO.getMemberPassword())) {
-
-                MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
-
-                return dto;
-            }
-            else {
-                return null;
-            }
-        }
-        else{
-            return null;
-            }
-
-    }
-
-
-
+//    public MemberDTO login(MemberDTO memberDTO) {
+//        Optional<MemberEntity> byMemberID = memberRepository.findByMemberID(memberDTO.getMemberID());
+//        if (byMemberID.isPresent()) {
+//            MemberEntity memberEntity = byMemberID.get();
+//            if (memberEntity.getMemberPassword().equals(memberDTO.getMemberPassword())) {
+//                MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
+//                return dto;
+//            }
+//            else {
+//                return null;
+//            }
+//        }
+//        else{
+//            return null;
+//            }
+//    }
 }

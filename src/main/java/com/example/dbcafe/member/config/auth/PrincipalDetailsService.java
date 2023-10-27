@@ -16,13 +16,13 @@ import java.util.Optional;
 @Service
 public class PrincipalDetailsService implements UserDetailsService {
 
-    private final MemberRepository userRepository;
+    private final MemberRepository memberRepository;
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Optional<MemberEntity> memberEntity = userRepository.findByMemberID(username);
+        Optional<MemberEntity> memberEntity = memberRepository.findByMemberID(username);
 
 
         if(memberEntity.isPresent()) {

@@ -1,17 +1,22 @@
 package com.example.dbcafe.member.entity;
 
+import com.example.dbcafe.member.config.auth.PrincipalDetails;
 import com.example.dbcafe.member.dto.MemberDTO;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Setter
 @Getter
 @Table(name = "member_table")
-public class MemberEntity {
+public class MemberEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

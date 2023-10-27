@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-
+@Data
 public class MemberDTO {
     private Long id;
     private String memberID;
