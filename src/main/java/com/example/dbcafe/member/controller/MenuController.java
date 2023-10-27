@@ -47,7 +47,7 @@ public class MenuController {
     @GetMapping("/menu/list")
     public String menulist(Model model, Long typeID, HttpSession session){
 
-        String loggedInUser = (String) session.getAttribute("loginUser");
+        Long loggedInUser = (Long) session.getAttribute("loginUser"); //기본id값은 Long타입의 변수임
 
 //        String loggedInUser = (String) session.getAttribute("loginUser");
 
@@ -56,7 +56,7 @@ public class MenuController {
             // 사용자 정보를 Thymeleaf 모델에 추가
             model.addAttribute("loginUser", loggedInUser);
         }
-        else {
+        else { //이건 없어도 되는듯? 카트컨트롤에서 처리함
             // 사용자가 로그인하지 않은 경우 처리
             model.addAttribute("loginUser", null);
         }
