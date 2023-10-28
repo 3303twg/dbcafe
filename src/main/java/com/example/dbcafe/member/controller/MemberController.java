@@ -21,20 +21,20 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping("/register")
-    public String register(){return "register";}
+//    @GetMapping("/register")
+//    public String register(){return "register";}
     @GetMapping("/test/save")
     public String saveForm(){
         return "save";
     }
 
-    @PostMapping("/test/save")
-    public String save(@ModelAttribute MemberDTO memberDTO){
-
-        memberService.save(memberDTO);
-
-        return "login";
-    }
+//    @PostMapping("/test/save")
+//    public String save(@ModelAttribute MemberDTO memberDTO){
+//
+//        memberService.save(memberDTO);
+//
+//        return "login";
+//    }
 
     @GetMapping("/test/login")
     public String loginForm(){

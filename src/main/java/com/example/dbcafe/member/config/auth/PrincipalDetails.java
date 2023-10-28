@@ -1,33 +1,29 @@
 package com.example.dbcafe.member.config.auth;
 
-import com.example.dbcafe.member.entity.MemberEntity;
+import com.example.dbcafe.member.entity.User;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Data
 public class PrincipalDetails implements UserDetails {
 
+    private static final long serialVersionUID = 1L;
 
-//    private static final long serialVersionUID = 1L;
+    private User user;
 
-    private MemberEntity member;
-
-    public PrincipalDetails(MemberEntity user) {
-        this.member = user;
+    public PrincipalDetails(User user) {
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         Collection<GrantedAuthority> collector = new ArrayList<>();
-        collector.add(() -> { return member.getRole();}); // 람다식
+        collector.add(() -> { return user.getRole();}); // 람다식
 
         return collector;
     }
@@ -35,15 +31,13 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return member.getMemberPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return member.getMemberID();
+        return user.getUsername();
     }
-
-    @Override
     public boolean isAccountNonExpired() {
         return true;
     }
