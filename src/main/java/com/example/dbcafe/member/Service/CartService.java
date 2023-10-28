@@ -1,10 +1,10 @@
 package com.example.dbcafe.member.Service;
 
 import com.example.dbcafe.member.entity.CartEntity;
-import com.example.dbcafe.member.entity.MemberEntity;
+import com.example.dbcafe.member.entity.User;
 import com.example.dbcafe.member.entity.MenuEntity;
 import com.example.dbcafe.member.repository.CartRepositoty;
-import com.example.dbcafe.member.repository.MemberRepository;
+import com.example.dbcafe.member.repository.UserRepository;
 import com.example.dbcafe.member.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.function.Predicate;
 @Service
 @RequiredArgsConstructor
 public class CartService {
-    private final MemberRepository memberRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     private CartRepositoty cartRepository;
@@ -29,8 +29,8 @@ public class CartService {
 
 
     // 장바구니에 메뉴 추가 로직
-    public void addToCart(Long userId, Long menuId) {
-        MemberEntity user = memberRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found"));
+    public void addToCart(Long Id, Long menuId) {
+        User user = userRepository.findById(Id).orElseThrow(() -> new EntityNotFoundException("User not found"));
         CartEntity cart = user.getCart();
 
         if (cart == null) {

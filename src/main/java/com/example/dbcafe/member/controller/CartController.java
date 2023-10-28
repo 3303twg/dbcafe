@@ -3,10 +3,10 @@ package com.example.dbcafe.member.controller;
 import com.example.dbcafe.member.Service.CartService;
 import com.example.dbcafe.member.Service.MenuService;
 import com.example.dbcafe.member.dto.BoardDTO;
-import com.example.dbcafe.member.dto.MemberDTO;
+import com.example.dbcafe.member.dto.SignupDto;
 import com.example.dbcafe.member.dto.MenuDTO;
 import com.example.dbcafe.member.entity.CartEntity;
-import com.example.dbcafe.member.entity.MemberEntity;
+import com.example.dbcafe.member.entity.User;
 import com.example.dbcafe.member.repository.CartRepositoty;
 import com.example.dbcafe.member.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
@@ -60,9 +60,9 @@ public class CartController {
 
         Long loggedInUser = (Long) session.getAttribute("loginUser");
 
-        MemberEntity user_entity = (MemberEntity) session.getAttribute("user_entity");
+        User user_entity = (User) session.getAttribute("user_entity");
 
-        MemberEntity user = user_entity; // 현재 로그인한 사용자를 가져오는 코드
+        User user = user_entity; // 현재 로그인한 사용자를 가져오는 코드
 
         CartEntity cart = cartRepositoty.findById(cartId).orElse(null);
 

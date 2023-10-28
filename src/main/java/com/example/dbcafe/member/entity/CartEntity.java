@@ -1,7 +1,7 @@
 package com.example.dbcafe.member.entity;
 
 import lombok.*;
-import org.apache.catalina.User;
+import com.example.dbcafe.member.entity.User;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -24,7 +24,7 @@ public class CartEntity {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private MemberEntity user; // 해당 장바구니를 소유한 사용자
+    private User user; // 해당 장바구니를 소유한 사용자
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

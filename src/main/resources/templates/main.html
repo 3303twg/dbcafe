@@ -203,11 +203,11 @@
 				<div class="head_top_nav">
 					<nav class="head-menu-top-nav">
 						<ul sec:authorize="!isAuthenticated()">
-							<li class="top-nav01"><a href="/test/login">Sign In</a></li>
-							<li class="top-nav02"><a href="/register">Join Now</a></li>
+							<li class="top-nav01"><a href="/signin">Sign In</a></li>
+							<li class="top-nav02"><a href="/signup">Join Now</a></li>
 						 </ul>
 						<ul sec:authorize="isAuthenticated()">
-							<li class="top-nav01"><a href="/test/logout">로그아웃</a></li>
+							<li class="top-nav01"><a href="/logout">로그아웃</a></li>
 							<li class="top-nav02"><a href="#">My Page</a></li>
 						</ul>
 					 </nav>

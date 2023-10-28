@@ -19,7 +19,7 @@ public class AuthController {
 
     @GetMapping("/signin")
     public String SigninForm() {
-        return "securitysignin";
+        return "login";
     }
 
     @GetMapping("/signup")
@@ -43,6 +43,6 @@ public class AuthController {
     @GetMapping("/logout")
     public String logout(HttpSession session) throws Exception {
         authService.logout(session);
-        return "redirect:/signin";
+        return "redirect:/";
     }
 }
