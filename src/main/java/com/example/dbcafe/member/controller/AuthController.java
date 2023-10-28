@@ -1,10 +1,13 @@
 package com.example.dbcafe.member.controller;
 
+import com.example.dbcafe.member.config.auth.PrincipalDetails;
 import com.example.dbcafe.member.entity.User;
 import com.example.dbcafe.member.Service.AuthService;
 import com.example.dbcafe.member.dto.SignupDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -45,4 +48,6 @@ public class AuthController {
         authService.logout(session);
         return "redirect:/";
     }
+
+
 }

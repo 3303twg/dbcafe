@@ -1,12 +1,9 @@
 package com.example.dbcafe.member.controller;
 
-import com.example.dbcafe.member.Service.MemberService;
+
 import com.example.dbcafe.member.Service.MenuService;
-import com.example.dbcafe.member.dto.MemberDTO;
 import com.example.dbcafe.member.dto.MenuDTO;
-import com.example.dbcafe.member.entity.MemberEntity;
 import lombok.RequiredArgsConstructor;
-import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
-import retrofit2.http.HTTP;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
