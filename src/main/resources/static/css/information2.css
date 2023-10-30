@@ -438,7 +438,7 @@
 			.cont_gallery_list_end{position:absolute; z-index:1; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5); text-align:center; color:#fff;}
 
 
-		.cont_list_map > ul > li{position:relative; display:inline-block; padding:0 15px;}
+		.cont_list_map > ul > li{position:relative; display:inline-block; padding:0 15px; font-weight:300;}
 			.cont_list_map > ul > li:first-child{padding-left:0;}
 			.cont_list_map > ul > li:last-child{padding-right:0;}
 			.cont_list_map > ul > li:before{height:8px; width:8px; position:absolute; top:55%; right:-5px; margin:0; border:solid rgba(255,255,255,0.5); border-width:0 0 1px 1px; content:""; display:inline-block; transition:All 0.2s ease; -webkit-transition:All 0.2s ease; -moz-transition:All 0.2s ease; -o-transition:All 0.2s ease; -webkit-transform:translate(0,-50%) rotate(-135deg); -ms-transform:translate(0,-50%) rotate(-135deg); transform:translate(0,-50%) rotate(-135deg);}
