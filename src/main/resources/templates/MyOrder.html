@@ -5,10 +5,10 @@
 	<title>주문내역</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<link rel="stylesheet" href="/css/information.css">
-<link rel="stylesheet" href="/css/information1.css">
-<link rel="stylesheet" href="/css/information2.css">
-<link rel="stylesheet" href="/css/information3.css">
+	<link rel="stylesheet" href="information.css">
+	<link rel="stylesheet" href="information1.css">
+	<link rel="stylesheet" href="information2.css">
+	<link rel="stylesheet" href="information3.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;900&display=swap">
@@ -20,7 +20,7 @@
 			<div class="head">
 				<div class="head_logo">
 					<a href="main.html">
-						<img src="image/Cafe_logo_4.png" class="head_logo_img_fixed">
+						<img src="image/logo.png" class="head_logo_img_fixed">
 					</a>
 				</div>
 
@@ -29,7 +29,7 @@
 						<ul>
 							<li class="top-nav01"><a href="/html/login(+html).jsp">Sign In</a></li>
 							<li class="top-nav02"><a href="register_terms/register.html">Join Now</a></li>
-							<li class="top-nav03"><a href="/html/MyPage.html">My Page</a></li>
+							<li class="top-nav03"><a href="#">My Page</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -307,7 +307,7 @@
  
  
  
- <div class="ms_cont" style="position: absolute; top: 50px;">
+ <div class="ms_cont" style="position: absolute; top: 120px;">
 
 						<p class="receipt_tb_notice mb10" style="position: absolute; top: -50px;  font-size: 1.3em; font-weight: 700;">주문내역 </p> <!-- 20171017수정 : 클래스 추가 -->
 						<table class="card_use_info_tbl" summary="my카드 사용 구분, 내역, 이용매장, 금액, 날짜에 대한 테이블">
@@ -346,8 +346,11 @@
 							</tr>
 						</script>	
 
-						<div class="tbl_pagination">
-							<ul class="pager"><li class=" active"><a href="javascript:void(0)">1</a></li></ul>
+						<div class="board_page_wrap">
+							<div class="board_page">
+								<ul>
+									<li class="fo_re"><a><span>처음</span></a></li><li class="board_page_check"><a><span>1</span></a></li><li><a><span>마지막</span></a></li>								</ul>
+							</div>
 						</div>
 					</div>
                     
@@ -392,7 +395,7 @@
 					</ul>
 				</div>
 				<div class="foot_logo">
-					<img class="foot_logo" src="image/Cafe_logo_4.png" alt="Logo">
+					<img class="foot_logo" src="image/logo.png" alt="Logo">
 				</div>
 				<div class="foot_cont">
 					<ul>
@@ -408,5 +411,9 @@
 				</div>
 			</div>
 		</div>
+
+
+
 </body>
+
 </html>
