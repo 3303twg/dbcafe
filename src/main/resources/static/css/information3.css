@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@charset 'utf-8';
 	
 .pl0{padding-left:0 !important}
 .ml0{margin-left:0 !important}
@@ -1171,7 +1170,7 @@
 	.ms_nav > ul { top: 30px; position: absolute;   border-top:2px solid #222; }
 	.ms_nav > ul > li { border-bottom:1px solid #ddd; width:220px; }
 	.ms_nav > ul > li > a { color:#444; display:block; font-size:14px; padding:20px 30px 20px 15px; position:relative; width:175px; }
-	.ms_nav > ul > li > a:hover { color:#006633; }
+	.ms_nav > ul > li > a:hover { color:#fdd000; }
 	.ms_nav > ul > li > a > span { height:7px; margin-top:-3px; position:absolute; right:15px; top:50%; width:12px; }
 	.ms_nav > ul > li > a span.sbox_arrow_down { background:url("../img/util/sbox_arrow_down.png"); }
 	.ms_nav > ul > li > a span.sbox_arrow_up { background:url("../img/util/sbox_arrow_up.png"); }
