@@ -720,7 +720,7 @@
 	
 	/* 170303 í™©ê¸°í  ìˆ˜ì • */
 	.card_use_info_tbl_wrap { position:relative; width:100%; margin-top:20px; }
-	.card_use_info_tbl { border-top:1px solid #333; font-size:14px; max-width:none; min-width:100%; table-layout:fixed; text-align:center; width:auto; }
+	.card_use_info_tbl { border-top:2px solid #333; font-size:14px; max-width:none; min-width:100%; table-layout:fixed; text-align:center; width:auto; }
 	.card_use_info_tbl caption { font-size:0; height:0; line-height:0; margin:0; overflow:hidden; padding:0; text-indent:-20000px; width:0; }
 	.card_use_info_tbl thead tr th { border-bottom:1px solid #333; color:#222; height:46px; vertical-align:middle; }
 	.card_use_info_tbl tbody tr td { border-bottom:1px solid #dbdbdb; color:#666; height:46px; padding:7px 0; vertical-align:middle; }
