@@ -1,6 +1,5 @@
 package com.example.dbcafe.member.Service;
 
-import com.example.dbcafe.member.entity.MemberEntity;
 import org.apache.catalina.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

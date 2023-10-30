@@ -2,6 +2,7 @@ package com.example.dbcafe.member.controller;
 
 
 import com.example.dbcafe.member.Service.MenuService;
+import com.example.dbcafe.member.Service.UserInfoService;
 import com.example.dbcafe.member.dto.MenuDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,12 +16,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class MenuController {
     private final MenuService menuService;
+    private final UserInfoService userInfoService;
 
     @GetMapping("/menu")
     public String menuList(){return "redirect:/menu/list";}
@@ -42,9 +45,13 @@ public class MenuController {
 
     }
     @GetMapping("/menu/list")
-    public String menulist(Model model, Long typeID, HttpSession session){
+    public String menulist(Model model, Long typeID, HttpSession session, Principal principal){
 
-        Long loggedInUser = (Long) session.getAttribute("loginUser"); //기본id값은 Long타입의 변수임
+//        Long loggedInUser = (Long) session.getAttribute("loginUser"); //기본id값은 Long타입의 변수임
+
+        String username = (String) principal.getName();
+
+        Long loggedInUser = userInfoService.getUserIdByUsername(username);
 
 //        String loggedInUser = (String) session.getAttribute("loginUser");
 

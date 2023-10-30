@@ -42,4 +42,8 @@ public class MenuEntity {
         menuEntity.setMenuType(menuDTO.getMenuType());
         return menuEntity;
     }
+
+    public String getName() {
+        return menuName;
+    }
 }

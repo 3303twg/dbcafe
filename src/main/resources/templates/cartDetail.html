@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script src="https://cdn.protone.io/v2/browser-sdk.js"></script>
     <meta charset="UTF-8">
     <title>장바구니</title>
 </head>
@@ -17,6 +20,84 @@
         <td th:text="${item.menuPrice}"></td>
     </tr>
 </table>
-<p>총 가격: <span th:text="${totalPrice}"></span></p>
+<p>총 가격: <span th:text="${totalPrice}" id="totalPrice"></span></p>
+
+<!-- 결제하기 버튼 추가 -->
+<button id="checkoutButton">결제하기</button>
+
+<script th:inline="javascript">
+    const IMP = window.IMP;
+    IMP.init("imp58583134");
+
+    // 결제하기 버튼 클릭 이벤트 핸들러
+    document.getElementById("checkoutButton").addEventListener("click", function () {
+        var userID = [[${loginUser}]];
+        var Price = [[${totalPrice}]]; //타임리프 모델선언한거 가져오는거
+        console.log("결제 응답:", Price);
+
+        $.ajax({
+            url: "/createUUID",
+            type: "POST",
+            success: function (data) {
+                var UUID = data; // 서버에서 받은 UUID
+
+                $.ajax({
+                    url: "/createOrder",
+                    type: "POST",
+                    data: {
+                        userId: userID, //주문내역을 만들때 유저아이디가 필요함 추후엔 머 알아서 가져와야지머
+                    },
+                    success: function (data) {
+                        // 주문 내역이 성공적으로 생성되면 결제 시작
+                        startPayment(data, Price, UUID); // totalPrice를 전달
+
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("에러:", errorThrown);
+                    }
+                });
+            },
+        });
+
+
+    });
+
+    function startPayment(productname, totalPrice, UUID) {//유저아이디안쓰니까 뺴야하고, 네임을 받아와야함 ㅇㅇ
+        var userID = [[${loginUser}]];
+        var totalPriceAsString = totalPrice.toString(); // totalPrice를 문자열로 변환
+        var products = productname.toString();
+        var UUID_String = UUID.toString();  //uid는 string형식임
+
+        var uid = userID + UUID_String //아래쪽에서 연산안대서 여기서함
+
+        alert(uid);
+
+        IMP.request_pay({
+            pg: "kakaopay",
+            pay_method: "kakaopay",
+            merchant_uid: uid, // 고유한 주문 ID 생성
+            name: products, //내가 나중에 만들어줘야함
+            amount: totalPriceAsString //String 값으로 넣어줘야함
+        }, rsp => {
+            if (rsp.success) {
+                alert("결제 완료");
+                console.log("결제 응답:", rsp);
+
+                //결제가 완료됬으니 장바구니를 비워줘야함
+                $.ajax({
+                    url: "/endOrder",
+                    type: "POST",
+                    data: {
+                        userId: userID, //삭제할 장바구니주인의 id가 필요함
+                    },
+                });
+
+            } else {
+                alert("결제 실패");
+                console.error("결제 실패: " + rsp.error_msg);
+            }
+        });
+    }
+</script>
 </body>
 </html>

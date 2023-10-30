@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
 
 <head>
 	<title>개인정보수정</title>
@@ -388,19 +388,19 @@ function del_check(){
 						</div>
     <p>
         <div class="txt">이름</div>
-        <input type="your" name="name" id="name" class="name">
+        <input type="your" name="name" id="name" class="name" th:value="${userInfo.name}">
         <?php echo $array["u_name"]; ?>
     </p>
 
     <p>
         <div class="txt">아이디</div>
-               <input type="my" name="id" id="id" class="id">
+               <input type="my" name="id" id="id" class="id" th:value="${userInfo.username}">
         <?php echo $array["u_id"]; ?>
     </p>
 
     <p>
         <label for="pwd" class="txt">비밀번호</label>
-        <input type="password" name="pwd" id="pwd" class="pwd">
+        <input type="password" name="pwd" id="pwd" class="pwd" >
         <br>
         <span class="err_pwd">* 비밀번호는 4~8글자만 입력할 수 있습니다.</span>
     </p>
@@ -418,7 +418,7 @@ function del_check(){
     ?>
     <p>
         <label for="repwd" class="txt">본인 확인 이메일 (선택)</label>
-        <input type="text" name="birth" id="birth" class="birth" >
+        <input type="text" name="birth" id="birth" class="birth"  th:value="${userInfo.email}">
         <br>
     </p>
 
@@ -431,7 +431,7 @@ function del_check(){
     
     <p>
         <label for="mobile" class="txt">전화번호</label>
-        <input type="text" name="mobile" id="mobile" class="mobile" >
+        <input type="text" name="mobile" id="mobile" class="mobile" th:value="${userInfo.phone}">
         <br>
         <span class="err_mobile">"-"없이 숫자만 입력</span>
     </p>

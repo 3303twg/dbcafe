@@ -203,7 +203,7 @@
 				<div class="head_top_nav">
 					<nav class="head-menu-top-nav">
 						<ul>
-							<li class="top-nav01"><a href="/test/login">Sign In</a></li>
+							<li class="top-nav01"><a href="/signin">Sign In</a></li>
 							<li class="top-nav02"><a href="/register">Join Now</a></li>
 							<li class="top-nav03"><a href="#">My Page</a></li>
 						</ul>
@@ -403,20 +403,22 @@
 										<div><img th:src="@{${menu.menuImagePath}}" width="300" height="300" class="image" ></div>
 										<div th:text="${menu.menuName}" class="name">메뉴명</div>
 										<div th:text="${menu.menuPrice}" class="price">가격</div>
+										<div th:text="${loginUser}" class="name">아이디</div>
 										<label class="button">
 <!--											로그인중일경우-->
 											<div th:if="${loginUser != null}">
 												<form th:action="@{|/cart/${loginUser}/add/${menu.id}|}" method="post">
-													<input type="hidden" name="memberId" th:value="${loginUser}" />
-													<input type="hidden" name="menuId" th:value="${menu.id}" />
+<!--													<input type="hidden" name="memberId" th:value="${loginUser}" />-->
+<!--													<input type="hidden" name="menuId" th:value="${menu.id}" />-->
 													<button type="submit">장바구니에 추가</button>
 												</form>
 											</div>
 <!--											로그인중이 아닐경우-->
 											<div th:if="${loginUser == null}">
-												<form action="/test/login" method="get">
-													<input type="hidden" name="memberId" th:value="${loginUser}" />
-													<input type="hidden" name="menuId" th:value="${menu.id}" />
+												<form action="/signin" method="get">
+
+<!--													<input type="hidden" name="memberId" th:value="${loginUser}" />-->
+<!--													<input type="hidden" name="menuId" th:value="${menu.id}" />-->
 													<button type="submit">장바구니에 추가</button>
 												</form>
 											</div>

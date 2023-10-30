@@ -311,7 +311,7 @@
                             	<!-- s::20200123 페이스북 프로필 기능 삭제 관련 메인 수정 -->
 
                                 <article class="ms_user_info_right">
-                                    <p class="ms_user_stat"><span><strong class="userName">유진<!-- 홍길동 --></strong> 님 안녕하세요!</span><br><b <span>현재 사용 가능한 쿠폰은 *개 입니다.</span></p>
+                                    <p class="ms_user_stat"><span><strong class="userName" th:text="${userInfo.name}">유진<!-- 홍길동 --></strong> 님 안녕하세요!</span><br><b <span>현재 사용 가능한 쿠폰은 *개 입니다.</span></p>
                                     <!-- 20200805 PLCC 추가 -->
                                		<div class="plcc-logo" style="display:none;">
                                			<img src="/common/img/util/plcc-logo.png" alt="Hyundai Card + STARBUCKS">
@@ -366,15 +366,15 @@
 <nav class="ms_nav" id="msRnb" style="line-height: 1.0;" >					
 	<ul>
 		<li>
-			<a href="MY쿠폰.html">My 쿠폰<span class="sbox_arrow_down"></span></a>
+			<a href="qna">My 쿠폰<span class="sbox_arrow_down"></span></a>
 		</li>
 
-		<li class="msRnb_btn"><a href="http://localhost:8080/jsp/%EC%A3%BC%EB%AC%B8%EB%82%B4%EC%97%AD.html" required="login" data-href="/my/calendar.do">주문내역</a></li>
+		<li class="msRnb_btn"><a href="/mypage/order" required="login" data-href="/my/calendar.do">주문내역</a></li>
 		<!-- <li class="msRnb_btn"><a href="/my/drink_shop.do" required="login">My 음료/매장</a></li> -->
-		<li class="msRnb_btn"><a href="http://localhost:8080/jsp/%EB%AC%B8%EC%9D%98%EB%82%B4%EC%97%AD.html" required="login" data-href="/my/my_menu.do">문의내역</a></li>
+		<li class="msRnb_btn"><a href="/mypage/qna" required="login" data-href="/my/my_menu.do">문의내역</a></li>
 
 		<li>
-			<a href="http://localhost:8080/jsp/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%88%98%EC%A0%95.html">개인정보수정<span class="sbox_arrow_down"></span></a>
+			<a href="/mypage/update">개인정보수정<span class="sbox_arrow_down"></span></a>
 
 		</li>
 	</ul>

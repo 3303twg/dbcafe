@@ -2,6 +2,7 @@ package com.example.dbcafe.member.controller;
 
 import com.example.dbcafe.member.Service.CartService;
 import com.example.dbcafe.member.Service.MenuService;
+import com.example.dbcafe.member.Service.UserInfoService;
 import com.example.dbcafe.member.dto.BoardDTO;
 import com.example.dbcafe.member.dto.SignupDto;
 import com.example.dbcafe.member.dto.MenuDTO;
@@ -18,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 @Controller
 public class CartController {
@@ -28,14 +30,20 @@ public class CartController {
     @Autowired
     private CartRepositoty cartRepositoty;
 
+    @Autowired
+    private UserInfoService userInfoService;
+
 
 
     //장바구니넣는기능
     @PostMapping("/cart/{cartId}/add/{menuId}")
-    public String  addToCart(@PathVariable Long cartId, @PathVariable Long menuId, Model model, HttpSession session) {
+    public String  addToCart(@PathVariable Long cartId, @PathVariable Long menuId, Model model, HttpSession session, Principal principal) {
         cartService.addToCart(cartId, menuId);
 
-        Long loggedInUser = (Long) session.getAttribute("loginUser");
+
+        String username = (String) principal.getName();
+        Long loggedInUser = userInfoService.getUserIdByUsername(username);
+
         //하 모르겠ㄱ다
         if (loggedInUser == null) {
             return "login";
@@ -54,11 +62,12 @@ public class CartController {
 
 
     @GetMapping("/cart/list/{cartId}")
-    public String CartList(@PathVariable Long cartId, Model model, HttpSession session){
+    public String CartList(@PathVariable Long cartId, Model model, HttpSession session, Principal principal){
 
 
+        String username = (String) principal.getName();
+        Long loggedInUser = userInfoService.getUserIdByUsername(username);
 
-        Long loggedInUser = (Long) session.getAttribute("loginUser");
 
         User user_entity = (User) session.getAttribute("user_entity");
 
@@ -71,6 +80,8 @@ public class CartController {
         if (cart != null) {
             model.addAttribute("cartItems", cart.getMenuItems());
             model.addAttribute("totalPrice", cart.getTotalPrice());
+            model.addAttribute("loginUser", loggedInUser);
+
         }
 
         return "cartDetail";

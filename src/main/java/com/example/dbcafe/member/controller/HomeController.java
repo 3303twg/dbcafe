@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.security.Key;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,9 +41,7 @@ public class HomeController {
     }
 
     @GetMapping("/payment")
-    public String payment(){
-        return "payment";
-    }
+    public String payment(HttpSession session, Model model){return "payment";}
 
     @GetMapping("/brand")
     public String brand(){
