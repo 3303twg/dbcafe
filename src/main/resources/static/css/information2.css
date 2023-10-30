@@ -17,7 +17,7 @@
 	*{box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; }
 	img{border:0; max-width:100%; vertical-align:middle; image-rendering:-webkit-optimize-contrast;}
 	table, td, th{border-spacing:0px; padding:0px; text-align:inherit;}
-	ul, li{list-style:none; padding:0px; margin:0px;}
+	ul, li{list-style:none; padding:0px; margin:0px; font-weight:400;}
 	p{margin:30px 0;}
 	p:first-child{margin-top:0;}
 	p:last-child{margin-bottom:0;}
