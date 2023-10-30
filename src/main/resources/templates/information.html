@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+<html lang="ko">
 
 <head>
 	<title>개인정보수정</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<link rel="stylesheet" href="/css/information.css">
-<link rel="stylesheet" href="/css/information1.css">
-<link rel="stylesheet" href="/css/information2.css">
-<link rel="stylesheet" href="/css/information3.css">
-<link rel="stylesheet" href="/css/work.css">
+	<link rel="stylesheet" href="information.css">
+	<link rel="stylesheet" href="information1.css">
+	<link rel="stylesheet" href="information2.css">
+	<link rel="stylesheet" href="information3.css">
+	<link rel="stylesheet" href="work.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;900&display=swap">
@@ -21,7 +21,7 @@
 			<div class="head">
 				<div class="head_logo">
 					<a href="main.html">
-						<img src="image/Cafe_logo_4.png" class="head_logo_img_fixed">
+						<img src="image/logo.png" class="head_logo_img_fixed">
 					</a>
 				</div>
 
@@ -381,26 +381,26 @@ function del_check(){
 <div class="cont" style="border: 1;">
 
 <form name="edit_form" action="edit_ok.php" method="post" onsubmit="return edit_check()" >
-<fieldset style="position: absolute; top: 30px; width: 700px; padding: 30px 10px 50px 70px; border: 1px solid;">
+<fieldset style="position: absolute; top: 25px; width: 700px; padding: 30px 10px 50px 70px; border: 1px solid;">
     <legend>정보 수정</legend>
     						<div class="cont_title" >
 							<b style="width: 150px;  position: absolute; top: -50px; left: 10px;  font-size: 1em; font-weight: 700;">정보 수정</b>
 						</div>
     <p>
         <div class="txt">이름</div>
-        <input type="your" name="name" id="name" class="name" th:value="${userInfo.name}">
+        <input type="your" name="name" id="name" class="name">
         <?php echo $array["u_name"]; ?>
     </p>
 
     <p>
         <div class="txt">아이디</div>
-               <input type="my" name="id" id="id" class="id" th:value="${userInfo.username}">
+               <input type="my" name="id" id="id" class="id">
         <?php echo $array["u_id"]; ?>
     </p>
 
     <p>
         <label for="pwd" class="txt">비밀번호</label>
-        <input type="password" name="pwd" id="pwd" class="pwd" >
+        <input type="password" name="pwd" id="pwd" class="pwd">
         <br>
         <span class="err_pwd">* 비밀번호는 4~8글자만 입력할 수 있습니다.</span>
     </p>
@@ -418,7 +418,7 @@ function del_check(){
     ?>
     <p>
         <label for="repwd" class="txt">본인 확인 이메일 (선택)</label>
-        <input type="text" name="birth" id="birth" class="birth"  th:value="${userInfo.email}">
+        <input type="text" name="birth" id="birth" class="birth" >
         <br>
     </p>
 
@@ -431,7 +431,7 @@ function del_check(){
     
     <p>
         <label for="mobile" class="txt">전화번호</label>
-        <input type="text" name="mobile" id="mobile" class="mobile" th:value="${userInfo.phone}">
+        <input type="text" name="mobile" id="mobile" class="mobile" >
         <br>
         <span class="err_mobile">"-"없이 숫자만 입력</span>
     </p>
@@ -490,7 +490,7 @@ function del_check(){
 					</ul>
 				</div>
 				<div class="foot_logo">
-					<img class="foot_logo" src="image/Cafe_logo_4.png" alt="Logo">
+					<img class="foot_logo" src="image/logo.png" alt="Logo">
 				</div>
 				<div class="foot_cont">
 					<ul>
