@@ -18,7 +18,6 @@ public class UserInfoController {
     public String mypage(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model){
         User user = principalDetails.getUser();
         model.addAttribute("userInfo",user);
-
         return "mypage";}
 
     @GetMapping("/mypage/qna")

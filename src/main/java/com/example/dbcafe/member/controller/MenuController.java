@@ -49,21 +49,20 @@ public class MenuController {
 
 //        Long loggedInUser = (Long) session.getAttribute("loginUser"); //기본id값은 Long타입의 변수임
 
-        String username = (String) principal.getName();
 
-        Long loggedInUser = userInfoService.getUserIdByUsername(username);
+
+        if(principal != null) {
+            String username = (String) principal.getName();
+
+            Long loggedInUser = userInfoService.getUserIdByUsername(username);
+            model.addAttribute("loginUser", loggedInUser);
+        }
+        else {
+            model.addAttribute("loginUser", null);
+        }
 
 //        String loggedInUser = (String) session.getAttribute("loginUser");
 
-        //로그인을 하지않아도 메뉴는 볼수있게 하고싶은데 안되네
-        if (loggedInUser != null) {
-            // 사용자 정보를 Thymeleaf 모델에 추가
-            model.addAttribute("loginUser", loggedInUser);
-        }
-        else { //이건 없어도 되는듯? 카트컨트롤에서 처리함
-            // 사용자가 로그인하지 않은 경우 처리
-            model.addAttribute("loginUser", null);
-        }
 
         if(typeID == null) {
             List<MenuDTO> menuDTOList = menuService.menuFindAll();
