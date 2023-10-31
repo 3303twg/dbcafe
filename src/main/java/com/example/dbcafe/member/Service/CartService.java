@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import java.awt.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -54,26 +55,37 @@ public class CartService {
         cartRepository.save(cart);
     }
 
+
     // 장바구니에서 메뉴 제거 로직
-    public void removeItem(Long cartId, Long menuId, int itemIndex) {
+    public void removeItem(Long cartId, Long itemIndex) {
         CartEntity cart = cartRepository.findById(cartId).orElse(null);
         if (cart != null) {
             List<MenuEntity> menuItems = cart.getMenuItems();
 
-            // 삭제할 아이템을 찾기 위한 조건
-            Predicate<MenuEntity> condition = item -> item.getId().equals(menuId);
+//            if (itemIndex >= 0 && itemIndex < menuItems.size()) {
+                // 원하는 인덱스의 항목 삭제
 
-            // 순서에 따른 아이템 삭제
-            menuItems.removeIf(condition);
 
-            // 장바구니의 총 가격 업데이트
-            BigDecimal newTotalPrice = calculateTotalPrice(cart);
-            cart.setTotalPrice(newTotalPrice);
+                Long LongIndex = itemIndex;
+                int test = LongIndex.intValue();
 
-            // 장바구니 엔티티 저장
-            cartRepository.save(cart);
+                menuItems.remove(test+1);
+
+                cart.setMenuItems(menuItems);
+
+                // 장바구니의 총 가격 업데이트
+                BigDecimal newTotalPrice = calculateTotalPrice(cart);
+                cart.setTotalPrice(newTotalPrice);
+
+                // 장바구니 엔티티 저장
+                cartRepository.save(cart);
+//            }
         }
     }
+
+
+
+
 
     private BigDecimal calculateTotalPrice(CartEntity cart) {
         List<MenuEntity> menuItems = cart.getMenuItems();

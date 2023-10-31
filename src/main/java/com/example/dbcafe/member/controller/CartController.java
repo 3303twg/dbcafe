@@ -13,6 +13,7 @@ import com.example.dbcafe.member.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +21,18 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class CartController {
 
     @Autowired
     private CartService cartService;
+
+    @Autowired
+    public CartController(CartService cartService) {
+        this.cartService = cartService;
+    }
 
     @Autowired
     private CartRepositoty cartRepositoty;
@@ -54,11 +61,13 @@ public class CartController {
 
 
     //장바구니빼는기능
-    @GetMapping("/cart/{cartId}/remove/{menuId}")
-    public String removeFromCart(@PathVariable Long cartId, @PathVariable Long menuId) {
-        cartService.removeItem(cartId, menuId,1);
-        return "redirect:/menu/list";
-    }
+//    @GetMapping("/cart/{cartId}/remove/{menuId}")
+//    public String removeFromCart(@PathVariable Long cartId, @PathVariable Long menuId) {
+//        cartService.removeItem(cartId, menuId,1);
+//        return "redirect:/menu/list";
+//    }
+
+
 
 
     @GetMapping("/cart/list/{cartId}") //이거 유저아이디로 변경해야할듯??
@@ -85,9 +94,6 @@ public class CartController {
 
         //return "basket";
         return "cartDetail";
-
-
-
     }
 
 
