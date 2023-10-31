@@ -362,54 +362,53 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-													<td class="board_pc">3</td>
-													<td>
-														<div class="text_wrap">
-															<div class="text">
-																<a href="/board/Q&A.html">
-																	<em>
-																		입점 접수는 어떻게 하나요?</em>
-																</a>
-															</div>
-														</div>
-													</td>
-													<td>2023-08-30</td>
-													<td class="board_pc">457</td>
-												</tr>
-													<tr>
-															<td class="board_pc">2</td>
-															<td>
-																<div class="text_wrap">
-																	<div class="text">
-																		<a href="detail/?bbs_idx=177&amp;bbs_category=4&amp;bbs_detail_category=&amp;bbs_page=1">
-																			<em>
-																				주문 완료가 몇 분 정도 걸리나요?</em>
-																		</a>
-																</div>
-																</div>
-															</td>
-															<td>2023-07-01</td>
-															<td class="board_pc">407</td>
-														</tr>
-																									<tr>
-															<td class="board_pc">1</td>
-															<td>
-																<div class="text_wrap">
-																	<div class="text">
-																		<a href="detail/?bbs_idx=176&amp;bbs_category=4&amp;bbs_detail_category=&amp;bbs_page=1">
-																			<em>
-																				픽업 상태가 안 바껴요																	</em>
-																		</a>
-																																			</div>
-																</div>
-															</td>
-															<td>2023-03-21</td>
-															<td class="board_pc">851</td>
-														</tr>
+										<tr th:each="board: ${boardList}">
+
+											<td class="board_pc" th:text="${board.id}" ></td>
+											<td>
+
+												<div class="text_wrap">
+													<div class="text">								<!--공지사항은 board.noticeTitle 이런식으로 해줘야함 뒤에 ㅇㅇ -->
+														<a th:href="@{|/board/${board.id}|(page=${boardList.number + 1})}" th:text="${board.boardTitle}"></a></a>
+
+													</div>
+												</div>
+											</td>
+
+											<td class="board_pc">CAFE DREAM</td>
+											<td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+											<td class="board_pc" th:text="${board.boardHits}" ></td>
+										</tr>
+
+										</tbody>
+									</table>
+						</div>
+						<div class="board_page_wrap">
+							<div class="board_page">
+								<ul>
+									<li class="fo_re">
+										<a th:href="@{/board/QnA(page=1)}">
+											<span>처음</span>
+										</a>
+									</li>
+
+									<li class="board_page_check">
+											<span th:each="page: ${#numbers.sequence(startPage, endPage)}">
+										<!-- 현재페이지는 링크 없이 숫자만 -->
+												<!--												<span><a th:href="@{/board/QnA(page=${page})}" th:text="${page}"></a></span>-->
+												<span><a th:href="@{|/board/QnA?search_category=${searchCategory}&search=${search}&page=${page}|}"th:text="${page}"></a></span>
+											</span>
+									</li>
+
+									<li>
+										<a th:href="@{/board/QnA(page=${boardList.totalPages})}">
+											<span>마지막</span>
+										</a>
+									</li>
 
 																					</tbody>
 									</table>
+								</ul>
 								</div>
 								<div class="cont_text">
 								<div class="input_width">
@@ -419,12 +418,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="board_page_wrap">
-							<div class="board_page">
-								<ul>
-									<li class="fo_re"><a><span>처음</span></a></li><li class="board_page_check"><a><span>1</span></a></li><li><a class="board_page_link" href="?bbs_category=4&amp;bbs_detail_category=&amp;bbs_page=4" &bbs_search_category="&amp;bbs_search='"><span>마지막</span></a></li>								</ul>
-							</div>
-						</div>
+
 					</div>
 				</div>
 			</div>

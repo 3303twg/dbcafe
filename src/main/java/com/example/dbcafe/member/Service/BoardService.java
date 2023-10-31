@@ -91,6 +91,8 @@ public class BoardService {
             searchResult = boardRepository.findByBoardTitleContaining(search, PageRequest.of(page,pageLimit, Sort.by(Sort.Direction.DESC,"id")));
         } else if ("content".equals(searchCategory)) {
             searchResult = boardRepository.findByBoardContentsContaining(search, PageRequest.of(page,pageLimit, Sort.by(Sort.Direction.DESC,"id")));
+        } else if ("writer".equals(searchCategory)) {
+            searchResult = boardRepository.findByBoardWriter(search, PageRequest.of(page,pageLimit, Sort.by(Sort.Direction.DESC,"id")));
         } else {
             searchResult = boardRepository.findAll(PageRequest.of(page,pageLimit, Sort.by(Sort.Direction.DESC,"id")));
 
