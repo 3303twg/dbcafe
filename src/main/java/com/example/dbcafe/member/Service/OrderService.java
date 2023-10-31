@@ -86,4 +86,10 @@ public class OrderService {
 
         return totalPrice;
     }
+
+    public List<OrderEntity> getOrdersForUser(Long userId) {
+        // OrderRepository를 사용하여 유저 ID를 기반으로 주문 목록을 가져옵니다.
+        List<OrderEntity> userOrders = orderRepository.findByUser_Id(userId);
+        return userOrders;
+    }
 }

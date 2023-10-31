@@ -4,10 +4,10 @@ import com.example.dbcafe.member.Service.OrderService;
 import com.example.dbcafe.member.Service.UserInfoService;
 import com.example.dbcafe.member.entity.OrderEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -40,4 +40,6 @@ public class OrderController {
         String uuid = UUID.randomUUID().toString();
         return uuid;
     }
+
+
 }

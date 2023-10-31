@@ -38,6 +38,39 @@ public class OrderEntity {
 
     // 다른 필드 (주문 번호, 주소, 상태 등) 추가 가능
 
+
+    // Getter 메서드
+
+    public Long getId() {
+        return id;
+    }
+
+    public BigDecimal getTotalPrice(){
+        return totalPrice;
+    }
+
+    public List<MenuEntity> getMenuItems(){
+        return menuItems;
+    }
+
+    public String getproductNames(){
+        return productNames;
+    }
+
+    public LocalDateTime getOrderDate(){
+        return orderDate;
+    }
+
+    public Long getUserId() {
+        if (user != null) {
+            return user.getId();
+        }
+        return null; // 또는 원하는 기본값
+    }
+
+
+
+
     // 생성된 Setter 메서드들
     public void setUser(User user) {
         this.user = user;
