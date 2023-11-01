@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -28,9 +28,9 @@
 				<div class="head_top_nav">
 					<nav class="head-menu-top-nav">
 						<ul>
-							<li class="top-nav01"><a href="/html/login(+html).jsp">Sign In</a></li>
-							<li class="top-nav02"><a href="register_terms/register.html">Join Now</a></li>
-							<li class="top-nav03"><a href="#">My Page</a></li>
+							<li class="top-nav01"><a href="../login/login.html">Sign In</a></li>
+							<li class="top-nav02"><a href="../join_in/register.html">Join Now</a></li>
+							<li class="top-nav03"><a href="../mypage/mypage.html">My Page</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -61,12 +61,13 @@
 					<div id="ham-menu-wrap">
 						<div class="ham-menu mt-5">
 							<ul class="ham-top-menu">
-								<li><a href="/html/aboutus.html">ABOUT US<i class="bi bi-caret-down-fill"></i></a>
-									<ul class="ham-sub-menu">
-										<li><a href="/html/drink.html">MENU</a></li>
-										<li><a href="/html/store.html">STORE</a></li>
-										<li><a href="/html/partnership.html">PARTNERSHIP</a></li>
-										<li><a href="/html/notice.html">NEWS</a></li>
+								<li>
+									<a href="../brand/brand.html">ABOUT US<i class="bi bi-caret-down-fill"></i></a>
+										<ul class="ham-sub-menu">
+											<li><a href="../menu/menu(drink).html">MENU</a></li>
+											<li><a href="../store/store.html">STORE</a></li>
+											<li><a href="../partnership/partnership.html">PARTNERSHIP</a></li>
+											<li><a href="../notice,Q&A/notice.html">NEWS</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -123,66 +124,66 @@
 					<div class="head_menu">
 						<ul>
 							<li>
-								<a href="/html/aboutus.html" class="pc">ABOUT US</a>
+								<a href="../brand/brand.html" class="pc">ABOUT US</a>
 								<a class="m head_menu_down">ABOUT US</a>
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
-											<a href="/html/aboutus.html">브랜드</a>
+											<a href="../brand/brand.html">브랜드</a>
 										</li>
 									</ul>
 								</div>
 							</li>
 
 							<li>
-								<a href="/html/drink.html" class="pc">MENU</a>
+								<a href="../menu/menu(drink).html" class="pc">MENU</a>
 								<a class="m head_menu_down">MENU</a>
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
-											<a href="/html/drink.html">음료</a>
+											<a href="../menu/menu(drink).html">음료</a>
 										</li>
 										<li>
-											<br><a href="/html/food.html">푸드</a>
+											<br><a href="../menu/menu(food).html">푸드</a>
 										</li>
 									</ul>
 								</div>
 							</li>
 
 							<li>
-								<a href="store.html" class="pc">STORE</a>
+								<a href="../store/store.html" class="pc">STORE</a>
 								<a class="m head_menu_down">STORE</a>
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
-											<a href="store.html">매장찾기</a>
+											<a href="../store/store.html">매장찾기</a>
 										</li>
 									</ul>
 								</div>
 							</li>
 
 							<li>
-								<a href="partnership.html" class="pc">PARTNERSHIP</a>
+								<a href="../partnership/partnership.html" class="pc">PARTNERSHIP</a>
 								<a class="m head_menu_down">PARTNERSHIP </a>
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
-											<a href="partnership.html">창업문의</a>
+											<a href="../partnership/partnership.html">입점문의</a>
 										</li>
 									</ul>
 								</div>
 							</li>
 
 							<li>
-								<a href="/html/notice.html" class="pc">NEWS</a>
+								<a href="../notice,Q&A/notice.html" class="pc">NEWS</a>
 								<a class="m head_menu_down">NEWS</a>
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
-											<a href="/html/notice.html">공지사항</a>
+											<a href="../notice,Q&A/notice.html">공지사항</a>
 										</li>
 										<li>
-											<br><a href="/html/qna.html">Q&A</a>
+											<br><a href="../notice,Q&A/Q&A.html">Q&A</a>
 										</li>
 									</ul>
 								</div>
@@ -358,13 +359,9 @@ function del_check(){
 					<div class="cont_text_wrap">
 						<div class="cont_text cont_list_map">
 							<ul>
-								<li>
-									HOME
-								</li>
-								<li>
-									My Page								</li>
-								<li>
-									개인정보수정								</li>
+								<li>HOME</li>
+								<li>My Page</li>
+								<li>개인정보수정</li>
 							</ul>
 						</div>
 					</div>
@@ -446,22 +443,17 @@ function del_check(){
 
                     </div>
                     
-                    
-
-
-
-<nav class="ms_nav" id="msRnb">					
-	<ul style="top: -11px;">
+<nav class="ms_nav" id="msRnb" style="line-height: 1.0;" >					
+	<ul>
 		<li>
-			<a href="http://localhost:8080/jsp/My%EC%BF%A0%ED%8F%B0.html">My 쿠폰<span class="sbox_arrow_down"></span></a>
+			<a href="../mypage/mypage.html">My 쿠폰<span class="sbox_arrow_down"></span></a>
 		</li>
 
-		<li class="msRnb_btn"><a href="http://localhost:8080/jsp/%EC%A3%BC%EB%AC%B8%EB%82%B4%EC%97%AD.html" required="login" data-href="/my/calendar.do">주문내역</a></li>
-		<!-- <li class="msRnb_btn"><a href="/my/drink_shop.do" required="login">My 음료/매장</a></li> -->
-		<li class="msRnb_btn"><a href="http://localhost:8080/jsp/%EB%AC%B8%EC%9D%98%EB%82%B4%EC%97%AD.html" required="login" data-href="/my/my_menu.do">문의내역</a></li>
+		<li class="msRnb_btn"><a href="../mypage/myorder.html" required="login" data-href="/my/calendar.do">주문내역</a></li>
+		<li class="msRnb_btn"><a href="../mypage/myQ&A.html" required="login" data-href="/my/my_menu.do">문의내역</a></li>
 
 		<li>
-			<a href="http://localhost:8080/jsp/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%88%98%EC%A0%95.html">개인정보수정<span class="sbox_arrow_down"></span></a>
+			<a href="../mypage/information.html">개인정보수정<span class="sbox_arrow_down"></span></a>
 
 		</li>
 	</ul>
