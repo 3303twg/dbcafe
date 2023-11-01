@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<title>문의내역</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/css/information.css">
+	<link rel="stylesheet" href="/css/information1.css">
+	<link rel="stylesheet" href="/css/information2.css">
+	<link rel="stylesheet" href="/css/myorder,myQ&A.css">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;900&display=swap">
+	
+
+<body>
+	<div class="wrap">
+		<div class="head_wrap">
+			<div class="head">
+				<div class="head_logo">
+					<a href="main.html">
+						<img src="image/logo.png" class="head_logo_img_fixed">
+					</a>
+				</div>
+
+				<div class="head_top_nav">
+					<nav class="head-menu-top-nav">
+						<ul>
+							<li class="top-nav01"><a href="../login/login.html">Sign In</a></li>
+							<li class="top-nav02"><a href="../join_in/register.html">Join Now</a></li>
+							<li class="top-nav03"><a href="../mypage/mypage.html">My Page</a></li>
+						</ul>
+					</nav>
+				</div>
+
+				<div class="head_top_icon">
+					<ul>
+						<li>
+							<a href="#">
+								<img src="image/basket.png" class="icon_basket_img_fixed">
+							</a>
+						</li>
+					</ul>
+				</div>
+
+
+				<!-- 햄버거 버튼 -->
+				<li class="ham-btn">
+					<a class="menu-trigger" href="#">
+						<span></span>
+						<span></span>
+						<span></span>
+					</a>
+				</li>
+
+
+				<!-- 햄버거 메뉴 시작 -->
+				<div class="ham-con">
+					<div id="ham-menu-wrap">
+						<div class="ham-menu mt-5">
+							<ul class="ham-top-menu">
+								<li><a href="/html/aboutus.html">ABOUT US<i class="bi bi-caret-down-fill"></i></a>
+									<ul class="ham-sub-menu">
+										<li><a href="../menu/menu(drink).html">MENU</a></li>
+										<li><a href="../store/store.html">STORE</a></li>
+										<li><a href="../partnership/partnership.html">PARTNERSHIP</a></li>
+										<li><a href="../notice,Q&A/notice.html">NEWS</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<script>
+					// 햄버거 버튼 클릭 이벤트 
+					var burger = $('.menu-trigger');
+
+					burger.each(function (index) {
+						var $this = $(this);
+
+						$this.on('click', function (e) {
+							e.preventDefault();
+							$(this).toggleClass('active-' + (index + 1));
+						})
+					});
+
+					var h = 0;
+
+					$(burger).on("click", function () {
+						if (h == 0) {
+							$('.ham-con').animate({
+								right: '0',
+								opacity: 1
+							}, 500);
+							$(this).addClass('active-1');
+							h++;
+						} else if (h == 1) {
+							$('.ham-con').animate({
+								right: '-20%',
+								opacity: 0
+							}, 500);
+							$(this).removeClass('active-1');
+							h--;
+						}
+						$(window).scroll(function () {
+							sct = $(window).scrollTop();
+							if (sct > 30) {
+								$('.ham-con').css({
+									opacity: 0,
+									right: '-20%'
+								}, 500);
+								$(burger).removeClass('active-1');
+								h = 0;
+							}
+						});
+					})
+				</script>
+				<!-- 햄버거 메뉴 끝 -->
+
+				<div class="head_menu_wrap">
+					<div class="head_menu">
+						<ul>
+							<li>
+								<a href="../brand/brand.html" class="pc">ABOUT US</a>
+								<a class="m head_menu_down">ABOUT US</a>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="../brand/brand.html">브랜드</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<li>
+								<a href="../menu/menu(drink).html" class="pc">MENU</a>
+								<a class="m head_menu_down">MENU</a>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="../menu/menu(drink).html">음료</a>
+										</li>
+										<li>
+											<br><a href="../menu/menu(food).html">푸드</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<li>
+								<a href="../store/store.html" class="pc">STORE</a>
+								<a class="m head_menu_down">STORE</a>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="../store/store.html">매장찾기</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<li>
+								<a href="../partnership/partnership.html" class="pc">PARTNERSHIP</a>
+								<a class="m head_menu_down">PARTNERSHIP </a>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="../partnership/partnership.html">입점문의</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<li>
+								<a href="../notice,Q&A/notice.html" class="pc">NEWS</a>
+								<a class="m head_menu_down">NEWS</a>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="../notice,Q&A/notice.html">공지사항</a>
+										</li>
+										<li>
+											<br><a href="../notice,Q&A/Q&A.html">Q&A</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!--헤더 다운드랍-->
+		<script>
+			//head_menu start
+			$(document).ready(function () {
+				$(".head_wrap .head .head_menu > ul > li").hover(function () {
+					if ($(".head_menu_wrap").is(".right0") == false) {
+						$(".head_wrap .head .head_menu > ul > li").removeClass("check");
+						$(this).addClass("check");
+						$(".head_menu_down_menu").stop().slideDown("fast");
+					};
+				}, function () {
+					$(".head_wrap .head .head_menu > ul > li").removeClass("check");
+				});
+
+				$(".head_wrap").hover(function () {
+					$(this).addClass("head_over");
+				}, function () {
+					if ($(".head_menu_wrap").is(".right0") == false) {
+						$(this).removeClass("head_over");
+						$(".head_wrap .head .head_menu > ul > li").removeClass("check");
+						$(".head_menu_down_menu").stop().slideUp("fast");
+					}
+				});
+				//head_menu end
+				//mobile start
+				$(".mobile_menu_icon").click(function () {
+					$(".head_wrap").addClass("head_over");
+					$(this).toggleClass("mobile_menu_icon_open");
+					if ($(this).is(".mobile_menu_icon_open")) {
+						$(".head_menu_wrap").addClass("right0");
+					} else {
+						$(".head_menu_wrap").removeClass("right0");
+					}
+				});
+				$(".head_menu_down").click(function () {
+					$(this).toggleClass("head_menu_down_open");
+					if ($(this).is(".head_menu_down_open")) {
+						$(this).next(".head_menu_down_menu").find("ul").slideDown("fast");
+					} else {
+						$(this).next(".head_menu_down_menu").find("ul").slideUp("fast");
+					}
+				});
+				//mobile end
+				cont_gallery_list_img();
+				$(window).resize(function () {
+					$(".head_menu_down_menu > ul").css("display", "block");
+					if ($(window).width() < 760) {
+						$(".head_menu_down_menu > ul").css("display", "none");
+					};
+					$(".head_menu_down").removeClass("head_menu_down_open");
+					if ($(window).width() >= 1280) {
+						$(".head_wrap").removeClass("head_over");
+						$(".head_menu_wrap").removeClass("right0");
+						$(".mobile_menu_icon").removeClass("mobile_menu_icon_open");
+					};
+					cont_gallery_list_img();
+				});
+			});
+			$(window).scroll(function () {
+				if ($(document).scrollTop() > $(".cont_wrap").offset().top) {
+					$(".head_wrap").addClass("head_fixed");
+				} else {
+					$(".head_wrap").removeClass("head_fixed");
+				}
+			});
+			function cont_gallery_list_img() {
+				$(".cont_gallery_list > ul > li").each(function () {
+					if ($(this).find(".cont_gallery_list_img").length) {
+						$(this).find(".cont_gallery_list_img").css("width", $(this).width());
+					};
+
+					if ($(this).find(".cont_gallery_list_img_height").length) {
+						$(this).find(".cont_gallery_list_img_height").css("height", $(this).width());
+					} else {
+						$(this).find(".cont_gallery_list_img").css("height", $(this).width());
+					};
+				});
+			};
+		</script>
+
+
+<div class="cont">
+			<div class="cont_box cont_head">
+				<div class="cont_boxs">
+					<div class="cont_title_wrap">
+
+						<div class="cont_title robo color">
+							<h2>MY PAGE</h2>
+						</div>
+					</div>
+					<div class="cont_text_wrap">
+						<div class="cont_text cont_list_map">
+							<ul>
+								<li>HOME</li>
+								<li>My Page</li>
+								<li>문의내역</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+</div>
+
+            <div id="container">
+                <!-- 서브 타이틀 end -->
+                
+                <!-- 내용 -->
+                <div class="ms_cont_wrap">
+                    <div class="ms_cont">
+<div class="cont">
+
+			<div class="cont_box brand01">
+				<div class="cont_boxs text_center" style="position: absolute; top: 35px;">
+					<div class="cont_title_wrap">
+						<div class="cont_title" style="position: absolute; top: 30px;  font-size: 1em;">
+							<b>문의내역</b>
+						</div>
+						</div>
+										<div class="cont_text_wrap">
+												<div class="cont_list cont_list_content cont_list_content_search">
+							<ul>
+								<li>
+
+								</li>
+								<li style="text-align:right">
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="cont_text_wrap">
+							<div class="board_list">
+									<table>
+										<colgroup>
+											<col class="board_w75 board_pc">
+											<col>
+											<col class="board_w150 board_pc">
+											<col class="board_w100">
+											<col class="board_w100 board_pc">
+										</colgroup>
+										<thead>
+											<tr>
+												<th class="board_pc">
+													번호
+                        </th>
+												<th>
+													제목
+												</th>
+												<th class="board_pc">
+													글쓴이
+												</th>
+												<th>
+													날짜
+												</th>
+												<th class="board_pc">
+													조회
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+										<tr th:each="board: ${boardList}">
+
+											<td class="board_pc" th:text="${board.id}" ></td>
+											<td>
+
+												<div class="text_wrap">
+													<div class="text">								<!--공지사항은 board.noticeTitle 이런식으로 해줘야함 뒤에 ㅇㅇ -->
+														<a th:href="@{|/board/${board.id}|(page=${boardList.number + 1})}" th:text="${board.boardTitle}"></a></a>
+
+													</div>
+												</div>
+											</td>
+
+											<td class="board_pc">CAFE DREAM</td>
+											<td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+											<td class="board_pc" th:text="${board.boardHits}" ></td>
+										</tr>
+
+										</tbody>
+									</table>
+								</div>
+						
+          	<div class="board_page_wrap">
+							<div class="board_page">
+								<ul>
+									<li class="fo_re">
+										<a th:href="@{/board/QnA(page=1)}">
+											<span>처음</span>
+										</a>
+									</li>
+
+									<li class="board_page_check">
+											<span th:each="page: ${#numbers.sequence(startPage, endPage)}">
+										<!-- 현재페이지는 링크 없이 숫자만 -->
+												<!--												<span><a th:href="@{/board/QnA(page=${page})}" th:text="${page}"></a></span>-->
+												<span><a th:href="@{|/board/QnA?search_category=${searchCategory}&search=${search}&page=${page}|}"th:text="${page}"></a></span>
+											</span>
+									</li>
+
+									<li>
+										<a th:href="@{/board/QnA(page=${boardList.totalPages})}">
+											<span>마지막</span>
+										</a>
+									</li>
+                  </tbody>
+									</table>
+								</ul>
+								</div>
+								<div class="cont_text">
+								<div class="input_width">
+									<div class="input_btn_wrap input_wrap3">
+									<a href="../..//notice,Q&A/write.html">
+									</a>
+									</div>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>    
+        
+<nav class="ms_nav" id="msRnb" style="line-height: 1.0;" >					
+	<ul>
+		<li>
+			<a href="../mypage/mypage.html">My 쿠폰<span class="sbox_arrow_down"></span></a>
+		</li>
+
+		<li class="msRnb_btn"><a href="../mypage/myorder.html" required="login" data-href="/my/calendar.do">주문내역</a></li>
+		<li class="msRnb_btn"><a href="../mypage/myQ&A.html" required="login" data-href="/my/my_menu.do">문의내역</a></li>
+
+		<li>
+			<a href="../mypage/information.html">개인정보수정<span class="sbox_arrow_down"></span></a>
+
+		</li>
+	</ul>
+</nav>
+</div>
+       <!-- 내용 end -->
+</div>
+
+
+		<div class="foot_wrap" style="top: 1100px;">
+			<div class="foot">
+				<div class="foot_terms">
+					<ul>
+						<li>
+							<a href="/">이용약관</a>
+						</li>
+						<li>
+							|
+						</li>
+						<li>
+							<a href="/">개인정보취급방침</a>
+						</li>
+					</ul>
+				</div>
+				<div class="foot_logo">
+					<img class="foot_logo" src="image/logo.png" alt="Logo">
+				</div>
+				<div class="foot_cont">
+					<ul>
+						<li><b>(주)주식회사 부천대학교</li></b>
+						<li>경기도 부천시 심곡동 신흥로56번길 25</li>
+						<li>대표자 박찬호</li>
+						<li>E-mail 1111@gmail.com</li>
+						<li>TEL 032-610-3260</li>
+					</ul>
+					<ul class="copyright">
+						<li>Copyright © 2023 CafeDream. All rights reserved.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+</body>
+</html>
