@@ -56,7 +56,7 @@ public class UserInfoController {
     public String listOrdersForUser(@PathVariable Long userId, Model model) {
         List<OrderEntity> userOrders = orderService.getOrdersForUser(userId); // 해당 유저의 주문 데이터를 가져오는 메서드를 구현해야 합니다.
         model.addAttribute("orders", userOrders);
-        return"MyOrderr";
+        return"MyOrder";
     }
 
     @GetMapping("/mypage/update")
