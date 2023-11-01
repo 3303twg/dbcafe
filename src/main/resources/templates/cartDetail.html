@@ -20,7 +20,7 @@
     <!-- 장바구니 아이템 목록을 동적으로 출력 -->
     <tr th:each="item, itemStat : ${cartItems}">
         <td>
-            <input type="checkbox" name="selectedItems" th:value="${item.id}" class="itemCheckbox" data-item-id="${item.id}">
+            <input type="checkbox" name="selectedItems"  class="itemCheckbox" th:attr="data-item-id=${item.id}">
         </td>
         <td th:text="${item.menuName}"></td>
         <td th:text="${item.menuPrice}"></td>
@@ -40,10 +40,23 @@
 
     // 선택한 메뉴 삭제 함수
     $("#removeSelectedItems").click(function() {
+
         var selectedItems = [];
         // 선택한 체크박스 아이템을 찾아서 ID를 배열에 추가
-        $(".itemCheckbox:checked").each(function (index) {
+        $(".itemCheckbox:checked").each(function() {
+            var index = $(this).closest('tr').index(); // 테이블 행의 인덱스 가져오기
             selectedItems.push(index);
+        });
+
+        selectedItems.sort(function(a, b) {
+            return a - b;
+        });
+        let num = 0;
+
+        $.each(selectedItems, function(index, value) {
+            // 선택한 항목의 인덱스를 기반으로 해당 행을 삭제
+            $("tr:eq(" + (value-num) + ")").remove();
+            num ++;
         });
 
 
@@ -58,12 +71,7 @@
                 data: JSON.stringify(selectedItems),
                 success: function (data) {
                     // 삭제 성공 시, 선택한 메뉴 항목을 테이블에서 제거
-                    $.each(selectedItems, function(index, value) {
-                        // 선택한 메뉴 ID와 일치하는 행을 찾아 제거
-                        $("tr").filter(function() {
-                            return $(this).find(".itemCheckbox").data("item-id") === value;
-                        }).remove();
-                    });
+
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log("에러:", errorThrown);

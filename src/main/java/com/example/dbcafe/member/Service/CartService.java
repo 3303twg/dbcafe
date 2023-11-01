@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 import java.awt.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -57,7 +58,7 @@ public class CartService {
 
 
     // 장바구니에서 메뉴 제거 로직
-    public void removeItem(Long cartId, Long itemIndex) {
+    public void removeItem(Long cartId, List<Long> itemIndex) {
         CartEntity cart = cartRepository.findById(cartId).orElse(null);
         if (cart != null) {
             List<MenuEntity> menuItems = cart.getMenuItems();
@@ -66,10 +67,25 @@ public class CartService {
                 // 원하는 인덱스의 항목 삭제
 
 
-                Long LongIndex = itemIndex;
-                int test = LongIndex.intValue();
+            List<Integer> testdata = new ArrayList<>();
 
-                menuItems.remove(test+1);
+//            testdata.add(2);
+//            testdata.add(5);
+//            testdata.add(6);
+//            testdata.add(9);
+            int testnum = 1;
+
+//            for (int int_index : testdata){
+            for (Long index : itemIndex) {
+                    //이미 인트니까 주석처리함
+                int int_index = index.intValue();
+
+//                Long LongIndex = itemIndex;
+//                int test = LongIndex.intValue();
+
+//                test = 3-1;
+
+                menuItems.remove(int_index-testnum);
 
                 cart.setMenuItems(menuItems);
 
@@ -79,6 +95,8 @@ public class CartService {
 
                 // 장바구니 엔티티 저장
                 cartRepository.save(cart);
+                testnum ++;
+            }
 //            }
         }
     }

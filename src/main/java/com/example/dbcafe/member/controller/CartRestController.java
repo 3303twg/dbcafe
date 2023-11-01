@@ -32,9 +32,7 @@ public class CartRestController {
             String username = principal.getName();
             Long loggedInUser = userInfoService.getUserIdByUsername(username);
 
-            for (Long selectedItem : selectedItems) {
-                cartService.removeItem(loggedInUser, selectedItem);
-            }
+                cartService.removeItem(loggedInUser, selectedItems);
 
             return new ResponseEntity<>("선택한 메뉴 삭제 성공", HttpStatus.OK);
         } catch (Exception e) {

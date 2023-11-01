@@ -132,7 +132,7 @@ public class UserInfoController {
         model.addAttribute("search", search);
         model.addAttribute("searchCategory", searchCategory);
 
-        return "MyQnA";
+        return "MyQ&AA";
     }
 
 }
