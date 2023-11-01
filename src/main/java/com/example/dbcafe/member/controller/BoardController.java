@@ -3,6 +3,7 @@ package com.example.dbcafe.member.controller;
 
 import com.example.dbcafe.member.Service.BoardService;
 import com.example.dbcafe.member.Service.NoticeService;
+import com.example.dbcafe.member.config.auth.PrincipalDetails;
 import com.example.dbcafe.member.dto.BoardDTO;
 import com.example.dbcafe.member.dto.NoticeDTO;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +37,8 @@ public class BoardController {
     }
 
     @PostMapping("/QnA/write")
-    public String text(@ModelAttribute BoardDTO boardDTO){
+    public String text(@ModelAttribute BoardDTO boardDTO , @AuthenticationPrincipal PrincipalDetails principalDetails){
+        boardDTO.setBoardWriter(principalDetails.getUsername());
         boardService.save(boardDTO);
 
         return "index";
@@ -48,7 +51,8 @@ public class BoardController {
     }
     //공지사항 글작성
     @PostMapping("/notice/write")
-    public String noticewrite(@ModelAttribute NoticeDTO noticeDTO){
+    public String noticewrite(@ModelAttribute NoticeDTO noticeDTO ,@AuthenticationPrincipal PrincipalDetails principalDetails){
+        noticeDTO.setNoticeWriter(principalDetails.getUsername());
         noticeService.save(noticeDTO);
 
         return "index";
