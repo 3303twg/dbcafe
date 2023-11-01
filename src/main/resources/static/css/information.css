@@ -6,14 +6,14 @@
 	::-webkit-scrollbar{width:5px; height:5px; background:#f2f2f2;}
 	::-webkit-scrollbar-thumb{background:#fdd000;}
 	::-moz-selection{background:#fdd000; color:#1c1c1b;}
-	::selection{background:#FFBD59; color:#1c1c1b;}
-	.progress{position:fixed; top:0; left:0; border-radius:100px; height:3px; background:#FFBD59; width:0%; z-index:999999;}
-	html, body{font-weight:300; letter-spacing:normal; word-break:keep-all; width:100%;height: 100%; text-align:left; font-size:16px; color:#1c1c1b; line-height:1.4; margin:0; padding:0; font-family:'Noto Sans KR','Noto Sans','sans-serif','MalgunGothic','Malgun Gothic','NanumGothic','Helvetica','Tahoma','Arial','Dotum','DotumChe';}
+	::selection{background:#fdd000; color:#1c1c1b;}
+	.progress{position:fixed; top:0; left:0; border-radius:100px; height:3px; background:#fdd000; width:0%; z-index:999999;}
+	html, body{letter-spacing:normal; word-break:keep-all; width:100%; text-align:left; font-size:16px; color:#1c1c1b; line-height:1.4; margin:0; padding:0; font-family:'Noto Sans KR','Noto Sans','sans-serif','MalgunGothic','Malgun Gothic','留묒�怨좊뵓','留묒� 怨좊뵓','�섎닎怨좊뵓','NanumGothic','Helvetica','Tahoma','Arial','Dotum','�뗭쓬','DotumChe','�뗭쓬泥�';}
 	body{transition:ease-in-out 400ms padding; font-smoothing:antialiased; -webkit-font-smoothing:antialiased; -moz-font-smoothing:unset; -moz-osx-font-smoothing:grayscale; font-smoothing:antialiased; -webkit-backface-visibility:hidden; -moz-backface-visibility:hidden; backface-visibility:hidden;}
 	h1,h2{padding:0; margin:0; display:inline-block; font-weight:normal;}
 	a, a:link, a:focus, textarea, button, input, select{outline:none; resize:none; border:0px; text-decoration:none;  -webkit-appearance:none; -webkit-border-radius:0;}
 	a, a:link, a:focus{text-decoration:none; color:inherit; cursor:pointer;}
-	textarea, button, input, select{font-family:'NanumGothic';}
+	textarea, button, input, select{font-family:'Noto Sans KR','Noto Sans','sans-serif','MalgunGothic','Malgun Gothic','留묒�怨좊뵓','留묒� 怨좊뵓','�섎닎怨좊뵓','NanumGothic','Helvetica','Tahoma','Arial','Dotum','�뗭쓬','DotumChe','�뗭쓬泥�';}
 	button, input[type="button"], input[type="submit"]{cursor:pointer;}
 	*{box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; }
 	img{border:0; max-width:100%; vertical-align:middle; image-rendering:-webkit-optimize-contrast;}
@@ -34,9 +34,9 @@
 	.pc{display:block !important; margin:0 auto;}
 	.m{display:none !important; margin:0 auto;}
 	.w1280{width:1280px; margin:0 auto;}
-	.color{color:#FFBD59 !important;}
+	.color{color:#fdd000 !important;}
 	.color_w{color:#fff;}
-	.bg_color{background:#FFBD59; color:#1c1c1b; padding:0.5% 1%;}
+	.bg_color{background:#fdd000; color:#1c1c1b; padding:0.5% 1%;}
 	.red{color:#ff0000 !important;}
 	.left0{left:0 !important;}
 	.right0{right:0 !important;}
@@ -102,9 +102,12 @@
 	.header{position: fixed; top: 0;}
 	.head_wrap{background:#fff; position:absolute; top:0; width:100%; margin:auto 0; z-index:9999; vertical-align:middle; box-shadow:0px 0px 5px 0px rgba(0,0,0,0.1); padding:0px 50px;text-align:center; transition: All 0.2s ease; -webkit-transition: All 0.2s ease; -moz-transition: All 0.2s ease; -o-transition: All 0.2s ease;}
 	.main_body .head_wrap{background:none; box-shadow:none;}
+	.head_over{background:#fff !important; box-shadow:0px 0px 5px 0px rgba(0,0,0,0.1) !important;}
+	.head_fixed{background:#fff !important; box-shadow:0px 0px 5px 0px rgba(0,0,0,0.1) !important;}
+	
 	.head_wrap .head{width:100%; max-width:1280px; margin:0 auto; position:relative; transition: All 0.2s ease; -webkit-transition: All 0.2s ease; -moz-transition: All 0.2s ease; -o-transition: All 0.2s ease;}
 	
-	.head_wrap .head .head_logo{max-width:280px; position:absolute; top:37px; text-align: center; left: -4%;}
+	.head_wrap .head .head_logo{width:300px; position:absolute; top:8px; left:-70px;}
 		.main_body .head_wrap .head .head_logo .head_logo_img{display:inline-block;}
 		.main_body .head_wrap .head .head_logo .head_logo_img_fixed{display:none;}
 		
@@ -114,12 +117,12 @@
 			.head_wrap .head .head_menu > ul > li:hover{background-color: #FFEFD8;}
 				.head_wrap .head .head_menu > ul > li > a{display:block; padding:50px 0;;position:relative; font-weight:500; font-size:1.1em;}
 				.head_wrap .head .head_menu > ul > li > a:after{content:""; position:absolute; left:0; bottom:20px; width:0; height:1px; background:#1c1c1b; left:50%; -webkit-transform:translate(-50%,0); -ms-transform:translate(-50%,0); transform:translate(-50%,0); transition:All 0.2s ease; -webkit-transition:All 0.2s ease; -moz-transition:All 0.2s ease; -o-transition:All 0.2s ease;}
-					.head_wrap .head .head_menu > ul > li:hover a:after{width:50%; background-color: #FFEFD8;}
+					.head_wrap .head .head_menu > ul > li:hover a:after{width:50%;}
 					.head_wrap .head .head_menu > ul > .check{background:#FFEFD8;}
 					.head_wrap .head .head_menu > ul > .check a:after{width:50%;}
 	
 	.head_menu_down_menu{display:block; font-size:0.9em; font-weight:500;}
-		.head_menu_down_menu ul li a{display:block; margin-top: -10px;}
+		.head_menu_down_menu ul li a{display:block; margin-top: -10px; font-weight:500;}
 			.head_menu_down_menu ul li a:hover{text-decoration:underline;}
 		.head_menu_down_menu{padding:20px;}
 		.head_menu_down_menu.check{background:#FFEFD8;}
@@ -127,7 +130,7 @@
 			.head_wrap .head .head_top_nav{position:absolute; top:15px; right:20px;}
 			.head_wrap .head .head_top_nav ul{list-style: none;}
                 .head_wrap .head .head_top_nav ul li{float: left; color: var( --color-font-light-black); font-size: 13px; text-align: center; height: 20px; border:var( --temp-border); padding-left: 20px;}
-				.head_wrap .head .head_top_nav ul li a{display:block; padding:3px; position:relative;}
+				.head_wrap .head .head_top_nav ul li a{display:block; padding:3px; position:relative; font-weight:400;}
 				.head_wrap .head .head_top_nav ul li:hover{text-decoration: underline;}
 				
 
@@ -327,7 +330,7 @@
 /* foot */
 	.foot_wrap{background:#212121; color:#aaa; padding:20px 20px; font-size:0.8em;}
 		.foot_wrap .foot{max-width:1280px; margin:0 auto; text-align: center;}
-		.foot_logo{padding: 5px 0px;}	
+		.foot_logo{padding: 0px 0px;}	
 		.foot_logo img{ max-width: 200px; display: flexbox;}
 
 	.foot_wrap .foot .foot_terms{font-size:0.8em;}		
@@ -448,7 +451,7 @@
 	/* foot */
 	
 		.foot_terms_wrap{text-align: center;}
-		.foot_wrap .foot{padding:30px; text-align:center; vertical-align: middle;}
+		.foot_wrap .foot{ text-align:center; vertical-align: middle;}
 
 	/* fullpage */
 		.chap_list_wrap{display:none;}
