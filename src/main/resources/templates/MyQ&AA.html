@@ -20,7 +20,7 @@
 			<div class="head">
 				<div class="head_logo">
 					<a href="main.html">
-						<img src="/image/logo.png" class="head_logo_img_fixed">
+						<img src="image/logo.png" class="head_logo_img_fixed">
 					</a>
 				</div>
 
@@ -38,7 +38,7 @@
 					<ul>
 						<li>
 							<a href="#">
-								<img src="/image/basket.png" class="icon_basket_img_fixed">
+								<img src="image/basket.png" class="icon_basket_img_fixed">
 							</a>
 						</li>
 					</ul>
@@ -60,7 +60,7 @@
 					<div id="ham-menu-wrap">
 						<div class="ham-menu mt-5">
 							<ul class="ham-top-menu">
-								<li><a href="../brand/brand.html">ABOUT US<i class="bi bi-caret-down-fill"></i></a>
+								<li><a href="/html/aboutus.html">ABOUT US<i class="bi bi-caret-down-fill"></i></a>
 									<ul class="ham-sub-menu">
 										<li><a href="../menu/menu(drink).html">MENU</a></li>
 										<li><a href="../store/store.html">STORE</a></li>
@@ -286,9 +286,13 @@
 					<div class="cont_text_wrap">
 						<div class="cont_text cont_list_map">
 							<ul>
-								<li>HOME</li>
-								<li>My Page</li>
-								<li>문의내역</li>
+								<li>
+									HOME
+								</li>
+								<li>
+									My Page								</li>
+								<li>
+									문의내역								</li>
 							</ul>
 						</div>
 					</div>
@@ -310,7 +314,7 @@
 						<div class="cont_title" style="position: absolute; top: 30px;  font-size: 1em;">
 							<b>문의내역</b>
 						</div>
-						</div>
+											</div>
 										<div class="cont_text_wrap">
 												<div class="cont_list cont_list_content cont_list_content_search">
 							<ul>
@@ -336,7 +340,7 @@
 											<tr>
 												<th class="board_pc">
 													번호
-                        </th>
+												</th>
 												<th>
 													제목
 												</th>
@@ -352,66 +356,70 @@
 											</tr>
 										</thead>
 										<tbody>
-										<tr th:each="board: ${boardList}">
+																																				<tr>
+															<td class="board_pc">3</td>
+															<td>
+																<div class="text_wrap">
+																	<div class="text">
+																		<a href="detail/?bbs_idx=230&amp;bbs_category=7&amp;bbs_detail_category=&amp;bbs_page=1">
+																			<em>
+																				123																			</em>
+																		</a>
+																																			</div>
+																</div>
+															</td>
+															<td class="board_pc"> ㅇㅇ </td>
+															<td>2023-10-06</td>
+															<td class="board_pc">2</td>
+														</tr>
+																									<tr>
+															<td class="board_pc">2</td>
+															<td>
+																<div class="text_wrap">
+																	<div class="text">
+																		<a href="detail/?bbs_idx=229&amp;bbs_category=7&amp;bbs_detail_category=&amp;bbs_page=1">
+																			<em>
+																				456																			</em>
+																		</a>
+																																			</div>
+																</div>
+															</td>
+															<td class="board_pc"> ㅇㅇ </td>
+															<td>2023-10-04</td>
+															<td class="board_pc">315</td>
+														</tr>
+																									<tr>
+															<td class="board_pc">1</td>
+															<td>
+																<div class="text_wrap">
+																	<div class="text">
+																		<a href="detail/?bbs_idx=225&amp;bbs_category=7&amp;bbs_detail_category=&amp;bbs_page=1">
+																			<em>
+																				789																			</em>
+																		</a>
+																																			</div>
+																</div>
+															</td>
+															<td class="board_pc"> ㅇㅇ </td>
+															<td>2023-09-19</td>
+															<td class="board_pc">205</td>
+														</tr>
 
-											<td class="board_pc" th:text="${board.id}" ></td>
-											<td>
-
-												<div class="text_wrap">
-													<div class="text">								<!--공지사항은 board.noticeTitle 이런식으로 해줘야함 뒤에 ㅇㅇ -->
-														<a th:href="@{|/board/${board.id}|(page=${boardList.number + 1})}" th:text="${board.boardTitle}"></a></a>
-
-													</div>
-												</div>
-											</td>
-
-											<td class="board_pc">CAFE DREAM</td>
-											<td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
-											<td class="board_pc" th:text="${board.boardHits}" ></td>
-										</tr>
-
-										</tbody>
+																					</tbody>
 									</table>
 								</div>
-						
-          	<div class="board_page_wrap">
+							<div class="board_page_wrap">
 							<div class="board_page">
 								<ul>
-									<li class="fo_re">
-										<a th:href="@{/board/QnA(page=1)}">
-											<span>처음</span>
-										</a>
-									</li>
-
-									<li class="board_page_check">
-											<span th:each="page: ${#numbers.sequence(startPage, endPage)}">
-										<!-- 현재페이지는 링크 없이 숫자만 -->
-												<!--												<span><a th:href="@{/board/QnA(page=${page})}" th:text="${page}"></a></span>-->
-												<span><a th:href="@{|/board/QnA?search_category=${searchCategory}&search=${search}&page=${page}|}"th:text="${page}"></a></span>
-											</span>
-									</li>
-
-									<li>
-										<a th:href="@{/board/QnA(page=${boardList.totalPages})}">
-											<span>마지막</span>
-										</a>
-									</li>
-                  </tbody>
-									</table>
-								</ul>
-								</div>
-								<div class="cont_text">
-								<div class="input_width">
-									<div class="input_btn_wrap input_wrap3">
-									<a href="../..//notice,Q&A/write.html">
-									</a>
-									</div>
-								</div>
+									<li class="fo_re"><a><span>처음</span></a></li><li class="board_page_check"><a><span>1</span></a></li><li><a><span>마지막</span></a></li>								</ul>
 							</div>
+						</div>
 					</div>
 				</div>
-			</div>    
-        
+			</div>
+		</div>
+	 </div>
+                    
 <nav class="ms_nav" id="msRnb" style="line-height: 1.0;" >					
 	<ul>
 		<li>
@@ -427,9 +435,11 @@
 		</li>
 	</ul>
 </nav>
-</div>
-       <!-- 내용 end -->
-</div>
+                </div>
+                <!-- 내용 end -->
+            </div>
+
+
 
 
 		<div class="foot_wrap" style="top: 1100px;">
@@ -448,7 +458,7 @@
 					</ul>
 				</div>
 				<div class="foot_logo">
-					<img class="foot_logo" src="/image/logo.png" alt="Logo">
+					<img class="foot_logo" src="image/logo.png" alt="Logo">
 				</div>
 				<div class="foot_cont">
 					<ul>
@@ -465,5 +475,8 @@
 			</div>
 		</div>
 
+
+
 </body>
+
 </html>
