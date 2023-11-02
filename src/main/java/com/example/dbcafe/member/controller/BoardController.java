@@ -29,7 +29,6 @@ public class BoardController {
 
 
 
-
     //글 작성
     @GetMapping("/QnA/write")
     public String text(){
@@ -41,7 +40,7 @@ public class BoardController {
         boardDTO.setBoardWriter(principalDetails.getUsername());
         boardService.save(boardDTO);
 
-        return "index";
+       return "redirect:/board/QnA/";
     }
 
     //공지사항 글작성
@@ -66,7 +65,6 @@ public class BoardController {
         List<BoardDTO> boardDTOList = boardService.findAll();
         model.addAttribute("boardList", boardDTOList);
         return "list";
-
     }
 
 
@@ -78,7 +76,7 @@ public class BoardController {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         model.addAttribute("Page", pageable.getPageNumber());
-        return "detail";
+        return "Q&A_check";
     }
 
     //공지사항 상세조회
@@ -94,10 +92,11 @@ public class BoardController {
 
     //QnA 글수정1
     @GetMapping("/QnA/update/{id}")
-    public String updateForm(@PathVariable Long id, Model model){
+    public String updateForm(@PathVariable Long id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails){
         BoardDTO boardDTO = boardService.findById(id);
+        boardDTO.setBoardWriter(principalDetails.getUsername());
         model.addAttribute("boardUpdate", boardDTO);
-        return "update";
+        return "Q&A_write_modify";
     }
 
     //QnA 글수정2
@@ -105,7 +104,7 @@ public class BoardController {
     public String update(@ModelAttribute BoardDTO boardDTO, Model model){
         BoardDTO board = boardService.update(boardDTO);
         model.addAttribute("board", board);
-        return "detail";
+        return "redirect:/board/QnA";
     }
 
     //공지사항 글수정1
@@ -129,14 +128,14 @@ public class BoardController {
     @GetMapping("/QnA/delete/{id}")
     public String delete(@PathVariable Long id){
         boardService.delete(id);
-        return "redirect:/QnA/";
+        return "redirect:/board/QnA/";
     }
 
     //공지사항 글삭제
     @GetMapping("/notice/delete/{id}")
     public String noticedelete(@PathVariable Long id){
         noticeService.delete(id);
-        return "redirect:/notice/";
+        return "redirect:/board/notice/";
     }
 
     // /board/paging?page=1 페이징 테스트용 매핑
@@ -242,7 +241,7 @@ public class BoardController {
         model.addAttribute("search", search);
         model.addAttribute("searchCategory", searchCategory);
 
-        return "Q&A";
+        return "notice";
     }
 
 }

@@ -330,7 +330,16 @@
 									<th scope="col">결제금액</th>
 								</tr>
 							</thead>
-							<tbody><tr>         <td>1</td>         <td>아이스아메리카노</td>         <td>카카오페이</td>         <td>CafeDream</td>          <td>2023.10.14 00:42</td>           <td>2,500원</td>               </tr></tbody>
+							<tbody>
+								<tr th:each="order : ${orders}">
+									<td th:text="${order.id}"></td>
+									<td th:text="${order.productNames}"></td>
+									<td>카카오페이</td>
+									<td>CafeDream</td>
+									<td th:text="${order.orderDate}"></td>
+									<td th:text="${order.totalPrice}"></td>
+								</tr>
+							</tbody>
 						</table>
 						<script id="cardUseHist" type="text/x-jquery-tmpl">
 							<tr>

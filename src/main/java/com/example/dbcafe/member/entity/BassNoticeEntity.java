@@ -17,14 +17,12 @@ import java.time.LocalDateTime;
 public class BassNoticeEntity {
     @CreationTimestamp
     @Column(updatable = false)
-    private LocalDateTime cretedTime;
+    private LocalDateTime createdTime;
 
     @UpdateTimestamp
     @Column(insertable = false)
     private LocalDateTime updateTime;
 
-    @Column()
-    private String noticeWriter; //아마 작성자의 ID가 될거같음
 
 
 }

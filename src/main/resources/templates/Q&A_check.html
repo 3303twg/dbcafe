@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http:/www.thymeleaf.org" >
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
 <head>
 <link rel="stylesheet" href="/css/Q&A_check.css">
 <link rel="stylesheet" href="/css/all.css">
@@ -40,7 +40,7 @@
 	
 	<link rel="stylesheet" href="/css/header.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="header.js"></script>
+	<script src="/js/header.js"></script>
 	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -191,13 +191,13 @@
 			<div class="head">
 				<div class="head_logo">
 					<a href="../main/main.html">
-						<img src="image/logo.png" class="head_logo_img_fixed">
+						<img src="/image/logo.png" class="head_logo_img_fixed">
 					</a>
 				</div>
 
 				<div class="icon_basket">
 					<a href="#">
-						<img src="image/basket.png" class="icon_basket_img_fixed">
+						<img src="/image/basket.png" class="icon_basket_img_fixed">
 					</a>
 				</div>
 
@@ -295,13 +295,7 @@
 								</a>
 							</div>
 						</div>
-						<form name="submit_form" id="submit_form" method="post">
-							<input type="hidden" name="customer_category" id="customer_category" value="2">
-							<input type="hidden" name="customer_tbl_area1_erp" id="customer_tbl_area1_erp" value="">
-							<input type="hidden" name="customer_tbl_area2_erp" id="customer_tbl_area2_erp" value="">
-							<input type="hidden" name="customer_tbl_price_erp" id="customer_tbl_price_erp" value="">
-							<input type="hidden" name="customer_tbl_category_erp" id="customer_tbl_category_erp" value="">
-							<input type="hidden" name="customer_tbl_store_erp" id="customer_tbl_store_erp" value="">
+						<form name="submit_form" id="submit_form" th:action="@{'/board/QnA/update/' + ${board.id}}" method="get">
 							<div class="cont_text_wrap">
 								<div class="table_info table_info1">
 									<div class="cont_text_wrap text_center">
@@ -314,7 +308,7 @@
 												</span></span></th>
 													<div class="cont_text cont_text_title">
 														<label>
-															<th style="border-radius:5px; border:1px solid rgba(0,0,0,0.1);">입점접수는 어떻게 하나요?</th>
+															<th th:text="${board.boardTitle}" style="border-radius:5px; border:1px solid rgba(0,0,0,0.1);"></th>
 														</label>
 														</div>
 											</tr>
@@ -324,7 +318,7 @@
 												</span></span></th>
 													<div class="cont_text cont_text_title">
 														<label>
-															<th style="border-radius:5px; border:1px solid rgba(0,0,0,0.1);">ㅇㅇ</th>
+															<th th:text="${board.boardWriter}" style="border-radius:5px; border:1px solid rgba(0,0,0,0.1);"></th>
 														</label>
 													</div>
 											</tr>
@@ -335,7 +329,7 @@
 												</span></span></th>
 													<div class="cont_text cont_text_title">
 															<label>
-																<th style="border-radius:5px; border:1px solid rgba(0,0,0,0.1);">입점접수 게시글 작성 방식 알려주세요.</th>
+																<th th:text="${board.boardContents}"style="border-radius:5px; border:1px solid rgba(0,0,0,0.1);"></th>
 															</label>
 													</div>
 											</div>
@@ -350,13 +344,17 @@
 										<input type="submit" value="수정하기" class="btn btn1 btn_ani" id="submit">
 									</div>
 								</div>
+
+						</form>
+					<form th:action="@{'/board/QnA/delete/' + ${board.id}}" method="get" >
 								<div class="cont_text">
 									<div class="input_btn_wrap input_wrap2">
 										<input type="submit" value="삭제하기" class="btn btn1 btn_ani" id="submit">
 									</div>
 								</div>
-							</div>
 						</form>
+							</div>
+
 			<div class="foot_menu_wrap">
 			<div class="foot_menu">
 				<div class="cont_list">
@@ -385,7 +383,7 @@
 									<ul>
 										<li>
 											<div class="foot_logo">
-												<img src="image/logo.png">
+												<img src="/image/logo.png">
 											</div>
 										</li>
 									</ul>

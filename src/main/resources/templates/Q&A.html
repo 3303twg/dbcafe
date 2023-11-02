@@ -399,7 +399,8 @@
 											</tr>
 										</thead>
 										<tbody>
-																							<tr>
+
+										<tr>
 													<td class="board_pc">공지</td>
 													<td>
 														<div class="text_wrap">
@@ -414,24 +415,26 @@
 													<td class="board_pc"> CAFE DREAM</td>
 													<td>2023-08-30</td>
 													<td class="board_pc">457</td>
-												</tr>
-																							<tr th:each="board: ${boardList}">
 
-																								<td class="board_pc" th:text="${board.id}" ></td>
-																								<td>
+										</tr>
+										<tr th:each="board: ${boardList}">
 
-																									<div class="text_wrap">
-																										<div class="text">								<!--공지사항은 board.noticeTitle 이런식으로 해줘야함 뒤에 ㅇㅇ -->
-																											<a th:href="@{|/board/${board.id}|(page=${boardList.number + 1})}" th:text="${board.boardTitle}"></a></a>
+											<td class="board_pc" th:text="${board.id}" ></td>
+											<td>
 
-																										</div>
-																									</div>
-																								</td>
+												<div class="text_wrap">
+													<div class="text">								<!--공지사항은 board.noticeTitle 이런식으로 해줘야함 뒤에 ㅇㅇ -->
+														<a th:href="@{|/board/QnA/${board.id}|(page=${boardList.number + 1})}" th:text="${board.boardTitle}"></a>
 
-																								<td class="board_pc">CAFE DREAM</td>
-																								<td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																								<td class="board_pc" th:text="${board.boardHits}" ></td>
-																							</tr>
+													</div>
+												</div>
+											</td>
+
+											<td class="board_pc"  th:text="${board.boardWriter}" ></td>
+											<td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+											<td class="board_pc" th:text="${board.boardHits}" ></td>
+										</tr>
+
 
 										</tbody>
 									</table>
@@ -463,7 +466,7 @@
 							<div class="cont_text">
 								<div class="input_width">
 									<div class="input_btn_wrap input_wrap3">
-									<a href="/text">
+									<a href="/board/QnA/write">
 										<input type="button" value="글쓰기" class="btn btn1 btn_ani" id=""> <!-- style807 = height: 80%; 추가 -->
 									</a>
 									</div>

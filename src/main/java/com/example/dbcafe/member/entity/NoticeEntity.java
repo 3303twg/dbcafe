@@ -21,7 +21,7 @@ public class NoticeEntity extends BassNoticeEntity {
     @Column
     private String noticeTitle;
     @Column
-    private String noticeWrite;
+    private String noticeWriter;
 
     @Column(length = 500)
     private String noticeContents;
@@ -35,7 +35,7 @@ public class NoticeEntity extends BassNoticeEntity {
         //boardEntitiy.setBoardWriter(boardDTO.getBoardWriter());
 //        boardEntitiy.setBoardPass(boardDTO.getBoardPass());
         noticeEntity.setNoticeTitle(noticeDTO.getNoticeTitle());
-        noticeEntity.setNoticeWrite(noticeDTO.getNoticeWriter());
+        noticeEntity.setNoticeWriter(noticeDTO.getNoticeWriter());
         noticeEntity.setNoticeContents(noticeDTO.getNoticeContents());
         noticeEntity.setNoticeHits(0);
 
@@ -50,7 +50,7 @@ public class NoticeEntity extends BassNoticeEntity {
 //        boardEntitiy.setBoardWriter(boardDTO.getBoardWriter());
 //        boardEntitiy.setBoardPass(boardDTO.getBoardPass());
         noticeEntity.setNoticeTitle(noticeDTO.getNoticeTitle());
-        noticeEntity.setNoticeWrite(noticeDTO.getNoticeWriter());
+        noticeEntity.setNoticeWriter(noticeDTO.getNoticeWriter());
         noticeEntity.setNoticeContents(noticeDTO.getNoticeContents());
         noticeEntity.setNoticeHits(noticeDTO.getNoticeHits());
         return noticeEntity;

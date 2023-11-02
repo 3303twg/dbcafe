@@ -295,7 +295,7 @@
 								</a>
 							</div>
 						</div>
-						<form name="submit_form" id="submit_form" method="post" action="/text">
+						<form name="submit_form" id="submit_form" method="post" action="/board/QnA/update">
 							<input type="hidden" name="customer_category" id="customer_category" value="2">
 							<input type="hidden" name="customer_tbl_area1_erp" id="customer_tbl_area1_erp" value="">
 							<input type="hidden" name="customer_tbl_area2_erp" id="customer_tbl_area2_erp" value="">
@@ -311,6 +311,9 @@
 						</div>
 									<table>
 										<tbody>
+										<input type="hidden" name="id" th:value="${boardUpdate.id}">
+										<input type="hidden" name="id" th:value="${boardUpdate.boardHits}">
+										<input type="hidden" name="id" th:value="${boardUpdate.boardWriter}">
 											<tr>
 												<th>
 													제목<span class="red">*<span>
@@ -318,7 +321,7 @@
 													<td>
 														<div class="input_text_wrap input_wrap2">
 															<label>
-																<input type="text" name="boardTitle" id="customer_tbl_title" required="required">
+																<input type="text" name="boardTitle" id="customer_tbl_title" required="required" th:value="${boardUpdate.boardTitle}">
 															</label>	
 														</div>
 													</td>
@@ -331,7 +334,7 @@
 													<div class="cont_text">
 														<div class="input_textarea_wrap">
 															<label>
-																<textarea name="boardContents" id="customer_tbl_content" class="count_input"></textarea>
+																<textarea name="boardContents" id="customer_tbl_content" class="count_input" th:text="${boardUpdate.boardContents}" ></textarea>
 															</label>
 														</div>
 														<div class="input_text_info cont_text_info input_limit_byte">

@@ -37,7 +37,7 @@ public class NoticeDTO {
         noticeDTO.setNoticeTitle(noticeEntity.getNoticeTitle());
         noticeDTO.setNoticeContents(noticeEntity.getNoticeContents());
         noticeDTO.setNoticeHits(noticeEntity.getNoticeHits());
-        noticeDTO.setNoticeCreatedTime(noticeEntity.getCretedTime());
+        noticeDTO.setNoticeCreatedTime(noticeEntity.getCreatedTime());
         noticeDTO.setNoticeUpdatedTime(noticeEntity.getUpdateTime());
         return noticeDTO;
     }

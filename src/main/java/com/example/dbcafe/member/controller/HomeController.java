@@ -68,6 +68,11 @@ public class HomeController {
         return "cart";
     }
 
+    @GetMapping("/cart/test")
+    public String testcart(){
+        return "basket";
+    }
+
     @GetMapping("/MYQnA") // << IP/MYQ&A 와같이 매핑됨
     public String myqna(){return "Q&A_write";} // << 리턴해줄 페이지의 명칭
 

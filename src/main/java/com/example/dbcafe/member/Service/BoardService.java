@@ -87,6 +87,7 @@ public class BoardService {
 
         searchResult = boardRepository.findByBoardTitleContaining(search, PageRequest.of(page,pageLimit, Sort.by(Sort.Direction.DESC,"id")));
 
+
         if ("title".equals(searchCategory)) {
             searchResult = boardRepository.findByBoardTitleContaining(search, PageRequest.of(page,pageLimit, Sort.by(Sort.Direction.DESC,"id")));
         } else if ("content".equals(searchCategory)) {

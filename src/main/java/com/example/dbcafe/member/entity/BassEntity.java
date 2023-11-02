@@ -23,8 +23,6 @@ public class BassEntity {
     @Column(insertable = false)
     private LocalDateTime updateTime;
 
-    @Column()
-    private String boardWriter; //아마 작성자의 ID가 될거같음
 
     @Column()
     private int boardPhone;//작성자의 전화번호

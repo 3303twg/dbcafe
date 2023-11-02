@@ -72,7 +72,7 @@ public class NoticeService {
         Page<NoticeEntity> noticeEntities = noticeRepository.findAll(PageRequest.of(page,pageLimit, Sort.by(Sort.Direction.DESC,"id")));
 
         //엔티티를 dto객체로 바꿔주는 라인                                                         //notice.getBoardWriter()
-        Page<NoticeDTO> noticeDTOS = noticeEntities.map(notice -> new NoticeDTO(notice.getId(),notice.getNoticeWriter(), notice.getNoticeTitle(), notice.getNoticeHits(), notice.getCretedTime()));
+        Page<NoticeDTO> noticeDTOS = noticeEntities.map(notice -> new NoticeDTO(notice.getId(),notice.getNoticeWriter(), notice.getNoticeTitle(), notice.getNoticeHits(), notice.getCreatedTime()));
 
         return noticeDTOS;
     }

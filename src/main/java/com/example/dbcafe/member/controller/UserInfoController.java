@@ -52,9 +52,12 @@ public class UserInfoController {
 //        return"MyOrderr";
 //    }
 
-    @GetMapping("/mypage/order/{userId}")
-    public String listOrdersForUser(@PathVariable Long userId, Model model) {
-        List<OrderEntity> userOrders = orderService.getOrdersForUser(userId); // 해당 유저의 주문 데이터를 가져오는 메서드를 구현해야 합니다.
+    @GetMapping("/mypage/order")
+    public String listOrdersForUser(Model model, Principal principal) {
+        String username = (String) principal.getName();
+        Long loggedInUser = userInfoService.getUserIdByUsername(username);
+
+        List<OrderEntity> userOrders = orderService.getOrdersForUser(loggedInUser); // 해당유저의 주문데이터를 가져오는 메서드
         model.addAttribute("orders", userOrders);
         return"MyOrder";
     }
