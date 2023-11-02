@@ -20,6 +20,8 @@ public class NoticeEntity extends BassNoticeEntity {
 
     @Column
     private String noticeTitle;
+    @Column
+    private String noticeWrite;
 
     @Column(length = 500)
     private String noticeContents;
@@ -33,6 +35,7 @@ public class NoticeEntity extends BassNoticeEntity {
         //boardEntitiy.setBoardWriter(boardDTO.getBoardWriter());
 //        boardEntitiy.setBoardPass(boardDTO.getBoardPass());
         noticeEntity.setNoticeTitle(noticeDTO.getNoticeTitle());
+        noticeEntity.setNoticeWrite(noticeDTO.getNoticeWriter());
         noticeEntity.setNoticeContents(noticeDTO.getNoticeContents());
         noticeEntity.setNoticeHits(0);
 
@@ -44,9 +47,10 @@ public class NoticeEntity extends BassNoticeEntity {
     public static NoticeEntity toUpdateEntity(NoticeDTO noticeDTO) {
         NoticeEntity noticeEntity = new NoticeEntity();
         noticeEntity.setId(noticeDTO.getId());//위랑 다르게 아이디가있어야 업데이트함
-        //boardEntitiy.setBoardWriter(boardDTO.getBoardWriter());
+//        boardEntitiy.setBoardWriter(boardDTO.getBoardWriter());
 //        boardEntitiy.setBoardPass(boardDTO.getBoardPass());
         noticeEntity.setNoticeTitle(noticeDTO.getNoticeTitle());
+        noticeEntity.setNoticeWrite(noticeDTO.getNoticeWriter());
         noticeEntity.setNoticeContents(noticeDTO.getNoticeContents());
         noticeEntity.setNoticeHits(noticeDTO.getNoticeHits());
         return noticeEntity;
