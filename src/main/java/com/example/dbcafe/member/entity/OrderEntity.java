@@ -27,7 +27,7 @@ public class OrderEntity {
     private List<MenuEntity> menuItems; // 주문한 메뉴 목록
 
     @Column
-    private BigDecimal totalPrice; // 주문의 총 가격
+    private int totalPrice; // 주문의 총 가격
 
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -45,7 +45,7 @@ public class OrderEntity {
         return id;
     }
 
-    public BigDecimal getTotalPrice(){
+    public int getTotalPrice(){
         return totalPrice;
     }
 
@@ -80,7 +80,7 @@ public class OrderEntity {
         this.menuItems = menuItems;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
+    public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
 

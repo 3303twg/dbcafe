@@ -16,7 +16,9 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
     private UserInfoService userInfoService;
+
 
     @PostMapping("/createOrder")
     public String createOrder(Long userId) {
@@ -31,6 +33,7 @@ public class OrderController {
 
     @PostMapping("/endOrder")
     public String del_cart(Long userId){
+        userInfoService.addStamp(userId, 10);
         orderService.del_cart(userId);
         return null;
     }

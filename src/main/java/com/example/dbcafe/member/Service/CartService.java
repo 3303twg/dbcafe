@@ -50,7 +50,7 @@ public class CartService {
         menuItems.add(menu);
         cart.setMenuItems(menuItems);
 
-        BigDecimal newTotalPrice = calculateTotalPrice(cart);
+        int newTotalPrice = calculateTotalPrice(cart);
         cart.setTotalPrice(newTotalPrice);
 
         cartRepository.save(cart);
@@ -63,41 +63,23 @@ public class CartService {
         if (cart != null) {
             List<MenuEntity> menuItems = cart.getMenuItems();
 
-//            if (itemIndex >= 0 && itemIndex < menuItems.size()) {
-                // 원하는 인덱스의 항목 삭제
-
-
-            List<Integer> testdata = new ArrayList<>();
-
-//            testdata.add(2);
-//            testdata.add(5);
-//            testdata.add(6);
-//            testdata.add(9);
             int testnum = 1;
 
-//            for (int int_index : testdata){
             for (Long index : itemIndex) {
-                    //이미 인트니까 주석처리함
                 int int_index = index.intValue();
-
-//                Long LongIndex = itemIndex;
-//                int test = LongIndex.intValue();
-
-//                test = 3-1;
 
                 menuItems.remove(int_index-testnum);
 
                 cart.setMenuItems(menuItems);
 
                 // 장바구니의 총 가격 업데이트
-                BigDecimal newTotalPrice = calculateTotalPrice(cart);
+                int newTotalPrice = calculateTotalPrice(cart);
                 cart.setTotalPrice(newTotalPrice);
 
                 // 장바구니 엔티티 저장
                 cartRepository.save(cart);
                 testnum ++;
             }
-//            }
         }
     }
 
@@ -105,13 +87,13 @@ public class CartService {
 
 
 
-    private BigDecimal calculateTotalPrice(CartEntity cart) {
+    private int calculateTotalPrice(CartEntity cart) {
         List<MenuEntity> menuItems = cart.getMenuItems();
-        BigDecimal totalPrice = BigDecimal.ZERO;
+        int totalPrice = 0;
 
         for (MenuEntity menu : menuItems) {
-            BigDecimal menuPrice = menu.getPrice();
-            totalPrice = totalPrice.add(menuPrice);
+            int menuPrice = menu.getPrice();
+            totalPrice = totalPrice + menuPrice;
         }
 
         return totalPrice;

@@ -28,15 +28,12 @@ public class CartController {
 
     @Autowired
     private CartService cartService;
-
     @Autowired
     public CartController(CartService cartService) {
         this.cartService = cartService;
     }
-
     @Autowired
     private CartRepositoty cartRepositoty;
-
     @Autowired
     private UserInfoService userInfoService;
 
@@ -44,14 +41,13 @@ public class CartController {
 
     //장바구니넣는기능
     @PostMapping("/cart/{cartId}/add/{menuId}")
-    public String  addToCart(@PathVariable Long cartId, @PathVariable Long menuId, Model model, HttpSession session, Principal principal) {
+    public String  addToCart(@PathVariable Long cartId, @PathVariable Long menuId,
+                             Principal principal) {
         cartService.addToCart(cartId, menuId);
-
 
         String username = (String) principal.getName();
         Long loggedInUser = userInfoService.getUserIdByUsername(username);
 
-        //하 모르겠ㄱ다
         if (loggedInUser == null) {
             return "login";
         }

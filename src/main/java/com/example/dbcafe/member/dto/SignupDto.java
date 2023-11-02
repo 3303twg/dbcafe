@@ -20,6 +20,7 @@ public class SignupDto {
                 .name(name)
                 .gender(gender)
                 .phone(phone)
+                .stamp(0)
 
                 .build();
     }

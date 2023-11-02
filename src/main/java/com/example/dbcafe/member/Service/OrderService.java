@@ -40,7 +40,7 @@ public class OrderService {
         List<MenuEntity> menuItems = cart.getMenuItems();
 
         // 총 주문 가격 계산
-        BigDecimal totalOrderPrice = calculateTotalOrderPrice(menuItems);
+        int totalOrderPrice = calculateTotalOrderPrice(menuItems);
 
         // 주문 생성
         OrderEntity order = new OrderEntity();
@@ -58,8 +58,6 @@ public class OrderService {
         // 주문 정보 저장
         orderRepository.save(order);
 
-
-
         return order;
     }
 
@@ -72,16 +70,16 @@ public class OrderService {
         CartEntity cart = user.getCart();
         //         주문 생성 후 장바구니 비우기
         cart.setMenuItems(new ArrayList<>());
-        cart.setTotalPrice(BigDecimal.ZERO);
+        cart.setTotalPrice(0);
         cartRepository.save(cart);
     }
 
-    private BigDecimal calculateTotalOrderPrice(List<MenuEntity> menuItems) {
-        BigDecimal totalPrice = BigDecimal.ZERO;
+    private int calculateTotalOrderPrice(List<MenuEntity> menuItems) {
+        int totalPrice = 0;
 
         for (MenuEntity menu : menuItems) {
-            BigDecimal menuPrice = menu.getPrice();
-            totalPrice = totalPrice.add(menuPrice);
+            int menuPrice = menu.getPrice();
+            totalPrice = totalPrice+menuPrice;
         }
 
         return totalPrice;

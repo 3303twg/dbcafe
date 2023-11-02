@@ -15,7 +15,7 @@ public class MenuDTO {
 
     private String menuName;
 
-    private BigDecimal menuPrice; //String >> BigDecimal로 수정했음
+    private int menuPrice; //String >> BigDecimal로 수정했음
 
     private String menuImagePath;
 

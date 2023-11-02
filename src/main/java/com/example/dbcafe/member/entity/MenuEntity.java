@@ -22,14 +22,14 @@ public class MenuEntity {
 //    private String menuPrice; //조금만 수정할겡
 
     @Column
-    private BigDecimal menuPrice;
+    private int menuPrice;
 
     @Column
     private String menuImagePath;
     @Column
     private Long menuType;
 
-    public BigDecimal getPrice() {
+    public int getPrice() {
         return menuPrice;
     }
 

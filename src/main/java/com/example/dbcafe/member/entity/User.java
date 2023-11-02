@@ -31,6 +31,8 @@ public class User {
 
     private LocalDateTime createDate; // 날짜
 
+    private int stamp; //스템프 값을 저장할부분
+
     @OneToOne(mappedBy = "user")
     private CartEntity cart;
     public CartEntity getCart() {

@@ -1,6 +1,8 @@
 package com.example.dbcafe.member.Service;
 
+import com.example.dbcafe.member.entity.CartEntity;
 import com.example.dbcafe.member.entity.User;
+import com.example.dbcafe.member.repository.CartRepositoty;
 import com.example.dbcafe.member.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,10 +11,13 @@ import com.example.dbcafe.member.repository.UserRepository;
 @Service
 public class UserInfoService {
     private final UserRepository userRepository;
+    private final CartRepositoty cartRepositoty;
+
 
     @Autowired
-    public UserInfoService(UserRepository userRepository) {
+    public UserInfoService(UserRepository userRepository, CartRepositoty cartRepositoty) {
         this.userRepository = userRepository;
+        this.cartRepositoty = cartRepositoty;
     }
 
     public Long getUserIdByUsername(String username) {
@@ -30,5 +35,17 @@ public class UserInfoService {
         }
         return null;
 
+    }
+
+    public void addStamp(Long userId, int valueToAdd) {
+        User user = userRepository.findById(userId).orElse(null);
+        CartEntity cart = cartRepositoty.findById(userId).orElse(null);
+        if (user != null) {
+            int total_price = cart.getTotalPrice();
+            int value = total_price / 1000;
+            int currentStamp = user.getStamp();
+            user.setStamp(currentStamp + value);
+            userRepository.save(user);
+        }
     }
 }

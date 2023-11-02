@@ -90,7 +90,7 @@ public class MenuController {
         System.out.print(menuDTO);
         if(menuDTO.getMenuName()!=null){menuDTOtmp.setMenuName(menuDTO.getMenuName());
         System.out.print("chg name");}
-        if(menuDTO.getMenuPrice()!=null){menuDTOtmp.setMenuPrice(menuDTO.getMenuPrice());
+        if(menuDTO.getMenuPrice()!=0){menuDTOtmp.setMenuPrice(menuDTO.getMenuPrice());
             System.out.print("chg price");}
         if(menuDTO.getMenuType()!=null){menuDTOtmp.setMenuType(menuDTO.getMenuType());
             System.out.print("chg type");}

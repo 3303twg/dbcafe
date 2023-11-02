@@ -35,7 +35,7 @@ public class CartEntity {
     private List<MenuEntity> menuItems; // 장바구니에 담긴 메뉴 목록
 
     @Column
-    private BigDecimal totalPrice; // 장바구니의 총 가격
+    private int totalPrice; // 장바구니의 총 가격
 
     // 다른 필드는 필요한 경우 추가
 

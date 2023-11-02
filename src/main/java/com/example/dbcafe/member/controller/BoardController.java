@@ -100,7 +100,6 @@ public class BoardController {
         return "update";
     }
 
-
     //QnA 글수정2
     @PostMapping("/QnA/update")
     public String update(@ModelAttribute BoardDTO boardDTO, Model model){
