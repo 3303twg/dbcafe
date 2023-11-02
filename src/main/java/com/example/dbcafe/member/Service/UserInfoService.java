@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.dbcafe.member.repository.UserRepository;
 
+import java.util.Optional;
+
 @Service
 public class UserInfoService {
     private final UserRepository userRepository;
@@ -19,6 +21,11 @@ public class UserInfoService {
         this.userRepository = userRepository;
         this.cartRepositoty = cartRepositoty;
     }
+    public User findUser(Long id) {
+        return userRepository.findById(id).get();
+    }
+
+
 
     public Long getUserIdByUsername(String username) {
         // 데이터베이스에서 사용자를 찾아 사용자 ID를 가져옴
@@ -27,6 +34,17 @@ public class UserInfoService {
             return user.getId();
         }
         return null;
+    }
+
+    // 회원 정보 수정
+    public void userModify(User user) {
+        User updateEntity = userRepository.findByUsername(user.getUsername());
+        updateEntity.setUsername(user.getUsername());
+        updateEntity.setEmail(user.getEmail());
+        updateEntity.setGender(user.getGender());
+        updateEntity.setPhone(user.getPhone());
+        userRepository.save(updateEntity);
+
     }
     public User getUserByUsername(String username){
         User user = userRepository.findByUsername(username);
@@ -48,4 +66,7 @@ public class UserInfoService {
             userRepository.save(user);
         }
     }
+
+
+
 }

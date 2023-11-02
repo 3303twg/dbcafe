@@ -5,11 +5,11 @@
 	<title>개인정보수정</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	<link rel="stylesheet" href="information.css">
-	<link rel="stylesheet" href="information1.css">
-	<link rel="stylesheet" href="information2.css">
-	<link rel="stylesheet" href="information3.css">
-	<link rel="stylesheet" href="work.css">
+	<link rel="stylesheet" href="/css/information.css">
+	<link rel="stylesheet" href="/css/information1.css">
+	<link rel="stylesheet" href="/css/information2.css">
+	<link rel="stylesheet" href="/css/information3.css">
+	<link rel="stylesheet" href="/css/work.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;900&display=swap">
@@ -376,7 +376,7 @@ function del_check(){
                     <div class="ms_cont">
 <div class="cont" style="border: 1;">
 
-<form name="edit_form" action="edit_ok.php" method="post" onsubmit="return edit_check()" >
+<form name="edit_form" th:action="${userInfo.id}" method="post" onsubmit="return edit_check()" >
 <fieldset style="position: absolute; top: 25px; width: 700px; padding: 30px 10px 50px 70px; border: 1px solid;">
     <legend>정보 수정</legend>
     						<div class="cont_title" >
@@ -384,19 +384,19 @@ function del_check(){
 						</div>
     <p>
         <div class="txt">이름</div>
-        <input type="your" name="name" id="name" class="name">
+        <input type="your" name="name" id="name" class="name" th:value="${userInfo.name}">
         <?php echo $array["u_name"]; ?>
     </p>
 
     <p>
         <div class="txt">아이디</div>
-               <input type="my" name="id" id="id" class="id">
+               <input type="my" name="username" id="id" class="id" th:value="${userInfo.username}">
         <?php echo $array["u_id"]; ?>
     </p>
 
     <p>
         <label for="pwd" class="txt">비밀번호</label>
-        <input type="password" name="pwd" id="pwd" class="pwd">
+        <input type="password" name="pwd" id="pwd" class="pwd" >
         <br>
         <span class="err_pwd">* 비밀번호는 4~8글자만 입력할 수 있습니다.</span>
     </p>
@@ -414,7 +414,7 @@ function del_check(){
     ?>
     <p>
         <label for="repwd" class="txt">본인 확인 이메일 (선택)</label>
-        <input type="text" name="birth" id="birth" class="birth" >
+        <input type="text" name="email" id="birth" class="birth"  th:value="${userInfo.email}">
         <br>
     </p>
 
@@ -427,7 +427,7 @@ function del_check(){
     
     <p>
         <label for="mobile" class="txt">전화번호</label>
-        <input type="text" name="mobile" id="mobile" class="mobile" >
+        <input type="text" name="phone" id="mobile" class="mobile" th:value="${userInfo.phone}">
         <br>
         <span class="err_mobile">"-"없이 숫자만 입력</span>
     </p>
