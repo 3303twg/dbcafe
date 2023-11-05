@@ -30,6 +30,7 @@
 <p>총 가격: <span th:text="${totalPrice}" id="totalPrice"></span></p>
 
 <!-- 결제하기 버튼 추가 -->
+<input type="checkbox" id="useCoupon" name="useCoupon"> 쿠폰 사용하기
 <button id="checkoutButton">결제하기</button>
 
 <script>
@@ -91,6 +92,7 @@
     document.getElementById("checkoutButton").addEventListener("click", function () {
         var userID = [[${loginUser}]];
         var Price = [[${totalPrice}]]; //타임리프 모델선언한거 가져오는거
+        var useCoupon = document.getElementById("useCoupon").checked;
         console.log("결제 응답:", Price);
 
         $.ajax({
@@ -104,6 +106,7 @@
                     type: "POST",
                     data: {
                         userId: userID, //주문내역을 만들때 유저아이디가 필요함 추후엔 머 알아서 가져와야지머
+                        useCoupon: useCoupon
                     },
                     success: function (data) {
                         // 주문 내역이 성공적으로 생성되면 결제 시작

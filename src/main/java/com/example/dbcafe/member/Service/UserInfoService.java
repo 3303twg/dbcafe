@@ -15,16 +15,18 @@ public class UserInfoService {
     private final UserRepository userRepository;
     private final CartRepositoty cartRepositoty;
 
+    @Autowired
+    private CartService cartService;
 
     @Autowired
     public UserInfoService(UserRepository userRepository, CartRepositoty cartRepositoty) {
         this.userRepository = userRepository;
         this.cartRepositoty = cartRepositoty;
     }
+
     public User findUser(Long id) {
         return userRepository.findById(id).get();
     }
-
 
 
     public Long getUserIdByUsername(String username) {
@@ -46,7 +48,8 @@ public class UserInfoService {
         userRepository.save(updateEntity);
 
     }
-    public User getUserByUsername(String username){
+
+    public User getUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
         if (user != null) {
             return user;
@@ -67,6 +70,15 @@ public class UserInfoService {
         }
     }
 
-
+    public void usecoupon(Long userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        if (user != null) {
+            if (user.getStamp() >= 10) {
+                user.setStamp(user.getStamp() - 10); // 쿠폰사용량은 10개
+                userRepository.save(user);
+                cartService.addToCart(userId, 1L); //1번은 표시하지않는 메뉴로 설계할것임
+            }
+        }
+    }
 
 }

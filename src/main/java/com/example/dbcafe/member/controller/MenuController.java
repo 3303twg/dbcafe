@@ -51,6 +51,7 @@ public class MenuController {
 
 
 
+        //이걸 올려야 비로그인시에 장바구니담기를 못하게할수있음
         if(principal != null) {
             String username = (String) principal.getName();
 

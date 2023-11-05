@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +56,10 @@ public class OrderService {
         }
         order.setProductNames(productNameBuilder.toString());
 
+
+        LocalDateTime orderTime = LocalDateTime.now();
+        order.setOrderDate(orderTime);
+
         // 주문 정보 저장
         orderRepository.save(order);
 
@@ -64,10 +69,16 @@ public class OrderService {
     //장바구니비우기
     public void del_cart(Long userId){
 
+        //이건 머임?
         User user = memberRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
 
+
         CartEntity cart = user.getCart();
+        if (cart == null) {
+            cart = new CartEntity();
+            cart.setUser(user);
+        }
         //         주문 생성 후 장바구니 비우기
         cart.setMenuItems(new ArrayList<>());
         cart.setTotalPrice(0);

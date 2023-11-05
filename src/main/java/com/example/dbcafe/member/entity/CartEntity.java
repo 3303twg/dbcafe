@@ -13,8 +13,8 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
+@Getter
 @Entity
 public class CartEntity {
 
@@ -37,6 +37,9 @@ public class CartEntity {
     @Column
     private int totalPrice; // 장바구니의 총 가격
 
+    public int getTotalPrice(){
+        return totalPrice;
+    }
     // 다른 필드는 필요한 경우 추가
 
     public List<MenuEntity> getMenuItems() {

@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,8 +20,16 @@ public class MenuService {
     @Autowired
     private final MenuRepository menuRepository;
 
+    Long excludedId = 1L;
+
     public List<MenuDTO> menuFindAll() {
         List<MenuEntity>menuEntityList=menuRepository.findAll();
+
+        //쿠폰용 1번 메뉴 제외
+        menuEntityList = menuEntityList.stream()
+                .filter(entity -> !entity.getId().equals(excludedId))
+                .collect(Collectors.toList());
+
         List<MenuDTO>menuDTOList=new ArrayList<>();
 //        각 리스트에 저장되어있는 entity를 dto로 변환하는 과정
         for(MenuEntity menuEntity:menuEntityList)
@@ -90,6 +99,12 @@ public class MenuService {
     }
     public List<MenuDTO> menufinds(Long id) {
         List<MenuEntity>menuEntityList=menuRepository.findAll();
+
+        //쿠폰용 1번 메뉴 제외
+        menuEntityList = menuEntityList.stream()
+                .filter(entity -> !entity.getId().equals(excludedId))
+                .collect(Collectors.toList());
+
         List<MenuDTO>menuDTOList=new ArrayList<>();
 //        각 리스트에 저장되어있는 entity를 dto로 변환하는 과정
         for(MenuEntity menuEntity:menuEntityList)

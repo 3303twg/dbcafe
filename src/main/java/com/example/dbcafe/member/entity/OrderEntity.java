@@ -1,5 +1,6 @@
 package com.example.dbcafe.member.entity;
 
+import lombok.Getter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Getter
 @Table(name = "orders")
 public class OrderEntity {
     @Id
@@ -38,6 +40,10 @@ public class OrderEntity {
 
     // 다른 필드 (주문 번호, 주소, 상태 등) 추가 가능
 
+
+    public void setOrderDate(LocalDateTime orderDate){
+        this.orderDate = orderDate;
+    }
 
     // Getter 메서드
 

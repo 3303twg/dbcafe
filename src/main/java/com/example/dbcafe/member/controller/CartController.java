@@ -67,8 +67,8 @@ public class CartController {
 
 
 
-    @GetMapping("/cart/list/{cartId}") //이거 유저아이디로 변경해야할듯??
-    public String CartList(@PathVariable Long cartId, Model model, HttpSession session, Principal principal){
+    @GetMapping("/cart/list") //이거 유저아이디로 변경해야할듯??
+    public String CartList(Model model, HttpSession session, Principal principal){
 
 
 
@@ -78,7 +78,7 @@ public class CartController {
 
 
         //여기수정해야할듯 유저아디를받아서 카트번호로 교체후 그거로 검색해야할건데
-        CartEntity cart = cartRepositoty.findById(cartId).orElse(null);
+        CartEntity cart = cartRepositoty.findByUserId(loggedInUser);
 
 //        CartEntity cart = cartRepositoty.findByUser(user); // 해당 사용자의 장바구니를 찾습니다.
 

@@ -403,7 +403,7 @@
 										<div><img th:src="@{${menu.menuImagePath}}" width="300" height="300" class="image" ></div>
 										<div th:text="${menu.menuName}" class="name">메뉴명</div>
 										<div th:text="${menu.menuPrice}" class="price">가격</div>
-										<div th:text="${loginUser}" class="name">아이디</div>
+<!--										<div th:text="${loginUser}" class="name">아이디</div> 사용자 아이디값 확인용-->
 										<label class="button">
 <!--											로그인중일경우-->
 											<div th:if="${loginUser != null}">

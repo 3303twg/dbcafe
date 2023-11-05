@@ -31,8 +31,13 @@ public class BoardController {
 
     //글 작성
     @GetMapping("/QnA/write")
-    public String text(){
-        return "Q&A_write";
+    public String text(@AuthenticationPrincipal PrincipalDetails principalDetails){
+        if(principalDetails == null){
+            return "redirect:/signin";
+        }
+        else {
+            return "Q&A_write";
+        }
     }
 
     @PostMapping("/QnA/write")
@@ -93,10 +98,16 @@ public class BoardController {
     //QnA 글수정1
     @GetMapping("/QnA/update/{id}")
     public String updateForm(@PathVariable Long id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails){
-        BoardDTO boardDTO = boardService.findById(id);
-        boardDTO.setBoardWriter(principalDetails.getUsername());
-        model.addAttribute("boardUpdate", boardDTO);
-        return "Q&A_write_modify";
+
+        if(principalDetails == null){
+            return "redirect:/signin";
+        }
+        else {
+            BoardDTO boardDTO = boardService.findById(id);
+            boardDTO.setBoardWriter(principalDetails.getUsername());
+            model.addAttribute("boardUpdate", boardDTO);
+            return "Q&A_write_modify";
+        }
     }
 
     //QnA 글수정2

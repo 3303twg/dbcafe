@@ -37,12 +37,16 @@ public class UserInfoController {
 
 
     // 유저 페이지 접속
-    @GetMapping("/mypage/{userId}")
-    public String userPage(@PathVariable("userId") Long id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+    @GetMapping("/mypage")
+    public String userPage(Model model, Principal principal) {
         // 로그인이 되어있는 유저의 id와 유저 페이지에 접속하는 id가 같아야 함
-        if (principalDetails.getUser().getId() == id) {
 
-            model.addAttribute("userInfo", userInfoService.findUser(id));
+        User user = userInfoService.getUserByUsername(principal.getName());
+//        if (principalDetails.getUser().getId() == id) {
+        if(principal.getName() != null){
+
+            model.addAttribute("coupon", "현재 사용 가능한 쿠폰은 " + (user.getStamp() / 10) + "개 입니다.");
+            model.addAttribute("userInfo",  userInfoService.findUser(userInfoService.getUserIdByUsername(principal.getName())));
 
             return "/MyPage";
         } else {

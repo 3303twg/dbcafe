@@ -58,8 +58,8 @@ public class CartService {
 
 
     // 장바구니에서 메뉴 제거 로직
-    public void removeItem(Long cartId, List<Long> itemIndex) {
-        CartEntity cart = cartRepository.findById(cartId).orElse(null);
+    public void removeItem(Long userId, List<Long> itemIndex) {
+        CartEntity cart = cartRepository.findByUserId(userId);
         if (cart != null) {
             List<MenuEntity> menuItems = cart.getMenuItems();
 

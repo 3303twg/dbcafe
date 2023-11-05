@@ -1,5 +1,6 @@
 package com.example.dbcafe.member.controller;
 
+import com.example.dbcafe.member.Service.CartService;
 import com.example.dbcafe.member.Service.OrderService;
 import com.example.dbcafe.member.Service.UserInfoService;
 import com.example.dbcafe.member.entity.OrderEntity;
@@ -19,10 +20,16 @@ public class OrderController {
     @Autowired
     private UserInfoService userInfoService;
 
+    @Autowired
+    private CartService cartService;
+
 
     @PostMapping("/createOrder")
-    public String createOrder(Long userId) {
+    public String createOrder(Long userId, boolean useCoupon) {
         try {       //리턴타입이 OrderEntity타입임
+            if(useCoupon == true) {
+                userInfoService.usecoupon(userId);
+            }
             return orderService.createOrder(userId).getProductNames();
         } catch (Exception e) {
             // 주문 생성에 실패한 경우에 대한 처리
