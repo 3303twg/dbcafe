@@ -28,22 +28,6 @@ public class MenuController {
     @GetMapping("/menu")
     public String menuList(){return "redirect:/menu/list";}
 
-    @GetMapping("/menu/menuRegister")
-    public String menuRegister(){return "menuRegister";}
-
-    @PostMapping("/menu/menuRegister")
-    public String menuSave(@ModelAttribute MenuDTO menuDTO , MultipartFile file ,HttpServletRequest request, Model model) throws Exception {
-        menuService.register(menuDTO,file,request);
-
-        return "redirect:/menu/list";
-    }
-    @GetMapping("/menu/delete")
-    public String menuDelete(Long id,HttpServletRequest request){
-
-        menuService.delete(id,request);
-        return "redirect:/menu/list";
-
-    }
     @GetMapping("/menu/list")
     public String menulist(Model model, Long typeID, HttpSession session, Principal principal){
 

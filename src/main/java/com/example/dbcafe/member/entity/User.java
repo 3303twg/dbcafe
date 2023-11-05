@@ -1,5 +1,6 @@
 package com.example.dbcafe.member.entity;
 
+import com.example.dbcafe.member.dto.SignupDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -47,5 +48,20 @@ public class User {
     public void createDate() {
         this.createDate = LocalDateTime.now();
     }
+
+    public SignupDto toDto(){
+        return SignupDto.builder()
+                .id(id)
+                .username(username)
+                .password(password)
+                .email(email)
+                .name(name)
+                .gender(gender)
+                .phone(phone)
+                .role(role)
+                .createDate(createDate)
+                .build();
+    }
+
 
 }

@@ -337,7 +337,7 @@ function del_check(){
 
     if(i == true){
         // location.href = "delete.php?idx=<?php echo $s_idx; ?>";
-        location.href = "delete.php";
+        location.href = "delete";
     };
 };
 </script>
@@ -376,7 +376,7 @@ function del_check(){
                     <div class="ms_cont">
 <div class="cont" style="border: 1;">
 
-<form name="edit_form" th:action="${userInfo.id}" method="post" onsubmit="return edit_check()" >
+<form name="edit_form" th:action="@{/mypage/updates(id=${userInfo.id})}" method="post" onsubmit="return edit_check()" >
 <fieldset style="position: absolute; top: 25px; width: 700px; padding: 30px 10px 50px 70px; border: 1px solid;">
     <legend>정보 수정</legend>
     						<div class="cont_title" >

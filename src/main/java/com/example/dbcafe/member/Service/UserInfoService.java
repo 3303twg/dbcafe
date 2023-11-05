@@ -1,5 +1,6 @@
 package com.example.dbcafe.member.Service;
 
+import com.example.dbcafe.member.dto.SignupDto;
 import com.example.dbcafe.member.entity.CartEntity;
 import com.example.dbcafe.member.entity.User;
 import com.example.dbcafe.member.repository.CartRepositoty;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.dbcafe.member.repository.UserRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,6 +29,18 @@ public class UserInfoService {
 
     public User findUser(Long id) {
         return userRepository.findById(id).get();
+    }
+
+    public List<SignupDto> findUserAll(){
+        List<User>userEntityList=userRepository.findAll();
+        List<SignupDto>userDTOList=new ArrayList<>();
+//        각 리스트에 저장되어있는 entity를 dto로 변환하는 과정
+        for(User userEntity:userEntityList)
+        {
+            userDTOList.add(userEntity.toDto());
+        }
+
+        return userDTOList;
     }
 
 
@@ -79,6 +94,20 @@ public class UserInfoService {
                 cartService.addToCart(userId, 1L); //1번은 표시하지않는 메뉴로 설계할것임
             }
         }
+    }
+    public void delete(Long id){
+        userRepository.deleteById(id);
+    }
+
+    public void roleUP(Long id){
+        User user=userRepository.findById(id).get();
+        user.setRole("ROLE_ADMIN");
+        userRepository.save(user);
+    }
+    public void roleDOWN(Long id){
+        User user=userRepository.findById(id).get();
+        user.setRole("ROLE_USER");
+        userRepository.save(user);
     }
 
 }

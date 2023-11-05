@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 리스트페이지</title>
+</head>
+
+<style>
+  .layout{
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+
+  }
+</style>
+
+<body>
+  <div class="layout">
+    <h1>관리자</h1>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>사진</th>
+        <th>메뉴이름</th>
+        <th>메뉴간격</th>
+        <th>메뉴타입</th>
+        <th><a th:href="@{/admin/menu/register}">글 작성</a></th>
+      </tr>
+      </thead>
+      <tbody>
+<!--      <tr th:each="user : ${userList}" th:if="${user.role}=='ROLE_ADMIN'">-->
+      <tr th:each="menu : ${menuList}">
+        <td th:text="${menu.id}">1</td>
+        <td><img th:src="@{${menu.menuImagePath}}" width="50" height="50" class="image" ></td>
+        <td th:text="${menu.menuName}">1</td>
+        <td th:text="${menu.menuPrice}">1</td>
+        <td th:text="${menu.menuType}">1</td>
+        <td><a th:href="@{/admin/menu/delete(id=${menu.id})}">메뉴삭제</a></td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

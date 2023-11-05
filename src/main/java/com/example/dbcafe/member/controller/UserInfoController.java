@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,46 +36,84 @@ public class UserInfoController {
     private final BoardService boardService;
     private final UserRepository userRepository;
 
+    @GetMapping("/mypage")
+    public String userPageMapping(@AuthenticationPrincipal PrincipalDetails principalDetails){
+        return "redirect:/mypages?id="+principalDetails.getUser().getId();
+    }
+
 
     // 유저 페이지 접속
-    @GetMapping("/mypage")
-    public String userPage(Model model, Principal principal) {
+    @GetMapping("/mypages")
+    public String userPage(Long id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         // 로그인이 되어있는 유저의 id와 유저 페이지에 접속하는 id가 같아야 함
-
-        User user = userInfoService.getUserByUsername(principal.getName());
-//        if (principalDetails.getUser().getId() == id) {
-        if(principal.getName() != null){
-
+        if (principalDetails.getUser().getId() == id || Objects.equals(principalDetails.getUser().getRole(), "ROLE_ADMIN")) {
+            User user= userInfoService.findUser(id);
+            model.addAttribute("userInfo", user);
             model.addAttribute("coupon", "현재 사용 가능한 쿠폰은 " + (user.getStamp() / 10) + "개 입니다.");
-            model.addAttribute("userInfo",  userInfoService.findUser(userInfoService.getUserIdByUsername(principal.getName())));
 
             return "/MyPage";
         } else {
-            return "redirect:/";
+            model.addAttribute("message", "잘못된 접근입니다..");
+            model.addAttribute("searchUrl", "/");
+            return "message";
         }
     }
 
     // 회원 정보 수정
-    @GetMapping("/mypage/update/{userId}")
-    public String userModify(@PathVariable("userId") Long id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+//    @GetMapping("/mypage/update")
+
+    public String userModify(Long id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        System.out.println(principalDetails.getUser().getRole());
         // 로그인이 되어있는 유저의 id와 수정페이지에 접속하는 id가 같아야 함
-        if (principalDetails.getUser().getId() == id) {
+        if (Objects.equals(principalDetails.getUser().getRole(), "ROLE_ADMIN") || principalDetails.getUser().getId() == id) {
             model.addAttribute("userInfo", userInfoService.findUser(id));
             return "information";
         } else {
-            return "redirect:/";
+            model.addAttribute("message", "잘못된 접근입니다..");
+            model.addAttribute("searchUrl", "/");
+            return "message";
         }
 
     }
 
     // 수정 실행
-    @PostMapping("/mypage/update/{userId}")
-    public String userUpdate(@PathVariable("userId") Long id, User user, Model model) {
+    @PostMapping("/mypage/updates")
+    public String userUpdate(Long id,@AuthenticationPrincipal PrincipalDetails principalDetails, User user, Model model) {
 
-        userInfoService.userModify(user);
-        model.addAttribute("message", "계정정보 수정이 완료되었습니다.");
-        model.addAttribute("searchUrl", "/");
-        return "message";
+        if (principalDetails.getUser().getId() == id || Objects.equals(principalDetails.getUser().getRole(), "ROLE_ADMIN")) {
+            userInfoService.userModify(user);
+            model.addAttribute("message", "계정정보 수정이 완료되었습니다.");
+            model.addAttribute("searchUrl", "/");
+            return "message";
+        } else {
+            model.addAttribute("message", "잘못된 접근입니다..");
+            model.addAttribute("searchUrl", "/");
+            return "message";
+        }
+    }
+    @GetMapping("/mypage/update/deletes")
+    public String userDeleteMapping(@AuthenticationPrincipal PrincipalDetails principalDetails){
+        return "redirect:/mypage/deletes?id="+principalDetails.getUser().getId();
+    }
+    @GetMapping("/mypage/delete")
+    public String userDelete(Long id, @AuthenticationPrincipal PrincipalDetails principalDetails , Model model){
+        if (principalDetails.getUser().getId() == id) {
+            userInfoService.delete(id);
+            model.addAttribute("message", "이용해주셔서 감사합니다.");
+            model.addAttribute("searchUrl", "/logout");
+            return "message";
+//            관리자가 삭제할 경우
+        } else if ( Objects.equals(principalDetails.getUser().getRole(), "ROLE_ADMIN")) {
+            userInfoService.delete(id);
+            model.addAttribute("message", "삭제완료.");
+            model.addAttribute("searchUrl", "/admin/users");
+            return "message";
+
+        } else {
+            model.addAttribute("message", "잘못된 접근입니다..");
+            model.addAttribute("searchUrl", "/");
+            return "message";
+        }
     }
 
 
