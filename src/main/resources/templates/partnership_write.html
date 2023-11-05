@@ -299,13 +299,7 @@
 								</a>
 							</div>
 						</div>
-						<form name="submit_form" id="submit_form" method="post">
-							<input type="hidden" name="customer_category" id="customer_category" value="2">
-							<input type="hidden" name="customer_tbl_area1_erp" id="customer_tbl_area1_erp" value="">
-							<input type="hidden" name="customer_tbl_area2_erp" id="customer_tbl_area2_erp" value="">
-							<input type="hidden" name="customer_tbl_price_erp" id="customer_tbl_price_erp" value="">
-							<input type="hidden" name="customer_tbl_category_erp" id="customer_tbl_category_erp" value="">
-							<input type="hidden" name="customer_tbl_store_erp" id="customer_tbl_store_erp" value="">
+						<form name="submit_form" id="submit_form"action="/partnership/write" method="post">
 							<div class="cont_text_wrap">
 								<div class="table_info table_info1">
 									<div class="cont_text_wrap text_center">
@@ -322,7 +316,7 @@
 												<td>
 													<div class="input_text_wrap input_wrap2">
 														<label>
-															<input type="text" name="customer_tbl_name" id="customer_tbl_name" onkeyup="onlyKorean(this);" maxlength="5" required="required">
+															<input type="text" name="boardWriter" id="customer_tbl_name" onkeyup="onlyKorean(this);" maxlength="5" required="required">
 															<span>성함을 입력하세요</span>
 														</label>
 													</div>
@@ -468,7 +462,7 @@
 												<td>
 													<div class="input_text_wrap input_wrap2">
 														<label>
-															<input type="text" name="customer_tbl_title" id="customer_tbl_title" required="required">
+															<input type="text" name="boardTitle" id="customer_tbl_title" required="required">
 														</label>
 													</div>
 												</td>
@@ -481,7 +475,7 @@
 													<div class="cont_text">
 														<div class="input_textarea_wrap">
 															<label>
-																<textarea name="customer_tbl_content" id="customer_tbl_content" class="count_input"></textarea>
+																<textarea name="boardContents" id="customer_tbl_content" class="count_input"></textarea>
 															</label>
 														</div>
 														<div class="input_text_info cont_text_info input_limit_byte">
