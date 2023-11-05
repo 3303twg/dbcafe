@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 리스트페이지</title>
+</head>
+
+<style>
+  .layout{
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+
+  }
+</style>
+
+<body>
+  <div class="layout">
+    <h1>관리자</h1>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>아이디</th>
+        <th>이름</th>
+        <th>가입일자</th>
+        <th>권한</th>
+        <!--          <<th><a th:href="@{/board/write}">글 작성</a>/th>-->
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="user : ${userList}" th:if="${user.role}=='ROLE_ADMIN'">
+        <td th:text="${user.id}">1</td>
+        <td th:text="${user.username}"><a th:href="@{/mypage/update(id=${user.id})}">1</a></td>
+        <td th:text="${user.name}">1</td>
+        <td th:text="${user.createDate}">1</td>
+        <td th:text="${user.role}">1</td>
+        <td><a th:href="@{/admin/users/role/down(id=${user.id})}">권한하강</a></td>
+        <td><a th:href="@{/mypage/update(id=${user.id})}">정보수정</a></td>
+        <td><a th:href="@{/mypage/delete(id=${user.id})}">계정삭제</a></td>
+        <!--          <td><img th:src="@{${board.filepath}}" width="50" height="50"></td>-->
+        <!--          <td><a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}">제목입니다.</a></td>-->
+        <!--          <td><a th:href="@{/board/delete(id=${board.id})}">글삭제</a></td>-->
+      </tr>
+      </tbody>
+
+    </table>
+    <h1>유저</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>아이디</th>
+          <th>이름</th>
+          <th>가입일자</th>
+          <th>권한</th>
+<!--          <<th><a th:href="@{/board/write}">글 작성</a>/th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="user : ${userList}" th:if="${user.role}=='ROLE_USER'">
+          <td th:text="${user.id}">1</td>
+          <td th:text="${user.username}">1</td>
+          <td th:text="${user.name}">1</td>
+          <td th:text="${user.createDate}">1</td>
+          <td th:text="${user.role}">1</td>
+          <td><a th:href="@{/admin/users/role/up(id=${user.id})}">권한상승</a></td>
+          <td><a th:href="@{/mypage/update(id=${user.id})}">정보수정</a></td>
+          <td><a th:href="@{/mypage/delete(id=${user.id})}">계정삭제</a></td>
+<!--          <td><img th:src="@{${board.filepath}}" width="50" height="50"></td>-->
+<!--          <td><a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}">제목입니다.</a></td>-->
+<!--          <td><a th:href="@{/board/delete(id=${board.id})}">글삭제</a></td>-->
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+
+</body>
+</html>
