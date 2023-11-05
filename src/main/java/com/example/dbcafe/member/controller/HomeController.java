@@ -3,7 +3,11 @@ package com.example.dbcafe.member.controller;
 import com.example.dbcafe.member.Service.BoardService;
 import com.example.dbcafe.member.dto.BoardDTO;
 import com.example.dbcafe.member.entity.BoardEntitiy;
+import com.example.dbcafe.member.entity.OrderEntity;
+import com.example.dbcafe.member.entity.User;
+import com.example.dbcafe.member.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.security.Key;
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,5 +84,25 @@ public class HomeController {
     @GetMapping("/MYQnAre") // << IP/MYQ&A 와같이 매핑됨
     public String myqnam(){return "Q&A_write_modify";} // << 리턴해줄 페이지의 명칭
 
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    private OrderEntity orderEntity;
+    @GetMapping("/order")
+    public String listOrdersForUser(Model model, Principal principal) {
+
+        List<OrderEntity> userOrders = orderRepository.findAll();
+        model.addAttribute("orders", userOrders);
+
+        int totaltotalprice=0;
+        for (OrderEntity order : userOrders) {
+            totaltotalprice = totaltotalprice+order.getTotalPrice();
+        }
+
+        model.addAttribute("totaltotalprice", totaltotalprice);
+
+        return"orders";
+    }
 
 }
