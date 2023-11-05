@@ -18,6 +18,7 @@ public class PartneshipController {
     private final BrandService brandService;
 
 
+    //입점문의 작성
     @PostMapping("/partnership/write")
     public String brandtext(@ModelAttribute BrandDTO brandDTO , @AuthenticationPrincipal PrincipalDetails principalDetails){
         brandDTO.setBoardWriter(principalDetails.getUsername());

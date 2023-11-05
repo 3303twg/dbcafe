@@ -20,11 +20,14 @@ import java.util.Optional;
 public class BoardService {
     private  final BoardRepository boardRepository;
 
+    //글을 저장하는 서비스
     public void save(BoardDTO boardDTO){
         BoardEntitiy boardEntitiy = BoardEntitiy.toSaveEntitiy(boardDTO);
+        //리포지트리의 save함수를 사용함
         boardRepository.save(boardEntitiy);
     }
 
+    //qna dto를 전부 가져오는 메서드
     public List<BoardDTO> findAll(){
         List<BoardEntitiy> boardEntitiyList = boardRepository.findAll();
         List<BoardDTO> boardDTOList= new ArrayList<>();
@@ -34,11 +37,12 @@ public class BoardService {
         return boardDTOList;
     }
 
-    @Transactional
+    @Transactional //조회수를 올리기위한 메서드
     public void updateHits(Long id){
         boardRepository.updateHits(id);
     }
 
+    //id값을 사용하여 게시글의 엔티티를 가져오는 메서드
     public BoardDTO findById(Long id){
         Optional<BoardEntitiy> optionalBoardEntitiy = boardRepository.findById(id);
         if(optionalBoardEntitiy.isPresent()){
@@ -79,7 +83,6 @@ public class BoardService {
 
 
     //검색
-
     public Page<BoardDTO> searchBoard(String search, String searchCategory, Pageable pageable) {
         Page<BoardEntitiy> searchResult;
         int page = pageable.getPageNumber() -1;

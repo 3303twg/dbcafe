@@ -73,19 +73,25 @@ public class AdminController {
     @Autowired
     private OrderRepository orderRepository;
     private OrderEntity orderEntity;
+
+    //전체 주문목록 조회
     @GetMapping("/order")
     public String listOrdersForUser(Model model, Principal principal) {
-
+        //오더엔티티를 전부가져옴
         List<OrderEntity> userOrders = orderRepository.findAll();
+        //그후 모델에 올림 html에 띄우기위함
         model.addAttribute("orders", userOrders);
 
-        int totaltotalprice=0;
+        //모든주문들의 가격을 계산하기위한곳
+        int totaltotalprice=0;  //변수초기화
         for (OrderEntity order : userOrders) {
-            totaltotalprice = totaltotalprice+order.getTotalPrice();
+            totaltotalprice = totaltotalprice+order.getTotalPrice(); //모든엔티티의 가격을더함
         }
-
+        //모델에 올림
         model.addAttribute("totaltotalprice", totaltotalprice);
 
         return"orders";
     }
+
+
 }

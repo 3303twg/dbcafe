@@ -30,8 +30,9 @@ public class BoardController {
 
 
     //글 작성
-    @GetMapping("/QnA/write")
+    @GetMapping("/QnA/write") //작성창을 띄우기위한 매핑
     public String text(@AuthenticationPrincipal PrincipalDetails principalDetails){
+        //비로그인일경우 로그인페이지로 보냄
         if(principalDetails == null){
             return "redirect:/signin";
         }
@@ -40,8 +41,9 @@ public class BoardController {
         }
     }
 
-    @PostMapping("/QnA/write")
+    @PostMapping("/QnA/write") //작성한 내용을 저장하기위한 매핑
     public String text(@ModelAttribute BoardDTO boardDTO , @AuthenticationPrincipal PrincipalDetails principalDetails){
+        //작성자를 따로 작성하지않아도 자동으로 데이터가 들어가게함
         boardDTO.setBoardWriter(principalDetails.getUsername());
         boardService.save(boardDTO);
 
@@ -51,15 +53,16 @@ public class BoardController {
     //공지사항 글작성
     @GetMapping("/notice/write")
     public String noticewrite(){
-        return "Q&A_write";
+        return "notice_write";
     }
     //공지사항 글작성
     @PostMapping("/notice/write")
     public String noticewrite(@ModelAttribute NoticeDTO noticeDTO ,@AuthenticationPrincipal PrincipalDetails principalDetails){
+        //작성자를 따로 작성하지않아도 자동으로 데이터가 들어가게함
         noticeDTO.setNoticeWriter(principalDetails.getUsername());
         noticeService.save(noticeDTO);
 
-        return "index";
+        return "redirect:/board/notice/";
     }
 
 
@@ -73,11 +76,12 @@ public class BoardController {
     }
 
 
-    //QNA 글상세조회 url 교체해야함
+    //QNA 글상세조회
     @GetMapping("/QnA/{id}")
     public String findById(@PathVariable Long id, Model model, @PageableDefault(page=1) Pageable pageable){
-
+        //조회수를 증가시키는 서비스
         boardService.updateHits(id);
+        //DTO를 받아온후 html에사용하기위해 모델에 띄움
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         model.addAttribute("Page", pageable.getPageNumber());
@@ -87,22 +91,24 @@ public class BoardController {
     //공지사항 상세조회
     @GetMapping("/notice/{id}")
     public String noticefindById(@PathVariable Long id, Model model, @PageableDefault(page=1) Pageable pageable){
-
+        //조회수를 증가시키는 서비스
         noticeService.updateHits(id);
+        //DTO를 받아온후 html에사용하기위해 모델에 띄움
         NoticeDTO noticeDTO = noticeService.findById(id);
         model.addAttribute("board", noticeDTO);             //모델은 수정할필요 없겠지??
         model.addAttribute("Page", pageable.getPageNumber()); //없겠지???
-        return "detail";        //일단은 없으니까 공지 = QnA 똑같은거로 알아서 같이쓰는중
+        return "notice_check";        //일단은 없으니까 공지 = QnA 똑같은거로 알아서 같이쓰는중
     }
 
     //QnA 글수정1
     @GetMapping("/QnA/update/{id}")
     public String updateForm(@PathVariable Long id, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails){
-
+        //비로그인시 로그인창으로 보냄
         if(principalDetails == null){
             return "redirect:/signin";
         }
-        else {
+        else {//로그인상태일경우
+            //DTO를 가져와서 기존작성내용을 띄워줌
             BoardDTO boardDTO = boardService.findById(id);
             boardDTO.setBoardWriter(principalDetails.getUsername());
             model.addAttribute("boardUpdate", boardDTO);
@@ -113,6 +119,7 @@ public class BoardController {
     //QnA 글수정2
     @PostMapping("/QnA/update")
     public String update(@ModelAttribute BoardDTO boardDTO, Model model){
+        //작성된 내용을 업데이트함
         BoardDTO board = boardService.update(boardDTO);
         model.addAttribute("board", board);
         return "redirect:/board/QnA";
@@ -121,6 +128,7 @@ public class BoardController {
     //공지사항 글수정1
     @GetMapping("/notice/update/{id}")
     public String noticeupdateForm(@PathVariable Long id, Model model){
+        //DTO를 가져와서 기존작성내용을 띄워줌
         NoticeDTO noticeDTO = noticeService.findById(id);
         model.addAttribute("boardUpdate", noticeDTO);
         return "update"; //마찬가지
@@ -129,6 +137,7 @@ public class BoardController {
     //공지사항 글수정2
     @PostMapping("/notice/update")
     public String noticeupdate(@ModelAttribute NoticeDTO noticeDTO, Model model){
+        //작성된 내용을 업데이트함
         NoticeDTO notice = noticeService.update(noticeDTO);
         model.addAttribute("board", notice);
         return "detail";

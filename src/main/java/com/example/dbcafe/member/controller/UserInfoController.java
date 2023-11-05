@@ -128,8 +128,11 @@ public class UserInfoController {
 //        return"MyOrderr";
 //    }
 
+
+    //자신의 주문내역조회
     @GetMapping("/mypage/order")
     public String listOrdersForUser(Model model, Principal principal) {
+        //유저의 id값을 받아옴
         String username = (String) principal.getName();
         Long loggedInUser = userInfoService.getUserIdByUsername(username);
 

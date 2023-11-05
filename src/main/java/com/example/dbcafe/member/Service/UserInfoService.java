@@ -73,10 +73,14 @@ public class UserInfoService {
 
     }
 
-    public void addStamp(Long userId, int valueToAdd) {
+    //스탬프를 추가하는 메서드
+    public void addStamp(Long userId) {
+        //유저 id를통해 유저의 엔티티를 가져옴
         User user = userRepository.findById(userId).orElse(null);
+        //유저 id를통해 유저의 카트엔티티를 가져옴
         CartEntity cart = cartRepositoty.findById(userId).orElse(null);
-        if (user != null) {
+        if (user != null) { // 유저엔티티가 존재할경우에만
+            //가격 1천원당 스탬프를 한개줌
             int total_price = cart.getTotalPrice();
             int value = total_price / 1000;
             int currentStamp = user.getStamp();
@@ -85,25 +89,31 @@ public class UserInfoService {
         }
     }
 
+    //쿠폰을 사용하는 메서드
     public void usecoupon(Long userId) {
+        //유저의 엔티티를 가져옴
         User user = userRepository.findById(userId).orElse(null);
-        if (user != null) {
-            if (user.getStamp() >= 10) {
+        if (user != null) {//유저의 엔티티가 있을경우에만
+            if (user.getStamp() >= 10) { //쿠폰이 10개이상 있을경우에만
                 user.setStamp(user.getStamp() - 10); // 쿠폰사용량은 10개
-                userRepository.save(user);
-                cartService.addToCart(userId, 1L); //1번은 표시하지않는 메뉴로 설계할것임
+                userRepository.save(user);  //변경정보 저장
+                cartService.addToCart(userId, 1L); //1번은 표시되지않는 메뉴
             }
         }
     }
+
+    //유저정보 삭제
     public void delete(Long id){
         userRepository.deleteById(id);
     }
 
+    //유저권한 상승
     public void roleUP(Long id){
         User user=userRepository.findById(id).get();
         user.setRole("ROLE_ADMIN");
         userRepository.save(user);
     }
+    //유저권한 하락
     public void roleDOWN(Long id){
         User user=userRepository.findById(id).get();
         user.setRole("ROLE_USER");

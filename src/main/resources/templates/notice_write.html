@@ -294,63 +294,59 @@
 								</a>
 							</div>
 						</div>
-						<form name="submit_form" id="submit_form" method="post">
-							<input type="hidden" name="customer_category" id="customer_category" value="2">
-							<input type="hidden" name="customer_tbl_area1_erp" id="customer_tbl_area1_erp" value="">
-							<input type="hidden" name="customer_tbl_area2_erp" id="customer_tbl_area2_erp" value="">
-							<input type="hidden" name="customer_tbl_price_erp" id="customer_tbl_price_erp" value="">
-							<input type="hidden" name="customer_tbl_category_erp" id="customer_tbl_category_erp" value="">
-							<input type="hidden" name="customer_tbl_store_erp" id="customer_tbl_store_erp" value="">
-							<div class="cont_text_wrap">
-								<div class="table_info table_info1">
-									<div class="cont_text_wrap text_center">
-							<div class="cont_text cont_text_title">
-								<b>CAFE DREAM 공지사항</b>
-							</div>
-						</div>
-									<table>
-										<tbody>
-											<tr>
-												<th>
-													제목<span class="red">*<span>
-													</span></span></th>
-													<td>
-														<div class="input_text_wrap input_wrap2">
-															<label>
-																<input type="text" name="customer_tbl_title" id="customer_tbl_title" required="required">
-															</label>	
-														</div>
-													</td>
-												</tr>	
-											<tr>
-												<th>
-													공지사항 <span class="red">*<span>
-												</span></span></th>
-												<td>
-													<div class="cont_text">
-														<div class="input_textarea_wrap">
-															<label>
-																<textarea name="customer_tbl_content" id="customer_tbl_content" class="count_input"></textarea>
-															</label>
-														</div>
-														<div class="input_text_info cont_text_info input_limit_byte">
-															<span class="count">0</span>/<span class="maxcount">3900</span>byte(한글 1300자, 영어 4000자)
-														</div>
-													</div>
-												</td>
-											</tr>
-																																											</tbody>
-									</table>
-								</div>
-							</div>
+					<form name="submit_form" id="submit_form" method="post" action="/board/notice/write">
 
-								<div class="cont_text">
-									<div class="input_btn_wrap input_wrap2">
-										<input type="submit" value="등록하기" class="btn btn1 btn_ani" id="submit">
+						<div class="cont_text_wrap">
+							<div class="table_info table_info1">
+								<div class="cont_text_wrap text_center">
+									<div class="cont_text cont_text_title">
+										<b>CAFE DREAM Q&A</b>
 									</div>
 								</div>
+								<table>
+									<tbody>
+									<tr>
+										<th>
+											제목<span class="red">*<span>
+													</span></span></th>
+										<td>
+											<div class="input_text_wrap input_wrap2">
+												<label>
+													<input type="text" name="noticeTitle" id="customer_tbl_title" required="required">
+												</label>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th>
+											문의사항 <span class="red">*<span>
+												</span></span></th>
+										<td>
+											<div class="cont_text">
+												<div class="input_textarea_wrap">
+													<label>
+														<textarea name="noticeContents" id="customer_tbl_content" class="count_input"></textarea>
+													</label>
+												</div>
+												<div class="input_text_info cont_text_info input_limit_byte">
+													<span class="count">0</span>/<span class="maxcount">3900</span>byte(한글 1300자, 영어 4000자)
+												</div>
+											</div>
+										</td>
+									</tr>
+									</tbody>
+								</table>
 							</div>
-						</form>
+						</div>
+
+						<div class="cont_text">
+							<div class="input_btn_wrap input_wrap2">
+								<input type="submit" value="등록하기" class="btn btn1 btn_ani" id="submit">
+							</div>
+							<input type="submit" value="작성">
+						</div>
+
+					</form>
 					</div>
 				</div>
 			</div>

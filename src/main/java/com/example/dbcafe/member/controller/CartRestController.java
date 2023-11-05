@@ -14,7 +14,7 @@ import java.security.Principal;
 import java.util.List;
 
 
-@RestController
+@RestController //html에서 restapi형식으로 사용하기위한 컨트롤러
 public class CartRestController {
     @Autowired
     private CartService cartService;
@@ -25,13 +25,13 @@ public class CartRestController {
     @Autowired
     private UserInfoService userInfoService;
 
-    // 선택한 메뉴 항목을 삭제하는 컨트롤러 메서드
+    // 선택한 메뉴 항목을 삭제하는 컨트롤러
     @PostMapping("/removeSelectedItems")
     public ResponseEntity<String> removeSelectedItems(@RequestBody List<Long> selectedItems, Principal principal) {
-        try {
+        try {//유저id를 가져오는곳
             String username = principal.getName();
             Long loggedInUser = userInfoService.getUserIdByUsername(username);
-
+                //삭제하는 서비스 실행
                 cartService.removeItem(loggedInUser, selectedItems);
 
             return new ResponseEntity<>("선택한 메뉴 삭제 성공", HttpStatus.OK);

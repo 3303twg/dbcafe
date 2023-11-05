@@ -20,11 +20,13 @@ import java.util.Optional;
 public class NoticeService {
     private  final NoticeRepository noticeRepository;
 
+    //글 저장
     public void save(NoticeDTO noticeDTO){
         NoticeEntity noticeEntity = NoticeEntity.toSaveEntitiy(noticeDTO);
         noticeRepository.save(noticeEntity);
     }
 
+    //글 DTO로 전부 리스트에 받아옴
     public List<NoticeDTO> findAll(){
         List<NoticeEntity> noticeEntitiyList = noticeRepository.findAll();
         List<NoticeDTO> noticeDTOList= new ArrayList<>();
@@ -34,11 +36,12 @@ public class NoticeService {
         return noticeDTOList;
     }
 
-    @Transactional
+    @Transactional //조회수증가용 메서드
     public void updateHits(Long id){
         noticeRepository.updateHits(id);
     }
 
+    //id값을 통해 특정 글의 DTO를 가져오는 메서드
     public NoticeDTO findById(Long id){
         Optional<NoticeEntity> optionalNoticeEntity = noticeRepository.findById(id);
         if(optionalNoticeEntity.isPresent()){

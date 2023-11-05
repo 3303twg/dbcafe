@@ -42,15 +42,17 @@ public class CartController {
 
     //장바구니넣는기능
     @PostMapping("/cart/{cartId}/add/{menuId}")
-    public String  addToCart(@PathVariable Long cartId, @PathVariable Long menuId,
-                             Principal principal) {
-        cartService.addToCart(cartId, menuId);
-
+    public String  addToCart(@PathVariable Long cartId, @PathVariable Long menuId, Principal principal) {
+        //로그인상태 받아오기
         String username = (String) principal.getName();
         Long loggedInUser = userInfoService.getUserIdByUsername(username);
 
+        //비로그인시 로그인창으로 보냄
         if (loggedInUser == null) {
             return "login";
+        }
+        else{//로그인상태일때만 카트에 아이템을 추가함
+            cartService.addToCart(cartId, menuId);
         }
 
         return "redirect:/menu/list";
@@ -67,10 +69,10 @@ public class CartController {
 
 
 
-    @GetMapping("/cart/list") //이거 유저아이디로 변경해야할듯??
+    //장바구니 조회
+    @GetMapping("/cart/list")
     public String CartList(Model model, HttpSession session, Principal principal){
-
-
+        //비로그인시 로그인창으로 보냄
         if (principal == null) {
             return "login";
         }
@@ -80,14 +82,13 @@ public class CartController {
         Long loggedInUser = userInfoService.getUserIdByUsername(username);
 
 
-
-
-        //여기수정해야할듯 유저아디를받아서 카트번호로 교체후 그거로 검색해야할건데
+        //유저id값을통해 유저의 cart를찾아 엔티티를 받아옴
         CartEntity cart = cartRepositoty.findByUserId(loggedInUser);
 
 //        CartEntity cart = cartRepositoty.findByUser(user); // 해당 사용자의 장바구니를 찾습니다.
 
         if (cart != null) {
+            //카트가 있을경우 html에 사용하기위해 모델에 올림
             model.addAttribute("cartItems", cart.getMenuItems());
             model.addAttribute("totalPrice", cart.getTotalPrice());
             model.addAttribute("loginUser", loggedInUser);
