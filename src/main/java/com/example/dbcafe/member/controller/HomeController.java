@@ -85,24 +85,9 @@ public class HomeController {
     public String myqnam(){return "Q&A_write_modify";} // << 리턴해줄 페이지의 명칭
 
 
-    @Autowired
-    private OrderRepository orderRepository;
 
-    private OrderEntity orderEntity;
-    @GetMapping("/order")
-    public String listOrdersForUser(Model model, Principal principal) {
 
-        List<OrderEntity> userOrders = orderRepository.findAll();
-        model.addAttribute("orders", userOrders);
 
-        int totaltotalprice=0;
-        for (OrderEntity order : userOrders) {
-            totaltotalprice = totaltotalprice+order.getTotalPrice();
-        }
 
-        model.addAttribute("totaltotalprice", totaltotalprice);
-
-        return"orders";
-    }
 
 }

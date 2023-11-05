@@ -4,13 +4,17 @@ import com.example.dbcafe.member.Service.MenuService;
 import com.example.dbcafe.member.Service.UserInfoService;
 import com.example.dbcafe.member.dto.MenuDTO;
 import com.example.dbcafe.member.dto.SignupDto;
+import com.example.dbcafe.member.entity.OrderEntity;
+import com.example.dbcafe.member.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -64,5 +68,24 @@ public class AdminController {
         model.addAttribute("searchUrl", "/admin/menu");
         return "message";
 
+    }
+
+    @Autowired
+    private OrderRepository orderRepository;
+    private OrderEntity orderEntity;
+    @GetMapping("/order")
+    public String listOrdersForUser(Model model, Principal principal) {
+
+        List<OrderEntity> userOrders = orderRepository.findAll();
+        model.addAttribute("orders", userOrders);
+
+        int totaltotalprice=0;
+        for (OrderEntity order : userOrders) {
+            totaltotalprice = totaltotalprice+order.getTotalPrice();
+        }
+
+        model.addAttribute("totaltotalprice", totaltotalprice);
+
+        return"orders";
     }
 }
