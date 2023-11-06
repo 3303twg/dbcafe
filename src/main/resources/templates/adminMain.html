@@ -1,13 +1,322 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+
 <head>
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="/css/MEDIA.css">
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/css/information.css">
+    <link rel="stylesheet" href="/css/information1.css">
+    <link rel="stylesheet" href="/css/information2.css">
+    <link rel="stylesheet" href="/css/mypage.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;900&display=swap">
+
+
 <body>
-    <a href="/admin/users">회원관리</a>
-    <a href="/admin/menu">메뉴관리</a>
-    <a href="/admin/order">주문관리</a>
-    <a href="/board/notice/write">공지사항작성</a>
+<div class="wrap">
+    <div class="head_wrap">
+        <div class="head">
+            <div class="head_logo">
+                <a href="/">
+                    <img src="image/Cafe_logo_4.png" class="head_logo_img_fixed">
+                </a>
+            </div>
+
+            <div class="head_top_nav">
+                <nav class="head-menu-top-nav">
+                    <ul sec:authorize="!isAuthenticated()">
+                        <li class="top-nav01"><a href="/signin">Sign In</a></li>
+                        <li class="top-nav02"><a href="/signup">Join Now</a></li>
+                    </ul>
+                    <ul sec:authorize="isAuthenticated()">
+                        <li class="top-nav01"><a href="/logout">로그아웃</a></li>
+                        <li class="top-nav02"><a href="/mypage">My Page</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="head_top_icon">
+                <ul>
+                    <li>
+                        <div class="icon_basket">
+                            <a href="/cart/list">
+                                <img src="/image/basket.png" class="icon_basket_img_fixed">
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="head_menu_wrap">
+                <div class="head_menu">
+                    <ul>
+                        <li>
+                            <a href="/brand" class="pc">ABOUT US</a>
+                            <a class="m head_menu_down">ABOUT US</a>
+                            <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+                                <ul>
+                                    <li>
+                                        <a href="/brand">브랜드</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="/menu" class="pc">MENU</a>
+                            <a class="m head_menu_down">MENU</a>
+                            <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+                                <ul>
+                                    <li>
+                                        <a href="/menu">음료</a>
+                                    </li>
+                                    <li>
+                                        <br><a href="/menu">푸드</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="/store" class="pc">STORE</a>
+                            <a class="m head_menu_down">STORE</a>
+                            <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+                                <ul>
+                                    <li>
+                                        <a href="/store">매장찾기</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="/partnership" class="pc">PARTNERSHIP</a>
+                            <a class="m head_menu_down">PARTNERSHIP </a>
+                            <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+                                <ul>
+                                    <li>
+                                        <a href="/partnership">입점문의</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="/board/notice" class="pc">NEWS</a>
+                            <a class="m head_menu_down">NEWS</a>
+                            <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+                                <ul>
+                                    <li>
+                                        <a href="/board/notice">공지사항</a>
+                                    </li>
+                                    <li>
+                                        <br><a href="/board/QnA">Q&A</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mobile_menu_icon_wrap m t">
+                <div class="mobile_menu_icon">
+                    <div class="mobile_menu_icon_bar bar_black"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--헤더 다운드랍-->
+    <script>
+        //head_menu start
+        $(document).ready(function () {
+            $(".head_wrap .head .head_menu > ul > li").hover(function () {
+                if ($(".head_menu_wrap").is(".right0") == false) {
+                    $(".head_wrap .head .head_menu > ul > li").removeClass("check");
+                    $(this).addClass("check");
+                    $(".head_menu_down_menu").stop().slideDown("fast");
+                };
+            }, function () {
+                $(".head_wrap .head .head_menu > ul > li").removeClass("check");
+            });
+
+            $(".head_wrap").hover(function () {
+                $(this).addClass("head_over");
+            }, function () {
+                if ($(".head_menu_wrap").is(".right0") == false) {
+                    $(this).removeClass("head_over");
+                    $(".head_wrap .head .head_menu > ul > li").removeClass("check");
+                    $(".head_menu_down_menu").stop().slideUp("fast");
+                }
+            });
+            //head_menu end
+            //mobile start
+            $(".mobile_menu_icon").click(function () {
+                $(".head_wrap").addClass("head_over");
+                $(this).toggleClass("mobile_menu_icon_open");
+                if ($(this).is(".mobile_menu_icon_open")) {
+                    $(".head_menu_wrap").addClass("right0");
+                } else {
+                    $(".head_menu_wrap").removeClass("right0");
+                }
+            });
+            $(".head_menu_down").click(function () {
+                $(this).toggleClass("head_menu_down_open");
+                if ($(this).is(".head_menu_down_open")) {
+                    $(this).next(".head_menu_down_menu").find("ul").slideDown("fast");
+                } else {
+                    $(this).next(".head_menu_down_menu").find("ul").slideUp("fast");
+                }
+            });
+            //mobile end
+            cont_gallery_list_img();
+            $(window).resize(function () {
+                $(".head_menu_down_menu > ul").css("display", "block");
+                if ($(window).width() < 760) {
+                    $(".head_menu_down_menu > ul").css("display", "none");
+                };
+                $(".head_menu_down").removeClass("head_menu_down_open");
+                if ($(window).width() >= 1280) {
+                    $(".head_wrap").removeClass("head_over");
+                    $(".head_menu_wrap").removeClass("right0");
+                    $(".mobile_menu_icon").removeClass("mobile_menu_icon_open");
+                };
+                cont_gallery_list_img();
+            });
+        });
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > $(".cont_wrap").offset().top) {
+                $(".head_wrap").addClass("head_fixed");
+            } else {
+                $(".head_wrap").removeClass("head_fixed");
+            }
+        });
+        function cont_gallery_list_img() {
+            $(".cont_gallery_list > ul > li").each(function () {
+                if ($(this).find(".cont_gallery_list_img").length) {
+                    $(this).find(".cont_gallery_list_img").css("width", $(this).width());
+                };
+
+                if ($(this).find(".cont_gallery_list_img_height").length) {
+                    $(this).find(".cont_gallery_list_img_height").css("height", $(this).width());
+                } else {
+                    $(this).find(".cont_gallery_list_img").css("height", $(this).width());
+                };
+            });
+        };
+    </script>
+
+
+
+
+    <div class="cont">
+        <div class="cont_box cont_head">
+            <div class="cont_boxs">
+                <div class="cont_title_wrap">
+
+                    <div class="cont_title robo color">
+                        <h2>ADMIN PAGE</h2>
+                    </div>
+                </div>
+                <div class="cont_text_wrap">
+                    <div class="cont_text cont_list_map">
+                        <ul>
+                            <li>HOME</li>
+                            <li>Admin Page</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="container">
+        <div class="ms_cont_wrap">
+            <div class="ms_cont">
+
+                <div class="msr_user_index">
+                    <!-- 유저정보 -->
+                    <section class="ms_user_info ms_user_add"><!-- 20200123 class="ms_user_add" 추가 -->
+                        <!-- s::20200123 페이스북 프로필 기능 삭제 관련 메인 수정 -->
+
+                        <article class="ms_user_info_right">
+                            <p class="ms_user_stat"><span>관리자님 안녕하세요!</span><br>
+                            <!-- 20200805 PLCC 추가 -->
+                            <div class="plcc-logo" style="display:none;">
+                                <img src="/common/img/util/plcc-logo.png" alt="Hyundai Card + STARBUCKS">
+                            </div>
+                            <div class="ms_user_stat_btns">
+
+                            </div>
+                        </article>
+                        <!-- e::20200123 페이스북 프로필 기능 삭제 관련 메인 수정 -->
+                    </section>
+
+                    <section class="my_ms_card">
+                        <div class="my_ms_card_inner">
+
+                        </div>
+                    </section>
+
+                </div>
+                <!-- msr 회원 end -->
+                <!-- 150528 - 문진욱 end -->
+                <!-- 메뉴 순위 -->
+
+            </div>
+
+            <nav class="ms_nav" id="msRnb" style="line-height: 1.0;" >
+                <ul>
+                    <li><a href="../admin/user">회원관리<span class="sbox_arrow_down"></span></a></li>
+                    <li class="msRnb_btn"><a href="../admin/menu" required="login" data-href="/my/calendar.do">메뉴관리</a></li>
+                    <li class="msRnb_btn"><a href="../admin/order" required="login" data-href="/my/my_menu.do">주문관리</a></li>
+                    <li><a href="../board/notice/write">공지사항 작성<span class="sbox_arrow_down"></span></a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- 내용 end -->
+    </div>
+
+    <div class="foot_wrap" >
+        <div class="foot">
+            <div class="foot_terms">
+                <ul>
+                    <li>
+                        <a href="/">이용약관</a>
+                    </li>
+                    <li>
+                        |
+                    </li>
+                    <li>
+                        <a href="/">개인정보취급방침</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="foot_logo">
+                <img class="foot_logo" src="image/logo.png" alt="Logo">
+            </div>
+            <div class="foot_cont">
+                <ul>
+                    <li><b>(주)주식회사 부천대학교</li></b>
+                    <li>경기도 부천시 심곡동 신흥로56번길 25</li>
+                    <li>대표자 박찬호</li>
+                    <li>E-mail 1111@gmail.com</li>
+                    <li>TEL 032-610-3260</li>
+                </ul>
+                <ul class="copyright">
+                    <li>Copyright © 2023 CafeDream. All rights reserved.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
 </body>
+
 </html>

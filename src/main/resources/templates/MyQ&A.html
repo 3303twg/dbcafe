@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/css/information1.css">
 <link rel="stylesheet" href="/css/information2.css">
 <link rel="stylesheet" href="/css/myorder,myQ&A.css">
+	<link rel="stylesheet" href="/css/MEDIA.css">
 	<title>문의내역</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -193,24 +194,33 @@
 			<div class="head">
 				<div class="head_logo">
 					<a href="/">
-						<img src="/image/logo.png" class="head_logo_img_fixed">
-					</a>
-				</div>
-
-				<div class="icon_basket">
-					<a href="#">
-						<img src="/image/basket.png" class="icon_basket_img_fixed">
+						<img src="image/Cafe_logo_4.png" class="head_logo_img_fixed">
 					</a>
 				</div>
 
 				<div class="head_top_nav">
 					<nav class="head-menu-top-nav">
-						<ul>
-							<li class="top-nav01"><a href="/test/login">Sign In</a></li>
-							<li class="top-nav02"><a href="/register">Join Now</a></li>
-							<li class="top-nav03"><a href="/MyPage">My Page</a></li>
+						<ul sec:authorize="!isAuthenticated()">
+							<li class="top-nav01"><a href="/signin">Sign In</a></li>
+							<li class="top-nav02"><a href="/signup">Join Now</a></li>
+						</ul>
+						<ul sec:authorize="isAuthenticated()">
+							<li class="top-nav01"><a href="/logout">로그아웃</a></li>
+							<li class="top-nav02"><a href="/mypage">My Page</a></li>
 						</ul>
 					</nav>
+				</div>
+
+				<div class="head_top_icon">
+					<ul>
+						<li>
+							<div class="icon_basket">
+								<a href="/cart/list">
+									<img src="/image/basket.png" class="icon_basket_img_fixed">
+								</a>
+							</div>
+						</li>
+					</ul>
 				</div>
 
 				<div class="head_menu_wrap">
@@ -234,10 +244,10 @@
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
-											<a href="/menu">음료</a><br>
+											<a href="/menu">음료</a>
 										</li>
 										<li>
-											<a href="/menu">푸드</a><br>
+											<br><a href="/menu">푸드</a>
 										</li>
 									</ul>
 								</div>
@@ -257,7 +267,7 @@
 
 							<li>
 								<a href="/partnership" class="pc">PARTNERSHIP</a>
-								<a class="m head_menu_down">PARTNERSHIP	</a>
+								<a class="m head_menu_down">PARTNERSHIP </a>
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
@@ -268,20 +278,26 @@
 							</li>
 
 							<li>
-								<a href="/board/QnA" class="pc">NEWS</a>
+								<a href="/board/notice" class="pc">NEWS</a>
 								<a class="m head_menu_down">NEWS</a>
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
-											<a href="/board/QnA">공지사항</a><br>
+											<a href="/board/notice">공지사항</a>
 										</li>
 										<li>
-											<a href="/board/QnA">Q&A</a><br>
+											<br><a href="/board/QnA">Q&A</a>
 										</li>
 									</ul>
 								</div>
 							</li>
 						</ul>
+					</div>
+				</div>
+
+				<div class="mobile_menu_icon_wrap m t">
+					<div class="mobile_menu_icon">
+						<div class="mobile_menu_icon_bar bar_black"></div>
 					</div>
 				</div>
 			</div>

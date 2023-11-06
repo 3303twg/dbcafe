@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
+	<link rel="stylesheet" href="/css/MEDIA.css">
 	<title>Store</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -20,7 +21,7 @@
 			<div class="head">
 				<div class="head_logo">
 					<a href="/">
-						<img src="/image/logo.png" class="head_logo_img_fixed">
+						<img src="image/Cafe_logo_4.png" class="head_logo_img_fixed">
 					</a>
 				</div>
 
@@ -40,14 +41,14 @@
 				<div class="head_top_icon">
 					<ul>
 						<li>
-							<a href="/cart/list">
-								<img src="/image/basket.png" class="icon_basket_img_fixed">
-							</a>
+							<div class="icon_basket">
+								<a href="/cart/list">
+									<img src="/image/basket.png" class="icon_basket_img_fixed">
+								</a>
+							</div>
 						</li>
 					</ul>
 				</div>
-
-
 
 				<div class="head_menu_wrap">
 					<div class="head_menu">
@@ -70,10 +71,10 @@
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
-											<a href="/menu">음료</a><br>
+											<a href="/menu">음료</a>
 										</li>
 										<li>
-											<a href="/menu">푸드</a><br>
+											<br><a href="/menu">푸드</a>
 										</li>
 									</ul>
 								</div>
@@ -93,7 +94,7 @@
 
 							<li>
 								<a href="/partnership" class="pc">PARTNERSHIP</a>
-								<a class="m head_menu_down">PARTNERSHIP	</a>
+								<a class="m head_menu_down">PARTNERSHIP </a>
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
@@ -104,15 +105,15 @@
 							</li>
 
 							<li>
-								<a href="/board/QnA" class="pc">NEWS</a>
+								<a href="/board/notice" class="pc">NEWS</a>
 								<a class="m head_menu_down">NEWS</a>
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
-											<a href="/board/notice">공지사항</a><br>
+											<a href="/board/notice">공지사항</a>
 										</li>
 										<li>
-											<a href="/board/QnA">Q&A</a><br>
+											<br><a href="/board/QnA">Q&A</a>
 										</li>
 									</ul>
 								</div>

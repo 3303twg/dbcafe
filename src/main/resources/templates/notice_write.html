@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="/css/Q&A_write.css">
 <link rel="stylesheet" href="/css/all.css">
+	<link rel="stylesheet" href="/css/MEDIA.css">
 	<title>공지사항 작성</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -189,96 +190,111 @@
 		<div class="head_wrap">
 			<div class="head">
 				<div class="head_logo">
-					<a href="../main/main.html">
-						<img src="image/logo.png" class="head_logo_img_fixed">
-					</a>
-				</div>
-
-				<div class="icon_basket">
-					<a href="#">
-						<img src="image/basket.png" class="icon_basket_img_fixed">
+					<a href="/">
+						<img src="image/Cafe_logo_4.png" class="head_logo_img_fixed">
 					</a>
 				</div>
 
 				<div class="head_top_nav">
 					<nav class="head-menu-top-nav">
-						<ul>     
-							<li class="top-nav01"><a href="../login/login.html">Sign In</a></li>
-							<li class="top-nav02"><a href="../join_in/register.html">Join Now</a></li>
-							<li class="top-nav03"><a href="../mypage/mypage.html">My Page</a></li>
-						 </ul>
-					 </nav>
+						<ul sec:authorize="!isAuthenticated()">
+							<li class="top-nav01"><a href="/signin">Sign In</a></li>
+							<li class="top-nav02"><a href="/signup">Join Now</a></li>
+						</ul>
+						<ul sec:authorize="isAuthenticated()">
+							<li class="top-nav01"><a href="/logout">로그아웃</a></li>
+							<li class="top-nav02"><a href="/mypage">My Page</a></li>
+						</ul>
+					</nav>
 				</div>
-				
+
+				<div class="head_top_icon">
+					<ul>
+						<li>
+							<div class="icon_basket">
+								<a href="/cart/list">
+									<img src="/image/basket.png" class="icon_basket_img_fixed">
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+
 				<div class="head_menu_wrap">
 					<div class="head_menu">
 						<ul>
 							<li>
-								<a href="../brand/brand.html" class="pc">ABOUT US</a>
+								<a href="/brand" class="pc">ABOUT US</a>
 								<a class="m head_menu_down">ABOUT US</a>
-									<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
-										<ul>
-											<li>
-												<a href="../brand/brand.html">브랜드</a>
-											</li>
-										</ul>
-									</div>
-							</li>
-
-							<li>
-								<a href="../menu/menu(drink).html" class="pc">MENU</a>
-								<a class="m head_menu_down">MENU</a>
-									<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
-										<ul>
-											<li>
-												<a href="../menu/menu(drink).html">음료</a><br>
-											</li>
-											<li>
-												<a href="../menu/menu(food).html">푸드</a><br>
-											</li>
-										</ul>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="/brand">브랜드</a>
+										</li>
+									</ul>
 								</div>
 							</li>
 
 							<li>
-								<a href="../store/store.html" class="pc">STORE</a>
+								<a href="/menu" class="pc">MENU</a>
+								<a class="m head_menu_down">MENU</a>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="/menu">음료</a>
+										</li>
+										<li>
+											<br><a href="/menu">푸드</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<li>
+								<a href="/store" class="pc">STORE</a>
 								<a class="m head_menu_down">STORE</a>
-									<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
-										<ul>
-											<li>
-												<a href="../store/store.html">매장찾기</a>
-											</li>
-										</ul>
-									</div>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="/store">매장찾기</a>
+										</li>
+									</ul>
+								</div>
 							</li>
 
 							<li>
-								<a href="../partnership/partnership.html" class="pc">PARTNERSHIP</a>
-								<a class="m head_menu_down">PARTNERSHIP	</a>
-									<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
-										<ul>
-											<li>
-												<a href="../partnership/partnership.html">입점문의</a>
-											</li>
-										</ul>
-									</div>
+								<a href="/partnership" class="pc">PARTNERSHIP</a>
+								<a class="m head_menu_down">PARTNERSHIP </a>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="/partnership">입점문의</a>
+										</li>
+									</ul>
+								</div>
 							</li>
 
 							<li>
-								<a href="../notice,Q&A/notice.html" class="pc">NEWS</a>
+								<a href="/board/notice" class="pc">NEWS</a>
 								<a class="m head_menu_down">NEWS</a>
-									<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
-										<ul>
-											<li>
-												<a href="../notice,Q&A/notice.html">공지사항</a><br>
-											</li>
-											<li>
-												<a href="../notice,Q&A/Q&A.html">Q&A</a><br>
-											</li>
-										</ul>
-									</div>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="/board/notice">공지사항</a>
+										</li>
+										<li>
+											<br><a href="/board/QnA">Q&A</a>
+										</li>
+									</ul>
+								</div>
 							</li>
 						</ul>
+					</div>
+				</div>
+
+				<div class="mobile_menu_icon_wrap m t">
+					<div class="mobile_menu_icon">
+						<div class="mobile_menu_icon_bar bar_black"></div>
 					</div>
 				</div>
 			</div>
