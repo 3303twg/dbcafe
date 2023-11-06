@@ -8,7 +8,7 @@
 	::-moz-selection{background:#fdd000; color:#1c1c1b;}
 	::selection{background:#fdd000; color:#1c1c1b;}
 	.progress{position:fixed; top:0; left:0; border-radius:100px; height:3px; background:#fdd000; width:0%; z-index:999999;}
-	html, body{letter-spacing:normal; word-break:keep-all; width:100%; text-align:left; font-size:16px; color:#1c1c1b; line-height:1.4; margin:0; padding:0; font-family:'Noto Sans KR','Noto Sans','sans-serif','MalgunGothic','Malgun Gothic','留묒�怨좊뵓','留묒� 怨좊뵓','�섎닎怨좊뵓','NanumGothic','Helvetica','Tahoma','Arial','Dotum','�뗭쓬','DotumChe','�뗭쓬泥�';}
+	html, body{letter-spacing:normal; word-break:keep-all; width:100%; text-align:left; font-size:16px; color:#1c1c1b; line-height:1.4; margin:0; padding:0; font-family:'Noto Sans KR','Noto Sans','sans-serif','MalgunGothic','Malgun Gothic','留묒�怨좊뵓','留묒� 怨좊뵓','�섎닎怨좊뵓','NanumGothic','Helvetica','Tahoma','Arial','Dotum','�뗭쓬','DotumChe','�뗭쓬泥�' !important;}
 	body{transition:ease-in-out 400ms padding; font-smoothing:antialiased; -webkit-font-smoothing:antialiased; -moz-font-smoothing:unset; -moz-osx-font-smoothing:grayscale; font-smoothing:antialiased; -webkit-backface-visibility:hidden; -moz-backface-visibility:hidden; backface-visibility:hidden;}
 	h1,h2{padding:0; margin:0; display:inline-block; font-weight:normal;}
 	a, a:link, a:focus, textarea, button, input, select{outline:none; resize:none; border:0px; text-decoration:none;  -webkit-appearance:none; -webkit-border-radius:0;}
@@ -106,7 +106,7 @@
 	.head_fixed{background:#fff !important; box-shadow:0px 0px 5px 0px rgba(0,0,0,0.1) !important;}
 
 .head_wrap .head{width:100%; max-width:1280px; margin:0 auto; position:relative; transition: All 0.2s ease; -webkit-transition: All 0.2s ease; -moz-transition: All 0.2s ease; -o-transition: All 0.2s ease;}
-	.head_wrap .head .head_logo{max-width:280px; position:absolute; top:12px; text-align: center; left: -4%;}
+	.head_wrap .head .head_logo{max-width:280px; position:absolute; top:27px; text-align: center; left: -4%;}
 		.main_body .head_wrap .head .head_logo .head_logo_img{display:inline-block;}
 		.main_body .head_wrap .head .head_logo .head_logo_img_fixed{display:none;}
 		
@@ -143,15 +143,6 @@
 					.head_menu_down_menu ul li a:hover{text-decoration:underline;}
 				.head_menu_down_menu{padding:25px;}
 				.head_menu_down_menu.check{background:#fdd000;}
-				
-				.head_wrap .head .icon_basket{
-					width:20px;
-					height:20px;
-					position: absolute;
-					top: 15px;
-					right: -55px;
-				}
-				
 
 /* sub */
 	.cont_head:before{content:""; position:absolute; width:100%; height:100%; left:0; top:0; opacity:0.1;}
@@ -227,7 +218,6 @@
 		/*.cont_box:nth-child(2n-1){background:#fdd000;}*/
 		.cont_boxs{width:100%; max-width:1280px; margin:0 auto; margin-bottom:100px;}
 			.cont_boxs:last-child{margin-bottom:0;}
-
 
 		.cont_head{text-align:center; background:#444 !important; color:#fff !important; z-index:1;}
 			.cont_head .cont_title_wrap{margin-bottom:20px; text-transform:uppercase;}
