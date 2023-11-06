@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>AboutUs</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="/css/ABOUTUS.css">
+  <link rel="stylesheet" href="/css/MEDIA.css">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;900&display=swap">
+
+  <!-- app start-->
+  <meta property="al:ios:url" content="applinks://docs">
+  <meta property="al:ios:app_store_id" content="12345">
+  <meta property="al:ios:app_name" content="App Links">
+  <meta property="al:android:url" content="applinks://docs">
+  <meta property="al:android:app_name" content="App Links">
+  <meta property="al:android:package" content="org.applinks">
+  <meta property="al:web:url" content="http://applinks.org/documentation">
+  <!-- app end-->
+
+<body>
+  <div class="wrap">
+    <div class="head_wrap">
+      <div class="head">
+        <div class="head_logo">
+          <a href="main.html">
+            <img src="image/Cafe_logo_4.png" class="head_logo_img_fixed">
+          </a>
+        </div>
+
+        <div class="head_top_nav">
+          <nav class="head-menu-top-nav">
+            <ul>
+              <li class="top-nav01"><a href="login.html">Sign In</a></li>
+              <li class="top-nav02"><a href="register_terms.html">Join Now</a></li>
+              <li class="top-nav03"><a href="mypage.html">My Page</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="head_top_icon">
+          <ul>
+            <li>
+              <a href="basket.html">
+                <img src="image/basket.png" class="icon_basket_img_fixed">
+              </a>
+            </li>
+          </ul>
+        </div>
+
+
+
+        <div class="head_menu_wrap">
+          <div class="head_menu">
+            <ul>
+              <li>
+                <a href="/html/aboutus.html" class="pc">ABOUT US</a>
+                <a class="m head_menu_down">ABOUT US</a>
+                <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+                  <ul>
+                    <li>
+                      <a href="/html/aboutus.html">브랜드</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <a href="/html/drink.html" class="pc">MENU</a>
+                <a class="m head_menu_down">MENU</a>
+                <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+                  <ul>
+                    <li>
+                      <a href="/html/drink.html">음료</a>
+                    </li>
+                    <li>
+                      <br><a href="/html/food.html">푸드</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <a href="store.html" class="pc">STORE</a>
+                <a class="m head_menu_down">STORE</a>
+                <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+                  <ul>
+                    <li>
+                      <a href="store.html">매장찾기</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <a href="partnership.html" class="pc">PARTNERSHIP</a>
+                <a class="m head_menu_down">PARTNERSHIP </a>
+                <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+                  <ul>
+                    <li>
+                      <a href="partnership.html">입점문의</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <a href="/html/notice.html" class="pc">NEWS</a>
+                <a class="m head_menu_down">NEWS</a>
+                <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+                  <ul>
+                    <li>
+                      <a href="/html/notice.html">공지사항</a>
+                    </li>
+                    <li>
+                      <br><a href="/html/qna.html">Q&A</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mobile_menu_icon_wrap m t">
+          <div class="mobile_menu_icon">
+            <div class="mobile_menu_icon_bar bar_black"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    function layerClose(id) {
+      document.getElementById("popup_" + id).style.display = "none";
+    }
+    function closeByToday(id) {
+      if (document.getElementById("chkbox" + id).checked) {
+        setCookie("popup_" + id, "done", 1);
+      }
+      document.getElementById("popup_" + id).style.display = "none";
+      document.getElementById("chkbox" + id).checked = false;
+    }
+    function setCookie(name, value, expiredays) {
+      var todayDate = new Date();
+      todayDate.setDate(todayDate.getDate() + expiredays);
+      document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";";
+    }
+  </script>
+  <div class="popup_num_wrap">
+  </div>
+  <script type="text/javascript">
+    var pop_length = $(".popup_num").length;
+    var cookiedata = document.cookie;
+    for (i = 0; i < pop_length; i++) {
+      $(".popup_num:nth-child(" + (i + 1) + ")").attr('id', 'popup_' + i);
+      $(".popup_num:nth-child(" + (i + 1) + ") .popup_close").attr('onclick', 'layerClose(' + i + ')');
+      $(".popup_num:nth-child(" + (i + 1) + ") label").attr('onclick', 'chkday(' + i + ')');
+      $(".popup_num:nth-child(" + (i + 1) + ") label").attr('for', 'chkbox' + i + '');
+      $(".popup_num:nth-child(" + (i + 1) + ") input").attr('name', 'chkbox' + i + '').attr('id', 'chkbox' + i + '').attr('onclick', 'closeByToday(' + i + ')');
+
+      if (cookiedata.indexOf("popup_" + i + "=done") < 0) {
+        document.getElementById("popup_" + i).style.display = "block";
+      } else {
+        document.getElementById("popup_" + i).style.display = "none";
+      }
+    }
+
+    $(window).resize(function () {
+
+    });
+  </script>
+  <!--헤더 다운드랍-->
+  <script>
+    //head_menu start
+    $(document).ready(function () {
+      $(".head_wrap .head .head_menu > ul > li").hover(function () {
+        if ($(".head_menu_wrap").is(".right0") == false) {
+          $(".head_wrap .head .head_menu > ul > li").removeClass("check");
+          $(this).addClass("check");
+          $(".head_menu_down_menu").stop().slideDown("fast");
+        };
+      }, function () {
+        $(".head_wrap .head .head_menu > ul > li").removeClass("check");
+      });
+
+      $(".head_wrap").hover(function () {
+        $(this).addClass("head_over");
+      }, function () {
+        if ($(".head_menu_wrap").is(".right0") == false) {
+          $(this).removeClass("head_over");
+          $(".head_wrap .head .head_menu > ul > li").removeClass("check");
+          $(".head_menu_down_menu").stop().slideUp("fast");
+        }
+      });
+      //head_menu end
+      //mobile start
+      $(".mobile_menu_icon").click(function () {
+        $(".head_wrap").addClass("head_over");
+        $(this).toggleClass("mobile_menu_icon_open");
+        if ($(this).is(".mobile_menu_icon_open")) {
+          $(".head_menu_wrap").addClass("right0");
+        } else {
+          $(".head_menu_wrap").removeClass("right0");
+        }
+      });
+      $(".head_menu_down").click(function () {
+        $(this).toggleClass("head_menu_down_open");
+        if ($(this).is(".head_menu_down_open")) {
+          $(this).next(".head_menu_down_menu").find("ul").slideDown("fast");
+        } else {
+          $(this).next(".head_menu_down_menu").find("ul").slideUp("fast");
+        }
+      });
+      //mobile end
+      cont_gallery_list_img();
+      $(window).resize(function () {
+        $(".head_menu_down_menu > ul").css("display", "block");
+        if ($(window).width() < 760) {
+          $(".head_menu_down_menu > ul").css("display", "none");
+        };
+        $(".head_menu_down").removeClass("head_menu_down_open");
+        if ($(window).width() >= 1280) {
+          $(".head_wrap").removeClass("head_over");
+          $(".head_menu_wrap").removeClass("right0");
+          $(".mobile_menu_icon").removeClass("mobile_menu_icon_open");
+        };
+        cont_gallery_list_img();
+      });
+    });
+    $(window).scroll(function () {
+      if ($(document).scrollTop() > $(".cont_wrap").offset().top) {
+        $(".head_wrap").addClass("head_fixed");
+      } else {
+        $(".head_wrap").removeClass("head_fixed");
+      }
+    });
+    function cont_gallery_list_img() {
+      $(".cont_gallery_list > ul > li").each(function () {
+        if ($(this).find(".cont_gallery_list_img").length) {
+          $(this).find(".cont_gallery_list_img").css("width", $(this).width());
+        };
+
+        if ($(this).find(".cont_gallery_list_img_height").length) {
+          $(this).find(".cont_gallery_list_img_height").css("height", $(this).width());
+        } else {
+          $(this).find(".cont_gallery_list_img").css("height", $(this).width());
+        };
+      });
+    };
+    function login() {
+      location.href = "/login/?ReturnPage=" + window.location.pathname;
+    };
+    function logout() {
+      location.href = "/login/logout.php?ReturnPage=" + window.location.pathname;
+    };
+  </script>
+  </head>
+  
+	<div class="cont_wrap menu_wrap">
+		<div class="cont">
+			<div class="cont_box cont_head">
+				<div class="cont_boxs">
+					<div class="cont_title_wrap">
+					<div class="cont_title_info">CAFE DREAM STORY</div>
+						<div class="cont_title robo color">
+							<h2>CAFE DREAM BRAND</h2>
+						</div>
+					</div>
+					<div class="cont_text_wrap">
+						<div class="cont_text cont_list_map">
+							<ul>
+								<li>
+									HOME
+								</li>
+								<li>
+									ABOUT US
+								</li>
+								<li>
+									브랜드								
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="cont_box cont_banner" data-aos="slide-down" data-aos-delay="0">
+				<div class="cont_boxs text_center">
+					<div class="cont_title_wrap">
+						<div class="cont_title">
+							<b>꿈을 담는 커피 전문점</b><br>
+							부천대학교의 새로운 <br class="m">커피문화
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="cont_box brand01">
+				<div class="cont_boxs text_center">
+					<div class="cont_title_wrap">
+						<div class="cont_title_info">
+							하루에 한 잔!<br class="m">
+							매일 즐기는 데일리 커피
+						</div>
+						<div class="cont_title robo">
+							<h2>DAILY COFFEE</h2>
+						</div>
+					</div>
+					<div class="cont_text_wrap">
+						<div class="cont_text">
+							고객이 편안함을 느낄 수 있는 제3의 공간!<br>
+							몸과 마움에 에너지를 충전하고 힐링하는 문화공간!
+							<br class="pc"> 카페드림이 추구하는 Concept입니다.
+						</div>
+					</div>
+					<div class="cont_text_wrap">
+						<div class="cont_gallery_list cont_list cont_list4 cont_list_m cont_list_m1">
+							<ul>
+								<li>
+									<div class="cont_gallery_list_box">
+										<div class="cont_text_box">
+											<div class="cont_text cont_text_title robo color">
+												EXPERTISE
+											</div>
+											<div class="cont_text cont_text_title">
+												<b>전문성</b>
+											</div>
+											<div class="cont_text">
+												본사 내 해당 업종 전문가 인력 배치 및<br class="pc">
+												체계적인 본사 프로그램
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="cont_gallery_list_box">
+										<div class="cont_text_box">
+											<div class="cont_text cont_text_title robo color">
+												DREAM
+											</div>
+											<div class="cont_text cont_text_title">
+												<b>꿈</b>
+											</div>
+											<div class="cont_text">
+												한국인의 '정'과 <br class="pc">
+												미래지향적인 '꿈'을 담은 회사!
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="cont_gallery_list_box">
+										<div class="cont_text_box">
+											<div class="cont_text cont_text_title robo color">
+												RATIONAL
+											</div>
+											<div class="cont_text cont_text_title">
+												<b>합리적</b>
+											</div>
+											<div class="cont_text">
+												유통과정을 최소화하여 최대한 <br class="pc">저렴하고 합리적인 가격에 제공
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="cont_gallery_list_box">
+										<div class="cont_text_box">
+											<div class="cont_text cont_text_title robo color">
+												DIFFERENTIATION
+											</div>
+											<div class="cont_text cont_text_title">
+												<b>차별화</b>
+											</div>
+											<div class="cont_text">
+												재미있는 비주얼과 콘셉트, <br class="pc">시즌마다 출시되는 트렌디한 음료
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		  <div class="foot_wrap">
+    <div class="foot">
+      <div class="foot_terms">
+        <ul>
+          <li>
+            <a href="/">이용약관</a>
+          </li>
+          <li>
+            |
+          </li>
+          <li>
+            <a href="/">개인정보취급방침</a>
+          </li>
+        </ul>
+      </div>
+      <div class="foot_logo">
+        <img class="foot_logo" src="image/Cafe_logo_4.png" alt="Logo">
+      </div>
+      <div class="foot_cont">
+        <ul>
+          <li><b>(주)주식회사 부천대학교</li></b>
+          <li>경기도 부천시 심곡동 신흥로56번길 25</li>
+          <li>대표자 박찬호</li>
+          <li>E-mail 1111@gmail.com</li>
+          <li>TEL 032-610-3260</li>
+        </ul>
+        <ul class="copyright">
+          <li>Copyright © 2023 CafeDream. All rights reserved.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
