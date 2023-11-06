@@ -290,7 +290,7 @@
 	.head_fixed{background:#fff !important; box-shadow:0px 0px 5px 0px rgba(0,0,0,0.1) !important;}
 		
 	.head_wrap .head{width:100%; max-width:1280px; margin:0 auto; position:relative; transition: All 0.2s ease; -webkit-transition: All 0.2s ease; -moz-transition: All 0.2s ease; -o-transition: All 0.2s ease;}
-	.head_wrap .head .head_logo{width:300px; position:absolute; top:8px; left:-70px;}
+	.head_wrap .head .head_logo{width:280px; position:absolute; top:8px; left:-70px;}
 		.main_body .head_wrap .head .head_logo .head_logo_img{display:block;}
 		.main_body .head_wrap .head .head_logo .head_logo_img_fixed{display:none;}
 		
