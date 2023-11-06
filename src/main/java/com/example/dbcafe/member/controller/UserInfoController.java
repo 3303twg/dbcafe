@@ -50,8 +50,9 @@ public class UserInfoController {
             User user= userInfoService.findUser(id);
             model.addAttribute("userInfo", user);
             model.addAttribute("coupon", "현재 사용 가능한 쿠폰은 " + (user.getStamp() / 10) + "개 입니다.");
+            model.addAttribute("stamp", "현재 보유중인스탬프는 " + (user.getStamp() + "개 입니다."));
 
-            return "/MyPage";
+            return "/MyPagee";
         } else {
             model.addAttribute("message", "잘못된 접근입니다..");
             model.addAttribute("searchUrl", "/");

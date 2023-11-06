@@ -77,7 +77,7 @@ public class BoardController {
     }
 
 
-    //QNA 글상세조회
+    //QNA 글상세조회 공지가 하나라도 있어야 작동함 ㅇㅇ 수정하려면 qna.html에서 조건문으로 공지글 찾아오는거 빼야함
     @GetMapping("/QnA/{id}")
     public String findById(@PathVariable Long id, Model model, @PageableDefault(page=1) Pageable pageable){
         //조회수를 증가시키는 서비스
@@ -265,7 +265,7 @@ public class BoardController {
         model.addAttribute("search", search);
         model.addAttribute("searchCategory", searchCategory);
 
-        return "notice";
+        return "NOTICE";
     }
 
 }

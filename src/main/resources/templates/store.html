@@ -1,19 +1,16 @@
 <!doctype html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="ko">
 
 <head>
-	<link rel="stylesheet" href="/css/MEDIA.css">
 	<title>Store</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<link rel="stylesheet" href="/css/store.css">
-	<link rel="stylesheet" href="/css/media.css">
+	<link rel="stylesheet" href="/css/MEDIA.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap">
 	<link rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;900&display=swap">
-
-
 
 <body>
 	<div class="wrap">
@@ -27,13 +24,10 @@
 
 				<div class="head_top_nav">
 					<nav class="head-menu-top-nav">
-						<ul sec:authorize="!isAuthenticated()">
+						<ul>
 							<li class="top-nav01"><a href="/signin">Sign In</a></li>
 							<li class="top-nav02"><a href="/signup">Join Now</a></li>
-						</ul>
-						<ul sec:authorize="isAuthenticated()">
-							<li class="top-nav01"><a href="/logout">로그아웃</a></li>
-							<li class="top-nav02"><a href="/mypage">My Page</a></li>
+							<li class="top-nav03"><a href="/mypage">My Page</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -41,14 +35,14 @@
 				<div class="head_top_icon">
 					<ul>
 						<li>
-							<div class="icon_basket">
-								<a href="/cart/list">
-									<img src="/image/basket.png" class="icon_basket_img_fixed">
-								</a>
-							</div>
+							<a href="/cart/list">
+								<img src="/image/basket.png" class="icon_basket_img_fixed">
+							</a>
 						</li>
 					</ul>
 				</div>
+
+
 
 				<div class="head_menu_wrap">
 					<div class="head_menu">
@@ -225,7 +219,7 @@
 					<div class="cont_text cont_list_map">
 						<ul>
 							<li>
-								홈
+								HOME
 							</li>
 							<li>
 								STORE </li>
@@ -496,7 +490,7 @@
 				</ul>
 			</div>
 			<div class="foot_logo">
-				<img class="foot_logo" src="/image/Cafe_logo_4.png" alt="Logo">
+				<img class="foot_logo" src="image/Cafe_logo_4.png" alt="Logo">
 			</div>
 			<div class="foot_cont">
 				<ul>

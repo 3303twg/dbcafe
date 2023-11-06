@@ -30,6 +30,15 @@ public class AuthController {
         return "register";
     }
 
+
+//    @PostMapping("/signterm")
+//    public String term(User user, Model model) {
+//        User userEntity = authService.signup(user);
+//        System.out.println(userEntity);
+//
+//        return "redirect:/signin";
+//    }
+
     @PostMapping("/signterm")
     public String term(User user, Model model){
         User newUser = user;
