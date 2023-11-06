@@ -1043,7 +1043,7 @@
 				.board_page_wrap .board_page ul li:hover{background:#f4f6f8;}
 				.board_page_wrap .board_page ul li a{cursor:auto; padding:8px 16px; display:block;}
 				.board_page_wrap .board_page ul li a.board_page_link{cursor:pointer;}
-				.board_page_wrap .board_page .board_page_check{background:#fdd000 !important; border:1px solid #fdd000;}
+				.board_page_wrap .board_page .board_page_check{background:#FFEFD8 !important; border:1px solid #FFEFD8;}
 
 
 /* board_detail */
