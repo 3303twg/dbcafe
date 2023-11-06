@@ -567,6 +567,7 @@
 		.foot_wrap .foot_cont ul li{display:inline-block; flex-wrap: wrap; padding: 5px;}
 
 
+
 /* map */
 	.map_search_wrap{background:#fff; position:absolute; left:0; top:0; width:100%; max-width:320px; box-shadow:0px 5px 10px 0px rgba(0,0,0,0.3); z-index:999; left:5%; top:50%; -webkit-transform:translate(0,-50%); -ms-transform:translate(0,-50%); transform:translate(0,-50%);}
 	.modal_box_map_search .map_search_wrap{position:relative; max-width:100%; box-shadow:inherit; left:0; top:0; -webkit-transform:translate(0,0); -ms-transform:translate(0,0); transform:translate(0,0);}
