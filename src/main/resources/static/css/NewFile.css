@@ -16,7 +16,7 @@
 
 body{
     max-height: 100vh;
-    min-height: 100vh;
+    min-height: 100%;
     position: relative;
 }
 
@@ -60,21 +60,8 @@ header .head-wrap .head-wrap-inner .btns {
     align-items: center;
     justify-content: center;
 }
-header .head-wrap .head-wrap-inner .basket-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 30px;
-    background: white;
-    border: solid 1px gray;
-    border-radius: 5px;
-    width:34px;
-    height: 34px;
-}
-header .head-wrap .head-wrap-inner .basket-btn img{
-    width: 25px;
-    height: 25px;
-}
+
+
 header .head-wrap{
     border:var( --temp-border);
     height: 100px;
@@ -251,7 +238,7 @@ main {
 }
 
 .login-input-section-wrap{
-   padding-top: 200px;
+   padding-top: 190px;
    display: flex;
    flex-direction: column;
    align-items: center;
