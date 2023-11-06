@@ -1,27 +1,11 @@
 package com.example.dbcafe.member.controller;
 
-import com.example.dbcafe.member.Service.BoardService;
-import com.example.dbcafe.member.dto.BoardDTO;
-import com.example.dbcafe.member.entity.BoardEntitiy;
-import com.example.dbcafe.member.entity.OrderEntity;
-import com.example.dbcafe.member.entity.User;
-import com.example.dbcafe.member.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.security.Key;
-import java.security.Principal;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor

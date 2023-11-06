@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script src="https://cdn.protone.io/v2/browser-sdk.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/basket.css">
     <title>장바구니</title>
@@ -11,67 +14,180 @@
         <div class="cart__information">      
         </div>
         <table class="cart__list">
-            <form>
                 <thead>
                     <tr>
-                        <td></td>
+                        <td><input type="checkbox" id="selectAll" onclick="toggleCheckboxes()"></td>
                         <td colspan="2">상품정보</td>
                         <td>수량</td>
                         <td>상품금액</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="cart__list__detail">
-                        <td><input type="checkbox"></td>
-                        <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
-                        <td><a href="#">애플 공식 브랜드스토어</a><span class="cart__list__smartstore"> 스마트스토어</span>
-                            <p>Apple 매직 키보드 - 한국어(MK2A3KH/A)</p>
-                        </td>
-                        <td class="cart__list__option">
-                            <span> 1개</span>
-                        </td>
-                        <td><span class="price">116,620원</span><br>
-                        </td>
-                    </tr>
-                    <tr class="cart__list__detail">
-                        <td style="width: 2%;"><input type="checkbox"></td>
+                    <tr th:each="item, itemStat : ${cartItems}" class="cart__list__detail">
+                        <td style="width: 2%;"><input type="checkbox" name="selectedItems"  class="itemCheckbox" th:attr="data-item-id=${item.id}"></td>
                         <td style="width: 13%;">
-                            <img src="image/mouse.jpg" alt="magic mouse">
+                            <img th:src="@{${item.menuImagePath}}" width="50" height="50" class="image" alt="이미지없음">
                         </td>
-                        <td style="width: 27%;"><a href="#">컴퓨존</a><span class="cart__list__smartstore"> 스마트스토어</span>
-                            <p>[애플] Magic Mouse [MK2E3KH/A]</p>
+                        <td style="width: 27%;" th:text="${item.menuName}">
                         </td>
                         <td class="cart__list__option" style="width: 27%;">
                             <span> 1개</span>
                         </td>
-                        <td style="width: 15%;"><span class="price">88,900원</span><br>
+                        <td style="width: 15%;"th:text="${item.menuPrice}+'원'"><br>
                         </td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="3"><input type="submit" value="선택상품 삭제" class="cart__list__optionbtn" id="">
+                            <button type="button" id="removeSelectedItems">선택한 메뉴 삭제</button>
                         </td>
                         <td></td>
                         <td></td>
                     </tr>
                 </tfoot>
-            </form>
         </table>
         <div class="total">
         	<div class="total_price">
                             <tr>
                                 <ul>주문금액</ul>
-                                <li>26,000</li>
+                                <li><span th:text="${totalPrice}+'원'" id="totalPrice"></span></li>
                                 </tr>
                                 </div>
                   </div>
         <div class="cart__mainbtns">
-            <input type="submit" value="쇼핑 계속하기" class="cart__bigorderbtn left">
-            <input type="submit" value="주문하기" class="cart__bigorderbtn right">
+<!--            <input type="submit" value="쇼핑 계속하기" class="cart__bigorderbtn left">-->
+<!--            <input type="submit" value="주문하기" class="cart__bigorderbtn right">-->
+            <input type="checkbox" id="useCoupon" name="useCoupon"> 쿠폰 사용하기
+            <button id="checkoutButton">결제하기</button>
         </div>
     </section>
     
    
 </body>
+<script>
+    // 모두 선택 버튼 토글 함수
+    function toggleCheckboxes() {
+        $(".itemCheckbox").prop('checked', $("#selectAll").is(":checked"));
+    }
+
+    // 선택한 메뉴 삭제 함수
+    $("#removeSelectedItems").click(function() {
+
+        var selectedItems = [];
+        // 선택한 체크박스 아이템을 찾아서 ID를 배열에 추가
+        $(".itemCheckbox:checked").each(function() {
+            var index = $(this).closest('tr').index(); // 테이블 행의 인덱스 가져오기
+            selectedItems.push(index);
+        });
+
+        selectedItems.sort(function(a, b) {
+            return a - b;
+        });
+        let num = -1;
+
+        $.each(selectedItems, function(index, value) {
+            // 선택한 항목의 인덱스를 기반으로 해당 행을 삭제
+            $("tr:eq(" + (value-num) + ")").remove();
+            num ++;
+        });
+
+
+        if (selectedItems.length > 0) {
+            console.log(selectedItems);
+
+            // Ajax 요청을 사용하여 선택한 메뉴 항목 삭제
+            $.ajax({
+                url: "/removeSelectedItems",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(selectedItems),
+                success: function (data) {
+                    // 삭제 성공 시, 선택한 메뉴 항목을 테이블에서 제거
+
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log("에러:", errorThrown);
+                }
+            });
+        }
+    });
+</script>
+
+
+
+<script th:inline="javascript">
+    const IMP = window.IMP;
+    IMP.init("imp58583134");
+
+    // 결제하기 버튼 클릭 이벤트 핸들러
+    document.getElementById("checkoutButton").addEventListener("click", function () {
+        var userID = [[${loginUser}]];
+        var Price = [[${totalPrice}]]; //타임리프 모델선언한거 가져오는거
+        var useCoupon = document.getElementById("useCoupon").checked;
+        console.log("결제 응답:", Price);
+
+        $.ajax({
+            url: "/createUUID",
+            type: "POST",
+            success: function (data) {
+                var UUID = data; // 서버에서 받은 UUID
+
+                $.ajax({
+                    url: "/createOrder",
+                    type: "POST",
+                    data: {
+                        userId: userID, //주문내역을 만들때 유저아이디가 필요함 추후엔 머 알아서 가져와야지머
+                        useCoupon: useCoupon
+                    },
+                    success: function (data) {
+                        // 주문 내역이 성공적으로 생성되면 결제 시작
+                        startPayment(data, Price, UUID); // totalPrice를 전달
+
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("에러:", errorThrown);
+                    }
+                });
+            },
+        });
+    });
+
+    function startPayment(productname, totalPrice, UUID) {//유저아이디안쓰니까 뺴야하고, 네임을 받아와야함 ㅇㅇ
+        var userID = [[${loginUser}]];
+        var totalPriceAsString = totalPrice.toString(); // totalPrice를 문자열로 변환
+        var products = productname.toString();
+        var UUID_String = UUID.toString();  //uid는 string형식임
+
+        var uid = userID + UUID_String //아래쪽에서 연산안대서 여기서함
+
+        alert(uid);
+
+        IMP.request_pay({
+            pg: "kakaopay",
+            pay_method: "kakaopay",
+            merchant_uid: uid, // 고유한 주문 ID 생성
+            name: products, //내가 나중에 만들어줘야함
+            amount: totalPriceAsString //String 값으로 넣어줘야함
+        }, rsp => {
+            if (rsp.success) {
+                alert("결제 완료");
+                console.log("결제 응답:", rsp);
+
+                //결제가 완료됬으니 장바구니를 비워줘야함
+                $.ajax({
+                    url: "/endOrder",
+                    type: "POST",
+                    data: {
+                        userId: userID, //삭제할 장바구니주인의 id가 필요함
+                    },
+                });
+
+            } else {
+                alert("결제 실패");
+                console.error("결제 실패: " + rsp.error_msg);
+            }
+        });
+    }
+</script>
 </html>

@@ -1,214 +1,53 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
-<link rel="stylesheet" href="/css/store.css">
-	<title>매장찾기</title>
+	<title>Store</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	<meta name="title" content="메가MGC커피">
-	<meta name="Subject" content="메가커피 커피전문점, 프랜차이즈, 메가엠지씨커피, 빅사이즈 투샷, 가맹안내, 테이크아웃">
-	<meta name="keywords" content="메가커피 커피전문점, 프랜차이즈, 메가엠지씨커피, 빅사이즈 투샷, 가맹안내, 테이크아웃">
-	<meta name="Descript-xion" content="메가커피 커피전문점, 프랜차이즈, 메가엠지씨커피, 빅사이즈 투샷, 가맹안내, 테이크아웃">
-	<meta name="Description" content="메가커피 커피전문점, 프랜차이즈, 메가엠지씨커피, 빅사이즈 투샷, 가맹안내, 테이크아웃">
-	<meta name="Publisher" content="chingooplus">
-	<meta name="Other Agent" content="chingooplus">
-	<meta name="Distribution" content="chingooplus">
-	<meta name="Copyright" content="chingooplus">
-	<meta name="Author" content="chingooplus">
-	<meta name="Robots" content="ALL">
-	<!-- <meta name="Robots" content="noindex"> -->
-	<!-- naver start -->
-	<meta name="naver-site-verification" content="855dc64a4a2ca80c4cb373c1b30a054d1807804e" />
-	<!-- naver end -->
-	<!-- webmaster start -->
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="메가MGC커피">
-	<meta property="og:site_name" content="메가커피 커피전문점, 프랜차이즈, 메가엠지씨커피, 빅사이즈 투샷, 가맹안내, 테이크아웃">
-	<meta property="og:description" content="메가커피 커피전문점, 프랜차이즈, 메가엠지씨커피, 빅사이즈 투샷, 가맹안내, 테이크아웃">
-	<meta property="og:url" content="https://www.mega-mgccoffee.com/">
-	<meta property="og:image" content="/thumbnail.png?ver=202307100845">
-	<!-- webmaster end -->
-	<!-- app start-->
-	<meta property="al:ios:url" content="applinks://docs">
-	<meta property="al:ios:app_store_id" content="12345">
-	<meta property="al:ios:app_name" content="App Links">
-	<meta property="al:android:url" content="applinks://docs">
-	<meta property="al:android:app_name" content="App Links">
-	<meta property="al:android:package" content="org.applinks">
-	<meta property="al:web:url" content="http://applinks.org/documentation">
-	
-	<link rel="stylesheet" href="/css/header.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="/js/header.js"></script>
-	
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	
-	<!-- app end-->
-	<link rel="canonical" href="https://www.mega-mgccoffee.com/">
-	<link rel="icon" href="/favicon.ico?ver=202307100845" sizes="16x16">
-	<link rel="icon" href="/favicon.ico?ver=202307100845" sizes="32x32">
-
+	<link rel="stylesheet" href="/css/store.css">
+	<link rel="stylesheet" href="/css/media.css">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;900&display=swap">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;900&display=swap">
 
-	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
-	<link rel="stylesheet" type="text/css" href="https://img.79plus.co.kr/megahp/common/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" type="text/css" href="/common/css/simple-line-icons.min.css">
-	<link rel="stylesheet" type="text/css" href="/common/css/style.css?ver=202308231505">
-	<link rel="stylesheet" type="text/css" href="https://img.79plus.co.kr/megahp/common/css/animate.css">
-	<link rel="stylesheet" type="text/css" href="/common/css/aos.css?ver=202307100845">
 
-	<script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
-	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/bootstrap.js"></script>
-	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/jquery.flexslider.js"></script>
-	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/jquery.bxslider.js"></script>
-	<script type="text/javascript" src="/common/js/common.js?ver=202307100845"></script>
 
-	<!-- daterangepicker -->
-	<link rel="stylesheet" type="text/css" href="/common/css/daterangepicker.min.css">
-	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/angular.min.js"></script>
-	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/angular-messages.min.js"></script>
-	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/moment.min.js"></script>
-	<script type="text/javascript" src="/common/js/daterangepicker.min.js?ver=202307100845"></script>
-	<script type="text/javascript" src="/common/js/angular-daterangepicker.min.js"></script>
-	<!-- datemdpicker -->
-	<link rel="stylesheet" type="text/css" href="/common/css/mdtimepicker.css?ver=202307100845">
-	<script type="text/javascript" src="/common/js/mdtimepicker.js?ver=202307100845"></script>
-
-	<!-- fullPage -->
-	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/jquery.fullPage.js"></script>
-
-	<!-- swiper -->
-	<link rel="stylesheet" type="text/css" href="/common/css/swiper.min.css?ver=202307100845">
-	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/swiper.min.js"></script>
-
-	<script>
-		$(document).ready(function(){
-			$(".datepickertime_wrap input").mdtimepicker();
-			$(".detail_flex_slider_wrap").flexslider({
-				animation: "slide",
-				controlNav: "thumbnails",
-				start: function(){
-					$(".detail_flex_slider_wrap img").css("visibility","visible");
-				},
-			});
-		//head_down_menu start
-			$(".head_wrap .head .head_menu > ul > li").hover(function() {
-				if ( $(".head_menu_wrap").is(".right0") == false ) {
-					$(".head_wrap .head .head_menu > ul > li").removeClass("check");
-					$(this).addClass("check");
-					$(".head_menu_down_menu").stop().slideDown("fast");
-				};
-			}, function() {
-					$(".head_wrap .head .head_menu > ul > li").removeClass("check");
-			});
-
-			$(".head_wrap").hover(function() {
-				$(this).addClass("head_over");
-			}, function() {
-				if ( $(".head_menu_wrap").is(".right0") == false ) {
-					$(this).removeClass("head_over");
-					$(".head_wrap .head .head_menu > ul > li").removeClass("check");
-					$(".head_menu_down_menu").stop().slideUp("fast");
-				}
-			});
-		//head_down_menu end
-		//mobile start
-			$(".mobile_menu_icon").click(function(){
-				$(".head_wrap").addClass("head_over");
-				$(this).toggleClass("mobile_menu_icon_open");
-				if ( $(this).is(".mobile_menu_icon_open") ) {
-					$(".head_menu_wrap").addClass("right0");
-				} else {
-					$(".head_menu_wrap").removeClass("right0");
-				}
-			});
-			$(".head_menu_down").click(function(){
-				$(this).toggleClass("head_menu_down_open");
-				if ( $(this).is(".head_menu_down_open") ) {
-					$(this).next(".head_menu_down_menu").find("ul").slideDown("fast");
-				} else {
-					$(this).next(".head_menu_down_menu").find("ul").slideUp("fast");
-				}
-			});
-		//mobile end
-			cont_gallery_list_img();
-			$(window).resize(function() {
-				$(".head_menu_down_menu > ul").css("display","block");
-				if ( $(window).width() < 760 ) {
-					$(".head_menu_down_menu > ul").css("display","none");
-				};
-				$(".head_menu_down").removeClass("head_menu_down_open");
-				if ( $(window).width() >= 1280 ) {
-					$(".head_wrap").removeClass("head_over");
-					$(".head_menu_wrap").removeClass("right0");
-					$(".mobile_menu_icon").removeClass("mobile_menu_icon_open");
-				};
-				cont_gallery_list_img();
-			});
-		});
-		$(window).scroll( function() {
-			if ( $(document).scrollTop() > $(".cont_wrap").offset() .top ) {
-				$(".head_wrap").addClass("head_fixed");
-			} else{
-				$(".head_wrap").removeClass("head_fixed");
-			}
-		});
-		function cont_gallery_list_img(){
-			$(".cont_gallery_list > ul > li").each(function() {
-				if ( $(this).find(".cont_gallery_list_img").length ) {
-					$(this).find(".cont_gallery_list_img").css("width", $(this).width() );
-				};
-
-				if ( $(this).find(".cont_gallery_list_img_height").length ) {
-					$(this).find(".cont_gallery_list_img_height").css("height", $(this).width() );
-				} else {
-					$(this).find(".cont_gallery_list_img").css("height", $(this).width() );
-				};
-			});
-		};
-
-		function login(){
-			location.href = "/login/?ReturnPage=" + window.location.pathname;
-		};
-		function logout(){
-			location.href = "/login/logout.php?ReturnPage=" + window.location.pathname;
-		};
-	</script>
-</head>
 <body>
-		<div class="overlay none"></div>
-	<div class="modal">
-		<div class="modal-dialog">
-			<div class="modal-content"></div>
-		</div>
-	</div>
 	<div class="wrap">
 		<div class="head_wrap">
 			<div class="head">
 				<div class="head_logo">
 					<a href="/">
-						<img src="image/logo.png" class="head_logo_img_fixed">
-					</a>
-				</div>
-
-				<div class="icon_basket">
-					<a href="#">
-						<img src="image/basket.png" class="icon_basket_img_fixed">
+						<img src="/image/logo.png" class="head_logo_img_fixed">
 					</a>
 				</div>
 
 				<div class="head_top_nav">
 					<nav class="head-menu-top-nav">
-						<ul>
-							<li class="top-nav01"><a href="/test/login">Sign In</a></li>
-							<li class="top-nav02"><a href="/register">Join Now</a></li>
-							<li class="top-nav03"><a href="#">My Page</a></li>
+						<ul sec:authorize="!isAuthenticated()">
+							<li class="top-nav01"><a href="/signin">Sign In</a></li>
+							<li class="top-nav02"><a href="/signup">Join Now</a></li>
+						</ul>
+						<ul sec:authorize="isAuthenticated()">
+							<li class="top-nav01"><a href="/logout">로그아웃</a></li>
+							<li class="top-nav02"><a href="/mypage">My Page</a></li>
 						</ul>
 					</nav>
 				</div>
+
+				<div class="head_top_icon">
+					<ul>
+						<li>
+							<a href="/cart/list">
+								<img src="/image/basket.png" class="icon_basket_img_fixed">
+							</a>
+						</li>
+					</ul>
+				</div>
+
+
 
 				<div class="head_menu_wrap">
 					<div class="head_menu">
@@ -270,7 +109,7 @@
 								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
 									<ul>
 										<li>
-											<a href="/board/QnA">공지사항</a><br>
+											<a href="/board/notice">공지사항</a><br>
 										</li>
 										<li>
 											<a href="/board/QnA">Q&A</a><br>
@@ -281,662 +120,399 @@
 						</ul>
 					</div>
 				</div>
-			</div>
-		</div>	
-	</div>	
+
 				<div class="mobile_menu_icon_wrap m t">
 					<div class="mobile_menu_icon">
 						<div class="mobile_menu_icon_bar bar_black"></div>
 					</div>
 				</div>
-	<div class="cont_wrap find_wrap">
-		<div class="cont">
-			<div class="cont_box cont_head">
-				<div class="cont_boxs">
-					<div class="cont_title_wrap">
-						<div class="cont_title_info">
-							STORE
-						</div>
-							<div class="cont_title robo color">
-								<h2>CAFE DREAM STORE</h2>
-							</div>
-					</div>
-					<div class="cont_text_wrap">
-						<div class="cont_text cont_list_map">
-							<ul>
-								<li>HOME</li>
-								<li>STORE</li>
-								<li>매장찾기</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="cont_box find01">
-				<div class="map_search_wrap">
-					<div class="map_search">
-						<div class="cont_text_wrap map_search_tab_wrap">
-							<div class="map_search_tab">
-								<ul>
-									<li class="check">
-										매장찾기
-									</li>
-									<li>
-										지역검색
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="cont_text_wrap map_search_box">
-							<div class="cont_text_box map_search_title_wrap">
-								<div class="cont_text cont_text_title">
-									<b>매장찾기</b>
-								</div>
-								<div class="cont_text">
-									<div class="input_text_wrap input_wrap2">
-										<label>
-											<input type="text" name="store_search" id="store_search" class="" placeholder="지점명 또는 주소를 입력하세요" required="required">
-										</label>
-										<div class="search_icon" id="search_map" onclick="search_map();">
-											<div class="bar"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="cont_text_box">
-								<div class="cont_list cont_list1 cont_list_small cont_list_small1">
-									<ul id="store_search_list">
-										<div class='store_search_list_none'>검색어가 없습니다.</div>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="cont_text_wrap map_search_box none">
-							<div class="cont_text_box map_search_title_wrap">
-								<div class="cont_text cont_text_title">
-									<b>지역검색</b>
-								</div>
-							</div>
-							<div class="cont_text_box">
-								<div class="cont_list cont_list2 cont_list_small cont_list_small2">
-									<ul id="store_area_search_list">
-																					<li data-store-area-name="서울">
-												서울											</li>
-																					<li data-store-area-name="경기">
-												경기											</li>
-																					<li data-store-area-name="인천">
-												인천											</li>
-																					<li data-store-area-name="강원">
-												강원											</li>
-																					<li data-store-area-name="광주">
-												광주											</li>
-																					<li data-store-area-name="대전">
-												대전											</li>
-																					<li data-store-area-name="대구">
-												대구											</li>
-																					<li data-store-area-name="부산">
-												부산											</li>
-																					<li data-store-area-name="울산">
-												울산											</li>
-																					<li data-store-area-name="세종">
-												세종											</li>
-																					<li data-store-area-name="경남">
-												경남											</li>
-																					<li data-store-area-name="경북">
-												경북											</li>
-																					<li data-store-area-name="전남">
-												전남											</li>
-																					<li data-store-area-name="전북">
-												전북											</li>
-																					<li data-store-area-name="충남">
-												충남											</li>
-																					<li data-store-area-name="충북">
-												충북											</li>
-																					<li data-store-area-name="제주">
-												제주											</li>
-																			</ul>
-									<ul id="store_area_search_list_result">
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="map" class="map"></div>
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49c5e69d7e241bba1bfdd3678d06b7a6&libraries=services"></script>
+
+	<!--헤더 다운드랍-->
 	<script>
-	//기본디폴트
-		var mapContainer = document.getElementById('map'),
-				mapOption = { 
-				center: new kakao.maps.LatLng(37.5594867, 126.9227794),
-				level: 5
-			};
-		var map = new kakao.maps.Map(mapContainer, mapOption);
-		var imageSrc = "https://img.79plus.co.kr/megahp/common/img/map/marker.png"; 
-		var imageMySrc = "https://img.79plus.co.kr/megahp/common/img/map/marker_my.png"; 
-	//마커와 인포윈도우 배열
-		var markers = [];
-		function removeMaker(){
-			var cnt = markers.length;
-			for ( i=0; i<cnt; i++ ) {
-				markers[i].setMap(null);
-			}
-		};
-		var infowindows = [];
-		function removeInfowindow(){
-			var cnt = infowindows.length;
-			for ( i=0; i<cnt; i++ ) {
-				infowindows[i].close();
-			}
-		};
-	//지점위치기반
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {
-
-				var lat = position.coords.latitude, // 위도
-					lng = position.coords.longitude; // 경도
-
-				var locPosition = new kakao.maps.LatLng(lat, lng);
-				var marker = new kakao.maps.Marker({
-					map: map,
-					position: locPosition,
-				});
-				displayMarker(locPosition, lat, lng);
+		//head_menu start
+		$(document).ready(function () {
+			$(".head_wrap .head .head_menu > ul > li").hover(function () {
+				if ($(".head_menu_wrap").is(".right0") == false) {
+					$(".head_wrap .head .head_menu > ul > li").removeClass("check");
+					$(this).addClass("check");
+					$(".head_menu_down_menu").stop().slideDown("fast");
+				};
+			}, function () {
+				$(".head_wrap .head .head_menu > ul > li").removeClass("check");
 			});
-		};
-		store();
-	//지점검색
-		$("#store_search").keypress(function(e){
-			if(e.keyCode == 13){
-				search_map();
-			}
-		});
-		function search_map(){
-			var store_search = $("#store_search").val();
-			$.ajax({
-				url : "store_search.php",
-				type : "GET",
-				data : {
-					"store_search" : store_search
-				},
-				success : function(result) {
-					$("#store_search_list").html(result);
-					$(".map_search_wrap .cont_list").scrollTop(0);
+
+			$(".head_wrap").hover(function () {
+				$(this).addClass("head_over");
+			}, function () {
+				if ($(".head_menu_wrap").is(".right0") == false) {
+					$(this).removeClass("head_over");
+					$(".head_wrap .head .head_menu > ul > li").removeClass("check");
+					$(".head_menu_down_menu").stop().slideUp("fast");
 				}
 			});
-		}
-	//지점로드
-		function displayMarker(locPosition, lat, lng) {
-			var imageSize = new kakao.maps.Size(40, 50);
-			var markerImage = new kakao.maps.MarkerImage(imageMySrc, imageSize);
-			var marker = new kakao.maps.Marker({  
-				map: map, 
-				position: locPosition,
-				image : markerImage,
-			});
-			map.setCenter(locPosition);
-			var marker_remove = true;
-			var infowindow_remove = true;
-			store(lat,lng,marker_remove,infowindow_remove);
-		};
-	//지점드래그
-		kakao.maps.event.addListener(map, 'dragend', function() {
-			var latlng = map.getCenter(); 
-			var lat = latlng.getLat();
-			var lng = latlng.getLng();
-			var marker_remove = true;
-			var infowindow_remove = true;
-			store(lat,lng,marker_remove,infowindow_remove);
-		});
-	//마커클릭
-		function makeOverListener(map, marker, infowindow) {
-			return function() {
-				removeInfowindow();
-				infowindow.open(map, marker);
-				infowindows.push(infowindow);
-				return infowindow;
-			};
-		}
-	//포지션이동
-		function panTo(move) {
-			map.setLevel(3);
-			var geocoder = new kakao.maps.services.Geocoder();
-			geocoder.addressSearch(move, function(result, status) {
-				if (status === kakao.maps.services.Status.OK) {
-					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-					var lat = result[0].y;
-					var lng = result[0].x;
-					map.setCenter(coords);
-					$.ajax({
-						url : "store.php",
-						type : "GET",
-						dataType : "json",
-						data : {
-							"click_lat" : lat,
-							"click_lng" : lng,
-						},
-						success : function(result) {
-							var imageSize = new kakao.maps.Size(40, 50);
-							var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-							var latlng = map.getCenter(); 
-							var lat = latlng.getLat();
-							var lng = latlng.getLng();
-							store(lat,lng);
-							removeMaker();
-							removeInfowindow();
-							$.each(result.positions, function(index, value){
-								var marker = new kakao.maps.Marker({
-									map: map,
-									position: new kakao.maps.LatLng(result.positions[index].store_lat, result.positions[index].store_lng),
-									image : markerImage,
-								});
-								var	iwContent = '<div class="map_point_info_wrap">';
-									iwContent+=	'	<div class="cont_text_box map_point_info">';
-									iwContent+=	'		<div class="cont_text map_point_info_title_wrap">';
-									iwContent+=	'			<div class="cont_text_title cont_text_inner"><b>'+result.positions[index].store_name2+'</b></div>';
-									iwContent+=	'			<div class="cont_text_info cont_text_inner">'+result.positions[index].store_address+'</div>';
-									iwContent+=	'			<div class="cont_text_info cont_text_inner">'+result.positions[index].store_tel+'</div>';
-									iwContent+=	'		</div>';
-									iwContent+=	'		<div class="cont_text">';
-									iwContent+=	'			<div class="map_point_info_list">';
-									iwContent+=	'				<ul>';
-									iwContent+=	'					<li class="'+result.positions[index].store_option1+'">';
-									iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon01.gif">';
-									iwContent+=	'					</li>';
-									iwContent+=	'					<li class="'+result.positions[index].store_option2+'">';
-									iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon02.gif">';
-									iwContent+=	'					</li>';
-									iwContent+=	'					<li class="'+result.positions[index].store_option3+'">';
-									iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon03.gif">';
-									iwContent+=	'					</li>';
-									iwContent+=	'					<li class="'+result.positions[index].store_option4+'">';
-									iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon04.gif">';
-									iwContent+=	'					</li>';
-									iwContent+=	'					<li class="'+result.positions[index].store_option5+'">';
-									iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon05.gif">';
-									iwContent+=	'					</li>';
-									iwContent+=	'					<li class="'+result.positions[index].store_option6+'">';
-									iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon06.gif">';
-									iwContent+=	'					</li>';
-									iwContent+=	'					<li class="'+result.positions[index].store_option7+'">';
-									iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon07.gif">';
-									iwContent+=	'					</li>';
-									iwContent+=	'					<li class="'+result.positions[index].store_option8+'">';
-									iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon08.gif">';
-									iwContent+=	'					</li>';
-									iwContent+=	'				</ul>';
-									iwContent+=	'			</div>';
-									iwContent+=	'			<div class="cont_text">';
-									iwContent+=	'				<div class="input_btn_wrap input_wrap1 modal_open modal_open_map" data-store-idx="'+result.positions[index].idx+'">';
-									iwContent+=	'					<input type="button" value="자세히보기" class="btn btn1 btn_ani" id="">';
-									iwContent+=	'				</div>';
-									iwContent+=	'			</div>';
-									iwContent+=	'		</div>';
-									iwContent+=	'	</div>';
-									iwContent+=	'</div>';
-								var iwRemoveable = true;
-								var infowindow = new kakao.maps.InfoWindow({
-									content : iwContent,
-									removable : iwRemoveable
-								});
-								kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
-
-								infowindow.open(map, marker);
-								infowindows.push(infowindow);
-								markers.push(marker);
-								return infowindow;
-								return marker;
-							});
-							infowindowindex();
-
-							if ( move == '서울 중구 만리재로 175 (만리동2가)' ) {
-								var moveLatLon = new kakao.maps.LatLng(37.552241, 126.962690);
-								map.panTo(moveLatLon);
-							}
-							if ( move == '서울 서대문구 홍은동 464' ) {
-								var moveLatLon = new kakao.maps.LatLng(37.5919904, 126.9413969);
-								map.panTo(moveLatLon);
-							}
-							if ( move == '경기 고양시 덕양구 도래울로 16 (도내동, 도래울파크뷰(PARK VIEW))' ) {
-								var moveLatLon = new kakao.maps.LatLng(37.628545, 126.868486);
-								map.panTo(moveLatLon);
-							}
-							if ( move == '대구 달성군 구지면 과학마을로3길 14 (응암리, 대구국가산단 반도유보라 아이비파크)' ) {
-								var moveLatLon = new kakao.maps.LatLng(35.656111, 128.419260);
-								map.panTo(moveLatLon);
-							}
-							if ( move == '경기 고양시 일산서구 고양대로 666 (일산동, e편한세상 일산 어반스카이)' ) {
-								var moveLatLon = new kakao.maps.LatLng(37.684236, 126.769691);
-								map.panTo(moveLatLon);
-							}
-							if ( move == '대전 유성구 엑스포로151번길 19 (도룡동, 도룡 하우스디)' ) {
-								var moveLatLon = new kakao.maps.LatLng(36.3759561852176, 127.39459113718982);
-								map.panTo(moveLatLon);
-							}
-							if ( move == '광주 서구 매월2로15번길 16 (매월동, 매월 종합상가)' ) {
-								var moveLatLon = new kakao.maps.LatLng(	35.117279849557065, 126.8605604134319);
-								map.panTo(moveLatLon);
-							}
-						}
-					});
-				 }
-			});
-			var offset = $(".find_wrap .find01 #map").offset();
-			$("html, body").animate({scrollTop: offset.top - 100},400);
-		}
-		function panToSigungu(move) {
-			map.setLevel(8);
-			var latlng = map.getCenter(); 
-			var lat = latlng.getLat();
-			var lng = latlng.getLng();
-			var marker_remove = true;
-			var infowindow_remove = true;
-			store(lat,lng,marker_remove,infowindow_remove);
-
-			var geocoder = new kakao.maps.services.Geocoder();
-			geocoder.addressSearch(move, function(result, status) {
-				if (status === kakao.maps.services.Status.OK) {
-					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-					var lat = result[0].y;
-					var lng = result[0].x;
-					map.setCenter(coords);
-				 }
-			});
-			var offset = $(".find_wrap .find01 #map").offset();
-			$("html, body").animate({scrollTop: offset.top - 100},400);
-		}
-		function store(lat,lng,marker_remove,infowindow_remove) {
-			$.ajax({
-				url : "store.php",
-				type : "GET",
-				dataType : "json",
-				data : {
-					"lat" : lat,
-					"lng" : lng,
-				},
-				success : function(result) {
-					if (marker_remove) {
-						removeMaker();
-					}
-					if (infowindow_remove) {
-						removeInfowindow();
-					}
-					$.each(result.positions, function(index, value){
-						var imageSize = new kakao.maps.Size(40, 50);
-						var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-						var marker = new kakao.maps.Marker({
-							map: map,
-							position: new kakao.maps.LatLng(result.positions[index].store_lat, result.positions[index].store_lng),
-							image : markerImage,
-						});
-						var	iwContent = '<div class="map_point_info_wrap">';
-							iwContent+=	'	<div class="cont_text_box map_point_info">';
-							iwContent+=	'		<div class="cont_text map_point_info_title_wrap">';
-							iwContent+=	'			<div class="cont_text_title cont_text_inner"><b>'+result.positions[index].store_name2+'</b></div>';
-							iwContent+=	'			<div class="cont_text_info cont_text_inner">'+result.positions[index].store_address+'</div>';
-							iwContent+=	'			<div class="cont_text_info cont_text_inner">'+result.positions[index].store_tel+'</div>';
-							iwContent+=	'		</div>';
-							iwContent+=	'		<div class="cont_text">';
-							iwContent+=	'			<div class="map_point_info_list">';
-							iwContent+=	'				<ul>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option1+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon01.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option2+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon02.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option3+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon03.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option4+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon04.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option5+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon05.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option6+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon06.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option7+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon07.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option8+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon08.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'				</ul>';
-							iwContent+=	'			</div>';
-							iwContent+=	'			<div class="cont_text">';
-							iwContent+=	'				<div class="input_btn_wrap input_wrap1 modal_open modal_open_map" data-store-idx="'+result.positions[index].idx+'">';
-							iwContent+=	'					<input type="button" value="자세히보기" class="btn btn1 btn_ani" id="">';
-							iwContent+=	'				</div>';
-							iwContent+=	'			</div>';
-							iwContent+=	'		</div>';
-							iwContent+=	'	</div>';
-							iwContent+=	'</div>';
-						var iwRemoveable = true;
-						var infowindow = new kakao.maps.InfoWindow({
-							content : iwContent,
-							removable : iwRemoveable
-						});
-						kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
-
-						markers.push(marker);
-						return marker;
-					});
+			//head_menu end
+			//mobile start
+			$(".mobile_menu_icon").click(function () {
+				$(".head_wrap").addClass("head_over");
+				$(this).toggleClass("mobile_menu_icon_open");
+				if ($(this).is(".mobile_menu_icon_open")) {
+					$(".head_menu_wrap").addClass("right0");
+				} else {
+					$(".head_menu_wrap").removeClass("right0");
 				}
 			});
+			$(".head_menu_down").click(function () {
+				$(this).toggleClass("head_menu_down_open");
+				if ($(this).is(".head_menu_down_open")) {
+					$(this).next(".head_menu_down_menu").find("ul").slideDown("fast");
+				} else {
+					$(this).next(".head_menu_down_menu").find("ul").slideUp("fast");
+				}
+			});
+			//mobile end
+			cont_gallery_list_img();
+			$(window).resize(function () {
+				$(".head_menu_down_menu > ul").css("display", "block");
+				if ($(window).width() < 760) {
+					$(".head_menu_down_menu > ul").css("display", "none");
+				};
+				$(".head_menu_down").removeClass("head_menu_down_open");
+				if ($(window).width() >= 1280) {
+					$(".head_wrap").removeClass("head_over");
+					$(".head_menu_wrap").removeClass("right0");
+					$(".mobile_menu_icon").removeClass("mobile_menu_icon_open");
+				};
+				cont_gallery_list_img();
+			});
+		});
+		$(window).scroll(function () {
+			if ($(document).scrollTop() > $(".cont_wrap").offset().top) {
+				$(".head_wrap").addClass("head_fixed");
+			} else {
+				$(".head_wrap").removeClass("head_fixed");
+			}
+		});
+		function cont_gallery_list_img() {
+			$(".cont_gallery_list > ul > li").each(function () {
+				if ($(this).find(".cont_gallery_list_img").length) {
+					$(this).find(".cont_gallery_list_img").css("width", $(this).width());
+				};
+
+				if ($(this).find(".cont_gallery_list_img_height").length) {
+					$(this).find(".cont_gallery_list_img_height").css("height", $(this).width());
+				} else {
+					$(this).find(".cont_gallery_list_img").css("height", $(this).width());
+				};
+			});
 		};
-		function infowindowindex(){
-			$(".map_point_info_wrap").parent("div").parent("div").css('z-index', '10');
-		}
 	</script>
-	<script>
-		$(document).on("click","#store_area_search_list_result .store_area_search_list",function(){
-			var sigungu = $(this).data("sigungu");
-			$.ajax({
-				url : "store.php?sigungu="+sigungu,
-				type : "POST",
-				dataType : "json",
-				data : {
-					"sigungu" : sigungu,
-				},
-				success : function(result) {
-					removeMaker();
-					removeInfowindow();
-					$.each(result.positions, function(index, value){
-						var imageSize = new kakao.maps.Size(40, 50);
-						var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-						var marker = new kakao.maps.Marker({
-							map: map,
-							position: new kakao.maps.LatLng(result.positions[index].store_lat, result.positions[index].store_lng),
-							image : markerImage,
-						});
-						var	iwContent = '<div class="map_point_info_wrap">';
-							iwContent+=	'	<div class="cont_text_box map_point_info">';
-							iwContent+=	'		<div class="cont_text map_point_info_title_wrap">';
-							iwContent+=	'			<div class="cont_text_title cont_text_inner"><b>'+result.positions[index].store_name2+'</b></div>';
-							iwContent+=	'			<div class="cont_text_info cont_text_inner">'+result.positions[index].store_address+'</div>';
-							iwContent+=	'			<div class="cont_text_info cont_text_inner">'+result.positions[index].store_tel+'</div>';
-							iwContent+=	'		</div>';
-							iwContent+=	'		<div class="cont_text">';
-							iwContent+=	'			<div class="map_point_info_list">';
-							iwContent+=	'				<ul>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option1+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon01.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option2+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon02.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option3+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon03.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option4+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon04.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option5+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon05.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option6+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon06.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option7+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon07.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'					<li class="'+result.positions[index].store_option8+'">';
-							iwContent+=	'						<img src="https://img.79plus.co.kr/megahp/common/img/map/map_icon08.gif">';
-							iwContent+=	'					</li>';
-							iwContent+=	'				</ul>';
-							iwContent+=	'			</div>';
-							iwContent+=	'			<div class="cont_text">';
-							iwContent+=	'				<div class="input_btn_wrap input_wrap1 modal_open modal_open_map" data-store-idx="'+result.positions[index].idx+'">';
-							iwContent+=	'					<input type="button" value="자세히보기" class="btn btn1 btn_ani" id="">';
-							iwContent+=	'				</div>';
-							iwContent+=	'			</div>';
-							iwContent+=	'		</div>';
-							iwContent+=	'	</div>';
-							iwContent+=	'</div>';
-						var iwRemoveable = true;
-						var infowindow = new kakao.maps.InfoWindow({
-							content : iwContent,
-							removable : iwRemoveable
-						});
-						kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
 
-						markers.push(marker);
-						return marker;
-					});
-				}
-			});
-		});
-		$(document).on("click",".map_search_tab_wrap .map_search_tab ul li",function(){
-			$(".map_search_tab_wrap .map_search_tab ul li").removeClass("check");
-			$(this).addClass("check");
-
-			var box_idx = $(this).index();
-			$(".map_search_box").addClass("none");
-			$(".map_search_box").eq(box_idx).removeClass("none");
-		});
-		$(document).on("click","#store_area_search_list li",function(){
-			var store_area_name = $(this).data("store-area-name");
-			$.ajax({
-				url : "store_area_search.php?store_area_name="+store_area_name,
-				type : "GET",
-				success : function(result) {
-					$("#store_area_search_list").addClass("none");
-					$("#store_area_search_list_result").removeClass("none").html(result);
-					$(".map_search_wrap .cont_list").scrollTop(0);
-				}
-			});
-		});
-		$(document).on("click","#store_area_search_back",function(){
-			$("#store_area_search_list").removeClass("none");
-			$("#store_area_search_list_result").addClass("none").html("");
-			$(".map_search_wrap .cont_list").scrollTop(0);
-		});
-	</script>
-				<div class="foot_menu_wrap">
-			<div class="foot_menu">
-				<div class="cont_list">
-					<ul>
-						<li>
-							<a class="modal_open modal_open_policy1">
-								<b>이용약관</b>
-							</a>
-						</li>
-						<li>
-							<a class="modal_open modal_open_policy2">
-								<b>개인정보취급방침</b>
-							</a>
-						</li>
-					</ul>
+	<div class="cont">
+		<div class="cont_box cont_head">
+			<div class="cont_boxs">
+				<div class="cont_title_wrap">
+					<div class="cont_title_info">
+						STORE </div>
+					<div class="cont_title robo color">
+						<h2>CAFE DREAM STORE</h2>
+					</div>
+				</div>
+				<div class="cont_text_wrap">
+					<div class="cont_text cont_list_map">
+						<ul>
+							<li>
+								홈
+							</li>
+							<li>
+								STORE </li>
+							<li>
+								매장찾기 </li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="foot_wrap">
-			<div class="foot">
-				<div class="cont_list cont_list_content">
-					<ul>
-						<li>
-							<div class="cont_text">
-								<div class="cont_list cont_list_m cont_list_m1">
-									<ul>
-										<li>
-											<div class="foot_logo">
-												<img src="image/logo.png">
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="cont_text foot_info">
-								<div class="cont_list cont_list_small cont_list_width_m">
-									<ul>
-										<li><b>(주)주식회사 부천대학교</b></li>
-										<li>대표자 박찬호</li>
-										<li>TEL : 032-610-3260</li>
-										<li>경기도 부천시 심곡동 신흥로56번길 25</li>
-										<li>개인정보보호 관리책임자 김영서</li>
-									</ul>
-								</div>
-							</div>
-						</li>
-					</ul>
-							</div>
-						</li>
-					</ul>
+
+		<div class="map_wrap">
+			<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+
+			<div id="menu_wrap" class="bg_white">
+				<div class="option">
+					<div>
+						<form onsubmit="searchPlaces(); return false;">
+							키워드 : <input type="text" value="카페 드림" id="keyword" size="15">
+							<button type="submit">검색하기</button>
+						</form>
+					</div>
 				</div>
+				<hr>
+				<ul id="placesList"></ul>
+				<div id="pagination"></div>
 			</div>
 		</div>
-	</div>
-	<a href="javascript:go_top()">
-		<div class="go_top_wrap">
-			<div class="go_top">
-			</div>
-		</div>
-	</a>
-	<div class="swiper-container">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-			</div>
-			<div class="swiper-slide">
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript" src="/common/js/daterangepicker_common.js"></script>
-	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/aos.js"></script>
-	<script>
-		$(".modal").on("hidden.bs.modal", function (e) {
-			$(".modal-content").empty();
-		});
-		AOS.init({
-		  duration: 1200,
-		});
-		$(document).ready(function(){
-			var swiper_foot = new Swiper(".swiper_foot", {
-				slidesPerView: "auto",
-				spaceBetween: 50,
-				loop: true,
-				autoplay: {
-				  delay: 0,
-				},
-				speed: 5000,
-				navigation: {
-					nextEl: ".swiper-button-next",
-					prevEl: ".swiper-button-prev",
-				},
-				on: {
-					slideChange: function () {
+
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=851adb59b691f589a2dfd27c8934df08&libraries=services"></script>
+		<script>
+			// 마커를 담을 배열입니다
+			var markers = [];
+
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				mapOption = {
+					center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+					level: 3 // 지도의 확대 레벨
+				};
+
+			// 지도를 생성합니다    
+			var map = new kakao.maps.Map(mapContainer, mapOption);
+
+			// 장소 검색 객체를 생성합니다
+			var ps = new kakao.maps.services.Places();
+
+			// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+			var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
+			// 키워드로 장소를 검색합니다
+			searchPlaces();
+
+			// 키워드 검색을 요청하는 함수입니다
+			function searchPlaces() {
+
+				var keyword = document.getElementById('keyword').value;
+
+				if (!keyword.replace(/^\s+|\s+$/g, '')) {
+					alert('키워드를 입력해주세요!');
+					return false;
+				}
+
+				// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+				ps.keywordSearch(keyword, placesSearchCB);
+			}
+
+			// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+			function placesSearchCB(data, status, pagination) {
+				if (status === kakao.maps.services.Status.OK) {
+
+					// 정상적으로 검색이 완료됐으면
+					// 검색 목록과 마커를 표출합니다
+					displayPlaces(data);
+
+					// 페이지 번호를 표출합니다
+					displayPagination(pagination);
+
+				} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+
+					alert('검색 결과가 존재하지 않습니다.');
+					return;
+
+				} else if (status === kakao.maps.services.Status.ERROR) {
+
+					alert('검색 결과 중 오류가 발생했습니다.');
+					return;
+
+				}
+			}
+
+			// 검색 결과 목록과 마커를 표출하는 함수입니다
+			function displayPlaces(places) {
+
+				var listEl = document.getElementById('placesList'),
+					menuEl = document.getElementById('menu_wrap'),
+					fragment = document.createDocumentFragment(),
+					bounds = new kakao.maps.LatLngBounds(),
+					listStr = '';
+
+				// 검색 결과 목록에 추가된 항목들을 제거합니다
+				removeAllChildNods(listEl);
+
+				// 지도에 표시되고 있는 마커를 제거합니다
+				removeMarker();
+
+				for (var i = 0; i < places.length; i++) {
+
+					// 마커를 생성하고 지도에 표시합니다
+					var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
+						marker = addMarker(placePosition, i),
+						itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+
+					// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+					// LatLngBounds 객체에 좌표를 추가합니다
+					bounds.extend(placePosition);
+
+					// 마커와 검색결과 항목에 mouseover 했을때
+					// 해당 장소에 인포윈도우에 장소명을 표시합니다
+					// mouseout 했을 때는 인포윈도우를 닫습니다
+					(function (marker, title) {
+						kakao.maps.event.addListener(marker, 'mouseover', function () {
+							displayInfowindow(marker, title);
+						});
+
+						kakao.maps.event.addListener(marker, 'mouseout', function () {
+							infowindow.close();
+						});
+
+						itemEl.onmouseover = function () {
+							displayInfowindow(marker, title);
+						};
+
+						itemEl.onmouseout = function () {
+							infowindow.close();
+						};
+					})(marker, places[i].place_name);
+
+					fragment.appendChild(itemEl);
+				}
+
+				// 검색결과 항목들을 검색결과 목록 Element에 추가합니다
+				listEl.appendChild(fragment);
+				menuEl.scrollTop = 0;
+
+				// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+				map.setBounds(bounds);
+			}
+
+			// 검색결과 항목을 Element로 반환하는 함수입니다
+			function getListItem(index, places) {
+
+				var el = document.createElement('li'),
+					itemStr = '<span class="markerbg marker_' + (index + 1) + '"></span>' +
+						'<div class="info">' +
+						'   <h5>' + places.place_name + '</h5>';
+
+				if (places.road_address_name) {
+					itemStr += '    <span>' + places.road_address_name + '</span>' +
+						'   <span class="jibun gray">' + places.address_name + '</span>';
+				} else {
+					itemStr += '    <span>' + places.address_name + '</span>';
+				}
+
+				itemStr += '  <span class="tel">' + places.phone + '</span>' +
+					'</div>';
+
+				el.innerHTML = itemStr;
+				el.className = 'item';
+
+				return el;
+			}
+
+			// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+			function addMarker(position, idx, title) {
+				var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+					imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
+					imgOptions = {
+						spriteSize: new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+						spriteOrigin: new kakao.maps.Point(0, (idx * 46) + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+						offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
 					},
-					activeIndexChange: function () {
-					}
-				},
-				breakpoints: {
+					markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+					marker = new kakao.maps.Marker({
+						position: position, // 마커의 위치
+						image: markerImage
+					});
+
+				marker.setMap(map); // 지도 위에 마커를 표출합니다
+				markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+
+				return marker;
+			}
+
+			// 지도 위에 표시되고 있는 마커를 모두 제거합니다
+			function removeMarker() {
+				for (var i = 0; i < markers.length; i++) {
+					markers[i].setMap(null);
 				}
-			});
-		});
-	</script>
+				markers = [];
+			}
+
+			// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+			function displayPagination(pagination) {
+				var paginationEl = document.getElementById('pagination'),
+					fragment = document.createDocumentFragment(),
+					i;
+
+				// 기존에 추가된 페이지번호를 삭제합니다
+				while (paginationEl.hasChildNodes()) {
+					paginationEl.removeChild(paginationEl.lastChild);
+				}
+
+				for (i = 1; i <= pagination.last; i++) {
+					var el = document.createElement('a');
+					el.href = "#";
+					el.innerHTML = i;
+
+					if (i === pagination.current) {
+						el.className = 'on';
+					} else {
+						el.onclick = (function (i) {
+							return function () {
+								pagination.gotoPage(i);
+							}
+						})(i);
+					}
+
+					fragment.appendChild(el);
+				}
+				paginationEl.appendChild(fragment);
+			}
+
+			// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+			// 인포윈도우에 장소명을 표시합니다
+			function displayInfowindow(marker, title) {
+				var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+				infowindow.setContent(content);
+				infowindow.open(map, marker);
+			}
+
+			// 검색결과 목록의 자식 Element를 제거하는 함수입니다
+			function removeAllChildNods(el) {
+				while (el.hasChildNodes()) {
+					el.removeChild(el.lastChild);
+				}
+			}
+		</script>
+	</div>
+
+
+
+
+	<div class="foot_wrap">
+		<div class="foot">
+			<div class="foot_terms">
+				<ul>
+					<li>
+						<a href="/">이용약관</a>
+					</li>
+					<li>
+						|
+					</li>
+					<li>
+						<a href="/">개인정보취급방침</a>
+					</li>
+				</ul>
+			</div>
+			<div class="foot_logo">
+				<img class="foot_logo" src="/image/Cafe_logo_4.png" alt="Logo">
+			</div>
+			<div class="foot_cont">
+				<ul>
+					<li><b>(주)주식회사 부천대학교</li></b>
+					<li>대표자 박찬호</li>
+					<li>경기도 부천시 심곡동 신흥로56번길 25</li>
+					<li>E-mail 1111@gmail.com</li>
+					<li>TEL 032-610-3260</li>
+				</ul>
+				<ul class="copyright">
+					<li>Copyright © 2023 CafeDream. All rights reserved.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
 </body>
+
 </html>

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="ko">
 <head>
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/media.css">
-	<title>메인</title>
+<link rel="stylesheet" href="/css/partnership.css">
+	<title>입점문의</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="title" content="메가MGC커피">
@@ -82,114 +81,8 @@
 	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/jquery.fullPage.js"></script>
 
 	<!-- swiper -->
-	<link rel="stylesheet" type="text/css" href="/css/swiper.css">
-	<script type="text/javascript" src="/js/swiper.js"></script>
-
-	<script type="text/javascript">
-		var pop_length = $(".popup_num").length;
-		var cookiedata = document.cookie;
-		for (i = 0; i < pop_length; i++) {
-			$(".popup_num:nth-child(" + (i + 1) + ")").attr('id', 'popup_' + i);
-			$(".popup_num:nth-child(" + (i + 1) + ") .popup_close").attr('onclick', 'layerClose(' + i + ')');
-			$(".popup_num:nth-child(" + (i + 1) + ") label").attr('onclick', 'chkday(' + i + ')');
-			$(".popup_num:nth-child(" + (i + 1) + ") label").attr('for', 'chkbox' + i + '');
-			$(".popup_num:nth-child(" + (i + 1) + ") input").attr('name', 'chkbox' + i + '').attr('id', 'chkbox' + i + '').attr('onclick', 'closeByToday(' + i + ')');
-
-			if (cookiedata.indexOf("popup_" + i + "=done") < 0) {
-				document.getElementById("popup_" + i).style.display = "block";
-			} else {
-				document.getElementById("popup_" + i).style.display = "none";
-			}
-		}
-
-		$(window).resize(function () {
-
-		});
-	</script>
-	<script>
-		//head_menu start
-		$(document).ready(function () {
-			$(".head_wrap .head .head_menu > ul > li").hover(function () {
-				if ($(".head_menu_wrap").is(".right0") == false) {
-					$(".head_wrap .head .head_menu > ul > li").removeClass("check");
-					$(this).addClass("check");
-					$(".head_menu_down_menu").stop().slideDown("fast");
-				};
-			}, function () {
-				$(".head_wrap .head .head_menu > ul > li").removeClass("check");
-			});
-
-			$(".head_wrap").hover(function () {
-				$(this).addClass("head_over");
-			}, function () {
-				if ($(".head_menu_wrap").is(".right0") == false) {
-					$(this).removeClass("head_over");
-					$(".head_wrap .head .head_menu > ul > li").removeClass("check");
-					$(".head_menu_down_menu").stop().slideUp("fast");
-				}
-			});
-			//head_menu end
-			//mobile start
-			$(".mobile_menu_icon").click(function () {
-				$(".head_wrap").addClass("head_over");
-				$(this).toggleClass("mobile_menu_icon_open");
-				if ($(this).is(".mobile_menu_icon_open")) {
-					$(".head_menu_wrap").addClass("right0");
-				} else {
-					$(".head_menu_wrap").removeClass("right0");
-				}
-			});
-			$(".head_menu_down").click(function () {
-				$(this).toggleClass("head_menu_down_open");
-				if ($(this).is(".head_menu_down_open")) {
-					$(this).next(".head_menu_down_menu").find("ul").slideDown("fast");
-				} else {
-					$(this).next(".head_menu_down_menu").find("ul").slideUp("fast");
-				}
-			});
-			//mobile end
-			cont_gallery_list_img();
-			$(window).resize(function () {
-				$(".head_menu_down_menu > ul").css("display", "block");
-				if ($(window).width() < 760) {
-					$(".head_menu_down_menu > ul").css("display", "none");
-				};
-				$(".head_menu_down").removeClass("head_menu_down_open");
-				if ($(window).width() >= 1280) {
-					$(".head_wrap").removeClass("head_over");
-					$(".head_menu_wrap").removeClass("right0");
-					$(".mobile_menu_icon").removeClass("mobile_menu_icon_open");
-				};
-				cont_gallery_list_img();
-			});
-		});
-		$(window).scroll(function () {
-			if ($(document).scrollTop() > $(".cont_wrap").offset().top) {
-				$(".head_wrap").addClass("head_fixed");
-			} else {
-				$(".head_wrap").removeClass("head_fixed");
-			}
-		});
-		function cont_gallery_list_img() {
-			$(".cont_gallery_list > ul > li").each(function () {
-				if ($(this).find(".cont_gallery_list_img").length) {
-					$(this).find(".cont_gallery_list_img").css("width", $(this).width());
-				};
-
-				if ($(this).find(".cont_gallery_list_img_height").length) {
-					$(this).find(".cont_gallery_list_img_height").css("height", $(this).width());
-				} else {
-					$(this).find(".cont_gallery_list_img").css("height", $(this).width());
-				};
-			});
-		};
-		function login() {
-			location.href = "/login/?ReturnPage=" + window.location.pathname;
-		};
-		function logout() {
-			location.href = "/login/logout.php?ReturnPage=" + window.location.pathname;
-		};
-	</script>
+	<link rel="stylesheet" type="text/css" href="/common/css/swiper.min.css?ver=202307100845">
+	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/swiper.min.js"></script>
 
 	<script>
 		$(document).ready(function(){
@@ -286,7 +179,7 @@
 	</script>
 </head>
 <body>
-	<div class="overlay none"></div>
+		<div class="overlay none"></div>
 	<div class="modal">
 		<div class="modal-dialog">
 			<div class="modal-content"></div>
@@ -297,96 +190,93 @@
 			<div class="head">
 				<div class="head_logo">
 					<a href="/">
-						<img src="/image/logo.png" class="head_logo_img_fixed">
+						<img src="image/logo.png" class="head_logo_img_fixed">
 					</a>
 				</div>
 
 				<div class="icon_basket">
-					<a href="/cart/list">
-						<img src="/image/basket.png" class="icon_basket_img_fixed">
+					<a href="#">
+						<img src="image/basket.png" class="icon_basket_img_fixed">
 					</a>
 				</div>
 
 				<div class="head_top_nav">
 					<nav class="head-menu-top-nav">
-						<ul sec:authorize="!isAuthenticated()">
-							<li class="top-nav01"><a href="/signin">Sign In</a></li>
-							<li class="top-nav02"><a href="/signup">Join Now</a></li>
-						 </ul>
-						<ul sec:authorize="isAuthenticated()">
-							<li class="top-nav01"><a href="/logout">로그아웃</a></li>
-							<li class="top-nav02"><a href="/mypage">My Page</a></li>
+						<ul>
+							<li class="top-nav01"><a href="/test/login">Sign In</a></li>
+							<li class="top-nav02"><a href="/register">Join Now</a></li>
+							<li class="top-nav03"><a href="#">My Page</a></li>
 						</ul>
-					 </nav>
+					</nav>
 				</div>
-				
+
 				<div class="head_menu_wrap">
 					<div class="head_menu">
 						<ul>
 							<li>
 								<a href="/brand" class="pc">ABOUT US</a>
 								<a class="m head_menu_down">ABOUT US</a>
-									<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
-										<ul>
-											<li>
-												<a href="/brand">브랜드</a>
-											</li>
-										</ul>
-									</div>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="/brand">브랜드</a>
+										</li>
+									</ul>
+								</div>
 							</li>
 
 							<li>
 								<a href="/menu" class="pc">MENU</a>
 								<a class="m head_menu_down">MENU</a>
-									<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
-										<ul>
-											<li>
-												<a href="/menu">음료</a><br>
-											</li>
-											<li>
-												<a href="/menu">푸드</a><br>
-											</li>
-										</ul>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="/menu">음료</a><br>
+										</li>
+										<li>
+											<a href="/menu">푸드</a><br>
+										</li>
+									</ul>
 								</div>
 							</li>
 
 							<li>
 								<a href="/store" class="pc">STORE</a>
 								<a class="m head_menu_down">STORE</a>
-									<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
-										<ul>
-											<li>
-												<a href="/store">매장찾기</a>
-											</li>
-										</ul>
-									</div>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="/store">매장찾기</a>
+										</li>
+									</ul>
+								</div>
 							</li>
 
 							<li>
 								<a href="/partnership" class="pc">PARTNERSHIP</a>
 								<a class="m head_menu_down">PARTNERSHIP	</a>
-									<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
-										<ul>
-											<li>
-												<a href="/partnership">입점문의</a>
-											</li>
-										</ul>
-									</div>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="/partnership">입점문의</a>
+										</li>
+									</ul>
+								</div>
 							</li>
 
 							<li>
 								<a href="/board/QnA" class="pc">NEWS</a>
 								<a class="m head_menu_down">NEWS</a>
-									<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
-										<ul>
-											<li>
-												<a href="/board/notice">공지사항</a><br>
-											</li>
-											<li>
-												<a href="/board/QnA">Q&A</a><br>
-											</li>
-										</ul>
-									</div>
+								<div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
+									<ul>
+										<li>
+											<a href="/board/QnA">공지사항</a><br>
+										</li>
+										<li>
+											<a href="/board/QnA">Q&A</a><br>
+										</li>
+									</ul>
+								</div>
 							</li>
 						</ul>
 					</div>
@@ -399,66 +289,40 @@
 						<div class="mobile_menu_icon_bar bar_black"></div>
 					</div>
 				</div>
-	<div class="cont_wrap main_wrap">
-		<div class="cont main fullpage-wrapper">
-			<div id="section01" class="cont_box section section_main fp-section active fp-table fp-completely" data-anchor="main">
-			<div class="fp-tableCell" style="height: 1000px;">
-				<div class="swiper_wrap">
-					<div class="swiper">
-						<div class="swiper-container section_main_swiper section_main_swiper1 swiper-container-initialized swiper-container-horizontal">
-							<ul class="swiper-wrapper">
-												<li class="swiper-slide swiper-slide-active">
-													<div class="swiper-slide_img swiper-slide_img_pc" style="background:url(/image/main1.png)"></div>
-													<div class="swiper-slide_img swiper-slide_img_m" style="background:url(/image/main1.png)"></div>
-													<div class="section_middle">
-														<div class="cont_boxs">
-															<div class="cont_title_wrap section_main_fade animation_fade_up animation01 animated fadeInUp aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
-																		<div class="cont_title">
-																			<b></b>
-																		</div>
-															</div>
-																	<div class="cont_text_box section_main_fade animation_fade_up animation02 animated fadeInUp aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-																		<div class="cont_text cont_text_title">
-																		</div>
-																	</div>
-														</div>
-													</div>
-												</li>
-												<li class="swiper-slide swiper-slide-next">
-													<div class="swiper-slide_img swiper-slide_img_pc" style="background:url(/image/main2.png)"></div>
-													<div class="swiper-slide_img swiper-slide_img_m" style="background:url(/image/main2.png)"></div>
-													<div class="section_middle">
-														<div class="cont_boxs">
-															<div class="cont_title_wrap section_main_fade animation_fade_up animation01 animated fadeInUp aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
-																	<div class="cont_title">
-																			<b></b>
-																	</div>
-															</div>
-																	<div class="cont_text_box section_main_fade animation_fade_up animation02 animated fadeInUp aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-																		<div class="cont_text cont_text_title">
-																		</div>
-																	</div>
-														</div>
-													</div>
-												</li>
-							</ul>
-							<div class="swiper-button_wrap">
-								<div class="swiper-button_box">
-									<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
-									<div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>
-								</div>
+	<div class="cont_wrap find_wrap">
+		<div class="cont">
+			<div class="cont_box cont_head">
+				<div class="cont_boxs">
+					<div class="cont_title_wrap">
+						<div class="cont_title_info">
+							PARTNERSHIP
+						</div>
+							<div class="cont_title robo color">
+								<h2>BUSINESS CONTACT</h2>
 							</div>
-								<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
-								</div>
-								<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-							
+					</div>
+					<div class="cont_text_wrap">
+						<div class="cont_text cont_list_map">
+							<ul>
+								<li>홈</li>
+                        		<li>PARTNERSHIP</li>
+                        		<li>입점문의</li>		
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</div>
+		<div id="cont">
+         <div id="sub_cont">
+            <div class="c4_cont1">
+               <div>
+                  <img src="image/입점안내.png" alt="" style="padding-top:50px; padding-bottom:20px; position:relative; left:380px; width:1150px;">
+               </div>
+           </div>
+               <div class="c4_cont1_1">
+                  <a href="/partnership/write" >
+                  <img src="image/상담접수.png" alt="" style="position:relative;"></a>
+               </div>
 		<div class="foot_menu_wrap">
 			<div class="foot_menu">
 				<div class="cont_list">
@@ -487,7 +351,7 @@
 									<ul>
 										<li>
 											<div class="foot_logo">
-												<img src="/image/logo.png">
+												<img src="image/logo.png">
 											</div>
 										</li>
 									</ul>
@@ -506,15 +370,27 @@
 							</div>
 						</li>
 					</ul>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
+	</div>
 	<a href="javascript:go_top()">
 		<div class="go_top_wrap">
 			<div class="go_top">
 			</div>
 		</div>
 	</a>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+			</div>
+			<div class="swiper-slide">
+			</div>
+		</div>
+	</div>
 	<script type="text/javascript" src="/common/js/daterangepicker_common.js"></script>
 	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/aos.js"></script>
 	<script>
