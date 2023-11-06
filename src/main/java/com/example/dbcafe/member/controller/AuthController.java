@@ -30,10 +30,16 @@ public class AuthController {
         return "register";
     }
 
-    @PostMapping("/signup")
-    public String signUp(User user) {
+    @PostMapping("/signterm")
+    public String term(User user, Model model){
+        User newUser = user;
+        model.addAttribute("user",newUser);
+        return "REGISTER_TERMS";}
 
-        User newUser = user; //새로운 유저 받음
+    @PostMapping("/signup")
+    public String signUp(Model model) {
+        User user = (User) model.getAttribute("user");
+//        User newUser = user; //새로운 유저 받음
 
         User userEntity = authService.signup(user);
         System.out.println(userEntity);

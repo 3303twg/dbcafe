@@ -28,27 +28,27 @@ public class AdminController {
     public String adminMain(){
         return "adminMain";
     }
-    @GetMapping("/users")
+    @GetMapping("/user")
     public String userList(Model model){
         List<SignupDto> userDTOList = userInfoService.findUserAll();
         model.addAttribute("userList", userDTOList);
-        return "userList";
+        return "adminUser";
     }
     @GetMapping("/users/role/up")
     public String userRoleUP(Long id){
         userInfoService.roleUP(id);
-        return "redirect:/admin/users";
+        return "redirect:/admin/user";
     }
     @GetMapping("/users/role/down")
     public String userRoleDOWN(Long id){
         userInfoService.roleDOWN(id);
-        return "redirect:/admin/users";
+        return "redirect:/admin/user";
     }
     @GetMapping("/menu")
     public String menuManage(Model model){
         List<MenuDTO> menuDTOList = menuService.menuFindAll();
         model.addAttribute("menuList", menuDTOList);
-        return "menu";
+        return "adminMenu";
     }
     @GetMapping("/menu/register")
     public String menuRegister(){return "menuRegister";}
@@ -90,7 +90,7 @@ public class AdminController {
         //모델에 올림
         model.addAttribute("totaltotalprice", totaltotalprice);
 
-        return"orders";
+        return"adminOrder";
     }
 
 

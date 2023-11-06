@@ -16,6 +16,7 @@ public class HomeController {
         return "main";
     }
 
+
     @GetMapping("/loginn")
     public String loginn(){return "loginn"; }
 
@@ -34,7 +35,7 @@ public class HomeController {
 
     @GetMapping("/brand")
     public String brand(){
-        return "brand";
+        return "ABOUTUS";
     }
 
     @GetMapping("/store")

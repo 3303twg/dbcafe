@@ -3,13 +3,13 @@
 
 
 <head>
-    <title>관리자</title>
-    <link rel="stylesheet" href="media.css">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="/css/MEDIA.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="/css/information.css">
     <link rel="stylesheet" href="/css/information1.css">
-    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/information2.css">
     <link rel="stylesheet" href="/css/mypage.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap">
@@ -245,13 +245,32 @@
                         <!-- s::20200123 페이스북 프로필 기능 삭제 관련 메인 수정 -->
 
                         <article class="ms_user_info_right">
-                            <p class="ms_user_stat"><span>관리자님 안녕하세요!</span><br>
-                            <!-- 20200805 PLCC 추가 -->
-                            <div class="plcc-logo" style="display:none;">
-                                <img src="/common/img/util/plcc-logo.png" alt="Hyundai Card + STARBUCKS">
-                            </div>
-                            <div class="ms_user_stat_btns">
+                            <div class="layout">
+                                <h1>관리자</h1>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>사진</th>
+                                        <th>메뉴이름</th>
+                                        <th>메뉴간격</th>
+                                        <th>메뉴타입</th>
+                                        <th><a th:href="@{/admin/menu/register}">글 작성</a></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!--      <tr th:each="user : ${userList}" th:if="${user.role}=='ROLE_ADMIN'">-->
+                                    <tr th:each="menu : ${menuList}">
+                                        <td th:text="${menu.id}">1</td>
+                                        <td><img th:src="@{${menu.menuImagePath}}" width="50" height="50" class="image" ></td>
+                                        <td th:text="${menu.menuName}">1</td>
+                                        <td th:text="${menu.menuPrice}">1</td>
+                                        <td th:text="${menu.menuType}">1</td>
+                                        <td><a th:href="@{/admin/menu/delete(id=${menu.id})}">메뉴삭제</a></td>
 
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </article>
                         <!-- e::20200123 페이스북 프로필 기능 삭제 관련 메인 수정 -->

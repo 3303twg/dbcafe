@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="ko">
 
 <head>
-    <title>관리자</title>
-    <link rel="stylesheet" href="media.css">
+    <title>마이페이지</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="/css/information.css">
     <link rel="stylesheet" href="/css/information1.css">
-    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/information2.css">
     <link rel="stylesheet" href="/css/mypage.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap">
@@ -22,19 +20,16 @@
         <div class="head">
             <div class="head_logo">
                 <a href="/">
-                    <img src="/image/Cafe_logo_4.png" class="head_logo_img_fixed">
+                    <img src="/image/logo.png" class="head_logo_img_fixed">
                 </a>
             </div>
 
             <div class="head_top_nav">
                 <nav class="head-menu-top-nav">
-                    <ul sec:authorize="!isAuthenticated()">
+                    <ul>
                         <li class="top-nav01"><a href="/signin">Sign In</a></li>
                         <li class="top-nav02"><a href="/signup">Join Now</a></li>
-                    </ul>
-                    <ul sec:authorize="isAuthenticated()">
-                        <li class="top-nav01"><a href="/logout">로그아웃</a></li>
-                        <li class="top-nav02"><a href="/mypage">My Page</a></li>
+                        <li class="top-nav03"><a href="/mypage">My Page</a></li>
                     </ul>
                 </nav>
             </div>
@@ -42,20 +37,92 @@
             <div class="head_top_icon">
                 <ul>
                     <li>
-                        <div class="icon_basket">
-                            <a href="/cart/list">
-                                <img src="/image/basket.png" class="icon_basket_img_fixed">
-                            </a>
-                        </div>
+                        <a href="#">
+                            <img src="/image/basket.png" class="icon_basket_img_fixed">
+                        </a>
                     </li>
                 </ul>
             </div>
+
+
+            <!-- 햄버거 버튼 -->
+            <li class="ham-btn">
+                <a class="menu-trigger" href="#">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </li>
+
+
+            <!-- 햄버거 메뉴 시작 -->
+            <div class="ham-con">
+                <div id="ham-menu-wrap">
+                    <div class="ham-menu mt-5">
+                        <ul class="ham-top-menu">
+                            <li><a href="/brand">ABOUT US<i class="bi bi-caret-down-fill"></i></a>
+                                <ul class="ham-sub-menu">
+                                    <li><a href="/menu">MENU</a></li>
+                                    <li><a href="/store">STORE</a></li>
+                                    <li><a href="/partnership">PARTNERSHIP</a></li>
+                                    <li><a href="/board/notice">NEWS</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <script>
+                // 햄버거 버튼 클릭 이벤트
+                var burger = $('.menu-trigger');
+
+                burger.each(function (index) {
+                    var $this = $(this);
+
+                    $this.on('click', function (e) {
+                        e.preventDefault();
+                        $(this).toggleClass('active-' + (index + 1));
+                    })
+                });
+
+                var h = 0;
+
+                $(burger).on("click", function () {
+                    if (h == 0) {
+                        $('.ham-con').animate({
+                            right: '0',
+                            opacity: 1
+                        }, 500);
+                        $(this).addClass('active-1');
+                        h++;
+                    } else if (h == 1) {
+                        $('.ham-con').animate({
+                            right: '-20%',
+                            opacity: 0
+                        }, 500);
+                        $(this).removeClass('active-1');
+                        h--;
+                    }
+                    $(window).scroll(function () {
+                        sct = $(window).scrollTop();
+                        if (sct > 30) {
+                            $('.ham-con').css({
+                                opacity: 0,
+                                right: '-20%'
+                            }, 500);
+                            $(burger).removeClass('active-1');
+                            h = 0;
+                        }
+                    });
+                })
+            </script>
+            <!-- 햄버거 메뉴 끝 -->
 
             <div class="head_menu_wrap">
                 <div class="head_menu">
                     <ul>
                         <li>
-                            <a href="/brand" class="pc">ABOUT US</a>
+                            <a href="/brand/" class="pc">ABOUT US</a>
                             <a class="m head_menu_down">ABOUT US</a>
                             <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
                                 <ul>
@@ -72,7 +139,7 @@
                             <div class="head_menu_down_menu cont_list cont_list1 cont_list_small cont_list_small1">
                                 <ul>
                                     <li>
-                                        <a href="/menu">음료</a>
+                                        <a href="/menu/">음료</a>
                                     </li>
                                     <li>
                                         <br><a href="/menu">푸드</a>
@@ -120,12 +187,6 @@
                             </div>
                         </li>
                     </ul>
-                </div>
-            </div>
-
-            <div class="mobile_menu_icon_wrap m t">
-                <div class="mobile_menu_icon">
-                    <div class="mobile_menu_icon_bar bar_black"></div>
                 </div>
             </div>
         </div>
@@ -220,14 +281,19 @@
                 <div class="cont_title_wrap">
 
                     <div class="cont_title robo color">
-                        <h2>ADMIN PAGE</h2>
+                        <h2>MY PAGE</h2>
                     </div>
                 </div>
                 <div class="cont_text_wrap">
                     <div class="cont_text cont_list_map">
                         <ul>
-                            <li>HOME</li>
-                            <li>Admin Page</li>
+                            <li>
+                                HOME
+                            </li>
+                            <li>
+                                My Page								</li>
+                            <li>
+                                My Page								</li>
                         </ul>
                     </div>
                 </div>
@@ -245,7 +311,8 @@
                         <!-- s::20200123 페이스북 프로필 기능 삭제 관련 메인 수정 -->
 
                         <article class="ms_user_info_right">
-                            <p class="ms_user_stat"><span>관리자님 안녕하세요!</span><br>
+                            <p class="ms_user_stat"><span><strong class="userName" th:text="${userInfo.name}">유진<!-- 홍길동 --></strong> 님 안녕하세요!</span><br>
+                                <b <span th:text="${coupon}"></span></p>
                             <!-- 20200805 PLCC 추가 -->
                             <div class="plcc-logo" style="display:none;">
                                 <img src="/common/img/util/plcc-logo.png" alt="Hyundai Card + STARBUCKS">
@@ -256,26 +323,19 @@
                         </article>
                         <!-- e::20200123 페이스북 프로필 기능 삭제 관련 메인 수정 -->
                     </section>
-
-                    <section class="my_ms_card">
-                        <div class="my_ms_card_inner">
-
-                        </div>
-                    </section>
-
                 </div>
-                <!-- msr 회원 end -->
-                <!-- 150528 - 문진욱 end -->
-                <!-- 메뉴 순위 -->
-
             </div>
+
+
+
+
 
             <nav class="ms_nav" id="msRnb" style="line-height: 1.0;" >
                 <ul>
-                    <li><a href="../admin/user">회원관리<span class="sbox_arrow_down"></span></a></li>
-                    <li class="msRnb_btn"><a href="../admin/menu" required="login" data-href="/my/calendar.do">메뉴관리</a></li>
-                    <li class="msRnb_btn"><a href="../admin/order" required="login" data-href="/my/my_menu.do">주문관리</a></li>
-                    <li><a href="../board/notice/write">공지사항 작성<span class="sbox_arrow_down"></span></a></li>
+                    <li><a href="../mypage/mypage.html">My 쿠폰<span class="sbox_arrow_down"></span></a></li>
+                    <li class="msRnb_btn"><a href="../mypage/order" required="login" data-href="/my/calendar.do">주문내역</a></li>
+                    <li class="msRnb_btn"><a href="../mypage/qna" required="login" data-href="/my/my_menu.do">문의내역</a></li>
+                    <li><a href="../mypage/information.html">개인정보수정<span class="sbox_arrow_down"></span></a></li>
                 </ul>
             </nav>
         </div>
@@ -298,7 +358,7 @@
                 </ul>
             </div>
             <div class="foot_logo">
-                <img class="foot_logo" src="/image/logo.png" alt="Logo">
+                <img class="foot_logo" src="image/logo.png" alt="Logo">
             </div>
             <div class="foot_cont">
                 <ul>
