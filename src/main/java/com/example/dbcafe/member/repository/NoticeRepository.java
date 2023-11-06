@@ -19,5 +19,7 @@ public interface NoticeRepository extends JpaRepository<NoticeEntity, Long> {
 
     Page<NoticeEntity> findByNoticeContentsContaining(String search, Pageable pageable); //내용포함검색
 
+    NoticeEntity findFirstByOrderByCreatedTime();
+
 
 }

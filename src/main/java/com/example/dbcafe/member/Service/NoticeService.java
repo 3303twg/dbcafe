@@ -4,6 +4,7 @@ import com.example.dbcafe.member.dto.NoticeDTO;
 import com.example.dbcafe.member.entity.NoticeEntity;
 import com.example.dbcafe.member.repository.NoticeRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,9 +17,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class NoticeService {
-    private  final NoticeRepository noticeRepository;
+    @Autowired
+    private NoticeRepository noticeRepository;
 
     //글 저장
     public void save(NoticeDTO noticeDTO){
@@ -99,5 +100,12 @@ public class NoticeService {
         }
 
         return searchResult.map(NoticeDTO::toNoticeDTO);
+    }
+
+
+
+    public NoticeEntity getLatestNotice() {
+        // 가장 최근 공지를 가져오는 메소드
+        return noticeRepository.findFirstByOrderByCreatedTime();
     }
 }

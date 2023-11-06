@@ -6,6 +6,7 @@ import com.example.dbcafe.member.Service.NoticeService;
 import com.example.dbcafe.member.config.auth.PrincipalDetails;
 import com.example.dbcafe.member.dto.BoardDTO;
 import com.example.dbcafe.member.dto.NoticeDTO;
+import com.example.dbcafe.member.entity.NoticeEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -131,7 +132,7 @@ public class BoardController {
         //DTO를 가져와서 기존작성내용을 띄워줌
         NoticeDTO noticeDTO = noticeService.findById(id);
         model.addAttribute("boardUpdate", noticeDTO);
-        return "update"; //마찬가지
+        return "notice_write_modify"; //마찬가지
     }
 
     //공지사항 글수정2
@@ -140,7 +141,7 @@ public class BoardController {
         //작성된 내용을 업데이트함
         NoticeDTO notice = noticeService.update(noticeDTO);
         model.addAttribute("board", notice);
-        return "detail";
+        return "redirect:/board/notice";
     }
 
 
@@ -216,6 +217,9 @@ public class BoardController {
         model.addAttribute("endPage", endPage);
         model.addAttribute("search", search);
         model.addAttribute("searchCategory", searchCategory);
+
+        NoticeEntity lastNotice = noticeService.getLatestNotice();
+        model.addAttribute("lastNotice", lastNotice);
 
         return "Q&A";
     }

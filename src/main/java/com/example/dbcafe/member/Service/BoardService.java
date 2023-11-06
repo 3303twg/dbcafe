@@ -20,12 +20,7 @@ import java.util.Optional;
 public class BoardService {
     private  final BoardRepository boardRepository;
 
-    //글을 저장하는 서비스
-    public void save(BoardDTO boardDTO){
-        BoardEntitiy boardEntitiy = BoardEntitiy.toSaveEntitiy(boardDTO);
-        //리포지트리의 save함수를 사용함
-        boardRepository.save(boardEntitiy);
-    }
+
 
     //qna dto를 전부 가져오는 메서드
     public List<BoardDTO> findAll(){
@@ -56,6 +51,13 @@ public class BoardService {
     }
 
 
+    //글을 저장하는 서비스
+    public void save(BoardDTO boardDTO){
+        BoardEntitiy boardEntitiy = BoardEntitiy.toSaveEntitiy(boardDTO);
+        //리포지트리의 save함수를 사용함
+        boardRepository.save(boardEntitiy);
+    }
+
     //페이지 수정
     public BoardDTO update(BoardDTO boardDTO){
         BoardEntitiy boardEntitiy = BoardEntitiy.toUpdateEntity(boardDTO);
@@ -76,7 +78,8 @@ public class BoardService {
         Page<BoardEntitiy> boardEntitiys = boardRepository.findAll(PageRequest.of(page,pageLimit, Sort.by(Sort.Direction.DESC,"id")));
 
         //엔티티를 dto객체로 바꿔주는 라인
-        Page<BoardDTO> boardDTOS = boardEntitiys.map(board -> new BoardDTO(board.getId(), board.getBoardWriter(), board.getBoardTitle(), board.getBoardHits(), board.getCretedTime()));
+        Page<BoardDTO> boardDTOS = boardEntitiys.map(board -> new BoardDTO(board.getId(), board.getBoardWriter(), board.getBoardTitle(),
+                board.getBoardHits(), board.getCretedTime()));
 
         return boardDTOS;
     }

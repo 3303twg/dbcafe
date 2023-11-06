@@ -33,7 +33,6 @@ public class OrderService {
         //해당 유저의 장바구니엔티티를 가져옴
         CartEntity cart = user.getCart();
 
-
         // 장바구니에 있는 메뉴 리스트 가져옴
         List<MenuEntity> menuItems = cart.getMenuItems();
 

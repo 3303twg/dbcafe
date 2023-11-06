@@ -6,7 +6,7 @@
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <script src="https://cdn.protone.io/v2/browser-sdk.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="basket.css">
+    <link rel="stylesheet" href="/css/basket.css">
     <title>장바구니</title>
 </head>
 <body>
@@ -17,7 +17,8 @@
                 <thead>
                     <tr>
                         <td><input type="checkbox" id="selectAll" onclick="toggleCheckboxes()"></td>
-                        <td colspan="2">상품정보</td>
+                        <td></td>
+                        <td>상품정보</td>
                         <td>수량</td>
                         <td>상품금액</td>
                     </tr>
@@ -39,8 +40,8 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3"><input type="submit" value="선택상품 삭제" class="cart__list__optionbtn" id="">
-                            <button type="button" id="removeSelectedItems">선택한 메뉴 삭제</button>
+                        <td colspan="3">
+                            <button type="button" class="cart__list__optionbtn" id="removeSelectedItems">선택한 메뉴 삭제</button>
                         </td>
                         <td></td>
                         <td></td>
@@ -84,11 +85,11 @@
         selectedItems.sort(function(a, b) {
             return a - b;
         });
-        let num = -1;
+        let num = 0;
 
         $.each(selectedItems, function(index, value) {
             // 선택한 항목의 인덱스를 기반으로 해당 행을 삭제
-            $("tr:eq(" + (value-num) + ")").remove();
+            $("tr:eq(" + (value+1-num) + ")").remove();
             num ++;
         });
 
@@ -161,7 +162,6 @@
 
         var uid = userID + UUID_String //아래쪽에서 연산안대서 여기서함
 
-        alert(uid);
 
         IMP.request_pay({
             pg: "kakaopay",

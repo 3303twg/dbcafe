@@ -121,7 +121,7 @@
         });
     });
 
-    function startPayment(productname, totalPrice, UUID) {//유저아이디안쓰니까 뺴야하고, 네임을 받아와야함 ㅇㅇ
+    function startPayment(productname, totalPrice, UUID) {
         var userID = [[${loginUser}]];
         var totalPriceAsString = totalPrice.toString(); // totalPrice를 문자열로 변환
         var products = productname.toString();
@@ -129,7 +129,6 @@
 
         var uid = userID + UUID_String //아래쪽에서 연산안대서 여기서함
 
-        alert(uid);
 
         IMP.request_pay({
             pg: "kakaopay",

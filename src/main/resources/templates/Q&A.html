@@ -405,16 +405,13 @@
 													<td>
 														<div class="text_wrap">
 															<div class="text">
-																<a href="http://localhost:8080/CafeWeb/%EC%9E%85%EC%A0%90%EB%AC%B8%EC%9D%98/%EC%9E%85%EC%A0%90%EC%A0%91%EC%88%98.html#">
-																	<em>
-																		CAFE DREAM 입점접수																	</em>
-																</a>
+																<a th:href="@{|/board/notice/${lastNotice.id}|(page=${boardList.number + 1})}" th:text="${lastNotice.noticeTitle}"></a>
 															</div>
 														</div>
 													</td>
-													<td class="board_pc"> CAFE DREAM</td>
-													<td>2023-08-30</td>
-													<td class="board_pc">457</td>
+													<td class="board_pc"  th:text="${lastNotice.noticeWriter}" ></td>
+													<td th:text="*{#temporals.format(lastNotice.CreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+													<td class="board_pc" th:text="${lastNotice.noticeHits}" ></td>
 
 										</tr>
 										<tr th:each="board: ${boardList}">
