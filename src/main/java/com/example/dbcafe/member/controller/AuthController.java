@@ -31,30 +31,30 @@ public class AuthController {
     }
 
 
-//    @PostMapping("/signterm")
-//    public String term(User user, Model model) {
-//        User userEntity = authService.signup(user);
-//        System.out.println(userEntity);
-//
-//        return "redirect:/signin";
-//    }
-
     @PostMapping("/signterm")
-    public String term(User user, Model model){
-        User newUser = user;
-        model.addAttribute("user",newUser);
-        return "REGISTER_TERMS";}
-
-    @PostMapping("/signup")
-    public String signUp(Model model) {
-        User user = (User) model.getAttribute("user");
-//        User newUser = user; //새로운 유저 받음
-
+    public String term(User user, Model model) {
         User userEntity = authService.signup(user);
         System.out.println(userEntity);
 
         return "redirect:/signin";
     }
+
+//    @PostMapping("/signterm")
+//    public String term(User user, Model model){
+//        User newUser = user;
+//        model.addAttribute("user",newUser);
+//        return "REGISTER_TERMS";}
+//
+//    @PostMapping("/signup")
+//    public String signUp(Model model) {
+//        User user = (User) model.getAttribute("user");
+////        User newUser = user; //새로운 유저 받음
+//
+//        User userEntity = authService.signup(user);
+//        System.out.println(userEntity);
+//
+//        return "redirect:/signin";
+//    }
 
     // 로그인성공 창에서 로그아웃 버튼
     //@RequestMapping(value="logout", method = RequestMethod.GET)
